@@ -82,7 +82,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = $this->dispatchFrom('Sp\Commands\Category\CreateCategoryCommand', $request);
+        $category = $this->dispatchFrom('Sp\Commands\Category\UpdateCategoryCommand', $request);
 
         return redirect()->to('/admin/category/' . $category->id .'/edit');
     }

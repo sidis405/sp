@@ -16,17 +16,18 @@ class Category extends Model implements HasMedia
 
     public static function make($name, $slug, $description, $active)
     {
+        $name = str_slug($name);
         $item = new static(compact('name', 'slug', 'description', 'active'));
 
         return $item;
     }
 
-    public static function edit($item_id, $name, $slug, $description, $active)
+    public static function edit($item_id, $name, $description, $active)
     {
         $item = static::find($item_id);
 
         $item->name = $name;
-        $item->slug = $slug;
+        $item->slug = str_slug($name);
         $item->description = $description;
         $item->active = $active;
 
@@ -38,7 +39,5 @@ class Category extends Model implements HasMedia
         return $this->hasMany('Sp\Models\Article', 'category_id');
 
     }
-
-
 
 }

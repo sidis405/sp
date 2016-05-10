@@ -33,8 +33,7 @@ class CreateCategoryCommandHandler
     public function handle(CreateCategoryCommand $command)
     {
         $category_object = Category::make(
-            $command->name,
-        $command->slug,
+        $command->name,
         $command->description,
         $command->active
             );

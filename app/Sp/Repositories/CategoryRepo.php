@@ -16,7 +16,7 @@ class CategoryRepo
 
     public function getAll()
     {
-        return Category::all();
+        return Category::with('article')->get();
     } 
 
     public function getById($id)
