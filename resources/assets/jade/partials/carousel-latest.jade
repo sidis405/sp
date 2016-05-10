@@ -1,0 +1,41 @@
+html
+  body
+    #carousel-latest.carousel.slide(data-ride='carousel')
+      .widget-title
+        a(href="#") Ultime notizie
+      ol.carousel-indicators
+        li.active(data-target='#carousel-latest', data-slide-to='0')
+        li(data-target='#carousel-latest', data-slide-to='1')
+        li(data-target='#carousel-latest', data-slide-to='2')
+      .carousel-inner
+        .item.active
+          img(data-src='holder.js/900x350').img-responsive
+          .container
+            .carousel-caption
+              a(href="#").category.category-blue Cronaca
+              span.post-date 12.01.2016
+              h1
+                a(href="#") Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, dicta temporibus. Ipsum eligendi dignissimos nam delectus qui.
+              a.author(href="#") #[i.fa.fa-user.fa-fw] Valentina Marchini
+        .item
+          img(data-src='holder.js/900x350').img-responsive
+          .container
+            .carousel-caption
+              a(href="#").category.category-blue Cronaca
+              span.post-date 12.01.2016
+              h1
+                a(href="#") Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit dolore veritatis consectetur rerum vel.
+              a.author(href="#") #[i.fa.fa-user.fa-fw] Valentina Marchini
+        .item
+          img(data-src='holder.js/900x350').img-responsive
+          .container
+            .carousel-caption
+              a(href="#").category.category-blue Cronaca
+              span.post-date 12.01.2016
+              h1
+                a(href="#") Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam neque adipisci nulla excepturi, eos eum cumque.
+              a.author(href="#") #[i.fa.fa-user.fa-fw] Valentina Marchini
+      a.left.carousel-control(href='#carousel-latest', data-slide='prev')
+        span.glyphicon.glyphicon-chevron-left
+      a.right.carousel-control(href='#carousel-latest', data-slide='next')
+        span.glyphicon.glyphicon-chevron-right

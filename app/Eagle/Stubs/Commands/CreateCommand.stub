@@ -1,0 +1,21 @@
+<?php
+
+namespace __NAMESPACE__\Commands;
+
+use __NAMESPACE__\Commands\Command;
+
+class Create__MODELINSTANCE__Command extends Command
+{
+
+    __FIELDSLISTPARAMS__
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct(__FIELDSLIST__)
+    {
+        __FIELDSLISTSINGLES__
+    }
+}

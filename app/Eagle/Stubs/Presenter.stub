@@ -1,0 +1,13 @@
+<?php
+
+namespace __NAMESPACE__\Presenters;
+
+use Laracasts\Presenter\Presenter;
+
+class __MODELNAME__Presenter extends Presenter
+{
+    public function foo()
+       {
+           
+       }   
+}

@@ -1,0 +1,26 @@
+<?php
+
+namespace __NAMESPACE__\Repositories;
+
+use __NAMESPACE__\Models\__MODELNAME__;
+
+class __MODELNAME__Repo
+{
+
+    __REPOSAVE__
+
+    public function getAll()
+    {
+        return __MODELNAME__::all();
+    } 
+
+    public function getById($id)
+    {
+        return __MODELNAME__::where('id', $id);
+    } 
+
+    public function getBySlug($slug)
+    {
+        return __MODELNAME__::where('slug', $slug);
+    } 
+}

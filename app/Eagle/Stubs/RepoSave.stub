@@ -1,0 +1,6 @@
+public function save(__MODELNAME__ $__MODELINSTANCE__)
+    {
+        $__MODELINSTANCE__->save();
+
+        return $__MODELINSTANCE__;
+    }

@@ -1,0 +1,28 @@
+/* =======================
+   Layout
+   ======================= */
+
+// Rules just for positioning. The l- prefixed classes are so to distinguish layout elements from modules
+
+.l-header {
+	background: $smoke;
+	padding: 0 15px 15px;
+}
+
+.l-main {
+	
+}
+
+.l-news-page {
+	background: $smoke;	
+	padding: 15px 15px 0;
+}
+
+.l-sidebar {
+	.white-sidebar {
+		background: #fff;
+		padding: 0 15px;
+	}
+}
+
+.l-footer {}

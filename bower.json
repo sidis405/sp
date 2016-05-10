@@ -1,0 +1,42 @@
+{
+  "name": "gb",
+  "version": "0.0.1",
+  "authors": [
+    "FedeSid"
+  ],
+  "description": "Gb Site",
+  "license": "Commercial",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "holderjs": "^2.9.3",
+    "gsap": "^1.18.2",
+    "waypoints": "^4.0.0",
+    "gray": "^1.4.5",
+    "dragdealer": "^0.9.9"
+  },
+  "overrides": {
+    "font-awesome": {
+      "main": "css/font-awesome.css"
+    },
+    "gsap": {
+      "main": "src/minified/TweenMax.min.js"
+    },
+    "waypoints": {
+      "main": "lib/jquery.waypoints.min.js"
+    },
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+}

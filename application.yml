@@ -1,0 +1,130 @@
+application: Sp
+psr4: 'app/Sp'
+processed: false
+dependencies: 
+    flash: 
+        enabled: true
+        repo: 'laracasts/flash'
+        provider: flash_provider
+        alias: flash_alias
+    html:
+        enabled: true
+        repo: 'illuminate/html'
+        provider: html_provider
+        alias: html_alias
+    presenter:
+        enabled: true
+        repo: 'laracasts/presenter'
+        provider: presenter_provider
+        alias: presenter_alias
+    debugbar:
+        enabled: true
+        repo: 'barryvdh/laravel-debugbar' 
+        provider: debugbar_provider
+        alias: debugbar_alias
+    glide: 
+        enabled: true
+        repo: 'league/glide'
+        provider: glide_provider
+        alias: glide_alias
+    medialibrary:
+        enabled: true
+        repo: 'spatie/laravel-medialibrary'
+        provider: medialibrary_provider
+        alias: medialibrary_alias
+entities:
+      - name:  Category
+        processed: false
+        model: true
+        relationships:
+          - type: hasMany
+            model: Article
+            key1: category_id
+            key2: 
+        migration: true
+        scaffold: true
+        presentable: true
+        media: true
+        repository: true
+        commands: true
+        events: true
+        controller: true
+        requests: true
+        admin:
+            enabled: true
+            scaffold: true
+        routes: true
+        fields:
+            - name: name
+              type: string
+              nullable: false
+              default: false
+              default_value: false
+            - name: slug
+              type: string
+              nullable: false
+              default: false
+              default_value: false
+            - name: description
+              type: string
+              nullable: true
+              default: false
+              default_value: false
+            - name: active
+              type: integer
+              nullable: false
+              default: true
+              default_value: 0
+      - name: Article
+        processed: false
+        model: true
+        relationships:
+          - type: belongsTo
+            model: Category
+            key1: category_id
+            key2: 
+          - type: belongsTo
+            model: User
+            key1: user_id
+            key2: 
+        migration: true
+        scaffold: true
+        presentable: true
+        media: true
+        repository: true
+        commands: true
+        events: true
+        controller: true
+        requests: true
+        admin:
+            enabled: true
+            scaffold: true
+        routes: true
+        fields:
+          - name: title
+            type: string
+            nullable: false
+            default: false
+            default_value: false
+          - name: slug
+            type: string
+            nullable: false
+            default: false
+            default_value: false
+          - name: description
+            type: string
+            nullable: true
+            default: false
+            default_value: false
+          - name: body
+            type: longtext
+            nullable: false
+            default: true
+            default_value: 0
+          - name: featured_photo_id
+            type: integer
+            nullable: true
+            default: true
+            default_value: false
+          
+

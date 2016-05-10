@@ -1,0 +1,71 @@
+extends master
+
+block title
+	title Sito Pubblico
+
+include partials/mixins
+
+block content
+
+	.page-bg.news-bg.holderjs
+
+	include partials/header
+
+	.container
+		.l-news-page
+			.adv
+				img(data-src="holder.js/100px90?theme=social")
+			.row
+				.col-sm-8
+					.l-main
+
+						.post.post-single.post-blue
+							.post-meta
+								.category Cronaca
+								.date Pubblicato il 12.04.2016 alle 10.35
+							.clearfix
+							h1.single-title Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, maxime soluta officia reprehenderit.
+							p.post-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, aliquam accusamus obcaecati repellendus nostrum ratione, animi quasi voluptates possimus voluptatem eaque, numquam modi omnis cumque laboriosam odit autem, dicta facilis!
+							.post-meta
+								.author #[img(src="images/placeholder-user.jpg")]
+									span Articolo di #[a(href="#") Antonio Mautone]
+							.post-img
+								img(data-src="holder.js/100px250")
+							.post-toolbar
+								a(href="#").btn.btn-facebook
+									i.fa.fa-facebook
+								a(href="#").btn.btn-twitter
+									i.fa.fa-twitter
+								a(href="#").btn.btn-default.btn-right
+									i.fa.fa-envelope-o
+							.post-body
+								p ISTANBUL. All’indomani dell’attacco kamikaze nel centro di Istanbul, che ha ucciso 10 turisti tedeschi in piazza Sultanahmet, la polizia turca ha arrestato una persona in mattina a e altre quattro nel pomeriggio. Sarebbero tutti coinvolti con l’attentato nel cuore della Istanbul turistica. A dare la notizia del primo arresto è stato questa mattina il ministero degli interni di Ankara. Nel pomeriggio il primo ministro turco Ahmet Davutoglu, che ha annunciato gli altri arresti, ha spiegato che le indagini hanno confermato il coinvolgimento diretto dello Stato Islamico nella strage. Non solo, ha aggiunto che lo Stato islamico potrebbe essere solo “una pedina” nell’attentato e si indaga su presunti “attori segreti dietro l’attacco” che avrebbero usato l’Is come “subappaltatore”. Il riferimento, tra gli altri, sarebbe al presidente siriano Bashar al Assad, affermando che miliziani dell’organizzazione jihadista sono stati trasferiti nel nord della Siria per combattere contro l’opposizione moderata, con l’aiuto delle forze di Damasco. “Alcune potenze straniere mostrano un atteggiamento ostruzionistico nei confronti delle incursioni aree della Turchia contro l’Is” ha concluso Davutoglu, facendo intendere che le forze aeree russe sembrano voler proteggere i jihadisti all’interno dello spazio aereo siriano.
+							
+								.row
+									.col-sm-6
+										.adv.body-adv
+											img(data-src="holder.js/100px150?theme=social")
+									.col-sm-6
+										.adv.body-adv
+											img(data-src="holder.js/100px150?theme=social")
+
+								p Il premier ha inoltre chiarito che i feriti ancora ricoverati sono 6, mentre gli altri 9 sono già stati dimessi. I feriti sono tutti tedeschi (due dei quali gravi), a parte un norvegese e un peruviano. La strage, secondo le prime informazioni, non era un attacco diretto alla Germania. Berlino ha fatto sapere che non c’è nessuna prova che l’attentato avesse come obiettivo un gruppo di turisti provenienti dalla Germania. Con il passare delle ore, si fa luce anche sull’identità dell’attentatore. Aveva presentato domanda di asilo politico in Turchia la settimana scorsa. Nabil Fadli, 28 anni,  era nato in Arabia Saudita nel 1988, ed era entrato in territorio turco di recente passando dalla Siria. Fadli si era presentato in un ufficio per l’accoglienza dei profughi a Istanbul insieme ad altre quattro persone, e gli erano state prese le impronte digitali come da procedura. Le autorità sottolineano che il suo nome non figurava su liste di ricercati né in Turchia né in altri Paesi. L’uomo è stato filmato nell’ufficio immigrazione, come riporta il giornale turco Haber Turk.
+
+							.post-toolbar
+								a(href="#").btn.btn-facebook
+									i.fa.fa-facebook
+								a(href="#").btn.btn-twitter
+									i.fa.fa-twitter
+								a(href="#").btn.btn-default.btn-right
+									i.fa.fa-envelope-o
+
+							.row
+								.col-sm-6
+									.adv.body-adv
+										img(data-src="holder.js/100px150?theme=social")
+								.col-sm-6
+									.adv.body-adv
+										img(data-src="holder.js/100px150?theme=social")
+
+				.col-sm-4
+					include partials/sidebar

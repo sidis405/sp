@@ -1,0 +1,17 @@
+<?php
+
+namespace __NAMESPACE__\Models;
+
+use Illuminate\Database\Eloquent\Model;
+__IMPORTS__
+
+class __MODELNAME__ extends Model __IMPLEMENTS__
+{
+    use __TRAITS__;
+
+    __PRESENTER__
+
+    __FACTORY__
+
+    __RELATIONSHIPS__
+}

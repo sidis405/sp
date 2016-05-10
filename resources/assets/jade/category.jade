@@ -1,0 +1,78 @@
+extends master
+
+block title
+	title Sito Pubblico
+
+include partials/mixins
+
+block content
+
+	.page-bg.news-bg.holderjs
+
+	include partials/header
+	
+	.container
+		.l-news-page
+			.adv
+				img(data-src="holder.js/100px90?theme=social")
+			.row
+				.col-sm-8
+					.l-main
+
+						include partials/carousel-latest
+
+						.module-title
+							h3.plus Letti di Cronaca
+
+						+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, saepe, magnam. Maiores laboriosam.')(data-src="holder.js/100px250", class="post-blue")
+							h2.post-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit impedit, quas, fugiat rerum voluptates ipsam ullam mollitia accusamus aut rem fuga, deserunt! Quis neque, consequuntur autem necessitatibus optio repudiandae vitae.
+
+						.row
+							.col-sm-6
+								+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit.')(data-src="holder.js/100px150", class="post-blue")
+
+							.col-sm-6
+								+post('Iste, saepe, magnam. Maiores laboriosam.')(data-src="holder.js/100px150", class="post-blue")
+
+				.col-sm-4
+					include partials/sidebar
+
+			.row.smaller-titles
+				.col-sm-3
+					+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, saepe, magnam. Maiores laboriosam.')(data-src="holder.js/100px150", class="post-blue")
+
+				.col-sm-3
+					+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, saepe, magnam. Maiores laboriosam.')(data-src="holder.js/100px150", class="post-blue")
+				.col-sm-3
+					+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, saepe, magnam. Maiores laboriosam.')(data-src="holder.js/100px150", class="post-blue")
+				.col-sm-3
+					+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, saepe, magnam. Maiores laboriosam.')(data-src="holder.js/100px150", class="post-blue")
+				
+
+		.adv
+			img(data-src="holder.js/100px90?theme=social")
+
+		.row
+			.col-sm-6
+				+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit.')(data-src="holder.js/100px250", class="post-blue")
+					h2.post-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate adipisci obcaecati amet quibusdam repudiandae assumenda dolor sequi incidunt blanditiis enim iusto, consequuntur aliquam maiores itaque provident vero. Fuga, magni repudiandae!
+
+				+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit.')(data-src="holder.js/100px250", class="post-blue")
+					h2.post-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore amet voluptas debitis eius explicabo corrupti. Dolorum nihil adipisci sit, tempora fugiat quaerat explicabo iste, quod ab, quae odit earum illum.
+			
+			.col-sm-6
+				.row.smaller-titles
+					.col-sm-6
+						+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit.')(data-src="holder.js/100px150", class="post-blue")
+						+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit.')(data-src="holder.js/100px150", class="post-blue")
+						+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit.')(data-src="holder.js/100px150", class="post-blue")
+
+					.col-sm-6
+						+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit.')(data-src="holder.js/100px150", class="post-blue")
+						+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit.')(data-src="holder.js/100px150", class="post-blue")
+						+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit.')(data-src="holder.js/100px150", class="post-blue")
+		
+		.adv
+			img(data-src="holder.js/100px90?theme=social")
+
+	include partials/footer

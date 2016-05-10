@@ -1,0 +1,15 @@
+public static function make(__FIELDSLIST__)
+    {
+        $item = new static(compact(__FIELDSCOMPACT__));
+
+        return $item;
+    }
+
+    public static function edit($item_id, __FIELDSLIST__)
+    {
+        $item = static::find($item_id);
+
+        __FIELDSLISTSINGLES__
+
+        return $item;
+    }

@@ -1,0 +1,33 @@
+<?php
+
+namespace __NAMESPACE__\Handlers\Commands\__MODELNAME__;
+
+use __NAMESPACE__\Commands\Create__MODELINSTANCE__Command;
+use __NAMESPACE__\Models\__MODELNAME__;
+use Illuminate\Queue\InteractsWithQueue;
+__IMPORTS__
+
+class Create__MODELINSTANCE__CommandHandler
+{
+    __CONSTRUCT__
+
+    /**
+     * Handle the command.
+     *
+     * @param  Create__MODELINSTANCE__Command  $command
+     * @return void
+     */
+    public function handle(Create__MODELINSTANCE__Command $command)
+    {
+        $__MODELINSTANCE_L___object = __MODELNAME__::make(
+            __FIELDSLISFROMCOMMAND__
+            );
+
+        __PERSISTING__
+
+        __EVENTABLE__
+
+        return $__MODELINSTANCE_L__;
+
+    }
+}

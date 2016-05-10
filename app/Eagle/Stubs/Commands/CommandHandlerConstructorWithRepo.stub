@@ -1,0 +1,11 @@
+public $repo;
+
+    /**
+     * Create the command handler.
+     *
+     * @return void
+     */
+    public function __construct(__MODELNAME__Repo $repo)
+    {
+        $this->repo = $repo;
+    }

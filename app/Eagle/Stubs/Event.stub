@@ -1,0 +1,33 @@
+<?php
+
+namespace __NAMESPACE__\Events\__MODELNAME__;
+
+use __NAMESPACE__\Events\Event;
+use __NAMESPACE__\__MODELNAME__\Models\__MODELNAME__;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+
+class __MODELINSTANCE__Was__TYPE__d extends Event
+{
+    use SerializesModels;
+
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+    public function __construct(__MODELNAME__ $__MODELINSTANCE_L__)
+    {
+        $this->__MODELINSTANCE_L__ = $__MODELINSTANCE_L__;
+    }
+
+    /**
+     * Get the channels the event should be broadcast on.
+     *
+     * @return array
+     */
+    public function broadcastOn()
+    {
+        return [];
+    }
+}

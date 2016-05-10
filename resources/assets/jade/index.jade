@@ -1,0 +1,75 @@
+extends master
+
+block title
+	title Sito Pubblico
+
+block content
+
+	.page-bg
+
+	include partials/header
+	
+	.l-main
+		.container-fluid.bleeding
+			.intro
+				.row
+					.col-sm-3
+					.col-sm-6
+						.inner-intro
+							h1 Partecipa a #[i Sito Pubblico]
+							p #[i Sito Pubblico] è un portale di libera informazione che offre la possibilità a tutti i cittadini di esprimere le proprie idee ed opinioni, commentare avvenimenti di attualità e condividere conoscenze ed esperienze. C’è bisogno di voci nuove, INDIPENDENTI E LIBERE, che sappiano dire la loro al di fuori dei soliti cliché. Se anche tu senti il bisogno di comunicare le tue opinioni ad alta voce e condividerle col mondo intero, non esitare ed entra a far parte di #[i Sito Pubblico!]
+							h2 Accedi ora
+							.login-btns
+								a.btn.btn-facebook.btn-lg(href="#") #[i.fa.fa-facebook.fa-fw] Accedi tramite Facebook
+								span.or oppure
+								a.btn.btn-primary.btn-lg(href="#") Registrati
+					.col-sm-3
+
+	.container-fluid.bleeding
+		.intro-desc
+			.row
+				.col-sm-3
+					.intro-img
+						img(src="images/intro1.jpg").img-responsive
+				.col-sm-6
+					p #[i Sito Pubblico] è una comunità di autori, blogger e cittadini che hanno voglia di comunicare attraverso un’unica piattaforma comune, ben più visibile dei piccoli blog personali, o dei profili social.
+					p Su #[i Sito Pubblico] puoi esprimere liberamente le tue idee, i tuoi punti di vista, condividere le tue conoscenze ed esperienze con le migliaia di persone che quotidianamente visitano il sito.  Puoi scrivere su qualsiasi tema, senza alcun tipo di censura, nel rispetto del regolamento del sito e delle normative vigenti.
+					p #[i Sito Pubblico] distribuisce ai contributori dal 50% al 90% dei ricavi pubblicitari generati da ciascun articolo pubblicato sul sito, tramite una piattaforma utente dove puoi monitorare quante visite hanno ottenuto i tuoi contenuti e quanti ricavi hanno generato.
+				.col-sm-3
+					.intro-img
+						img(src="images/intro1.jpg").img-responsive
+			.row
+				.col-sm-3
+				.col-sm-6
+					a.btn.btn-primary.btn-lg.btn-block.btn-rules(href="#") #[i.fa.fa-book.fa-fw] Per maggiori dettagli, leggi il regolamento del sito #[i.fa.fa-arrow-circle-o-right.fa-fw]
+				.col-sm-3
+		
+	.container-fluid.bleeding
+		.registration-form
+			.row
+				.col-sm-3
+				.col-sm-6
+					h1 Registrati
+					form
+						.form-group
+							input.form-control(type="text", placeholder="Nome")
+						.form-group
+							input.form-control(type="text", placeholder="Cognome")
+						.form-group
+							input.form-control(type="text", placeholder="Nickname")
+						.form-group
+							input.form-control(type="email", placeholder="Email")
+						.form-group
+							input.form-control(type="passowrd", placeholder="Password")
+						.form-group
+							input.form-control(type="passowrd", placeholder="Conferma password")
+						.row
+							.col-sm-6
+								input(type="checkbox")
+								label Ho letto e accetto i #[a(href="#") Termini e le Condizioni]
+							.col-sm-6
+								a(href="#").btn.btn-primary.btn-lg.btn-block Continua
+				.col-sm-3
+
+	include partials/footer
+	

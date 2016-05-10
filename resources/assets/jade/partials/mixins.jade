@@ -1,0 +1,33 @@
+mixin post(title, attributes)
+	.post(class!=attributes.class)
+		.post-img
+			.category
+				a(href="#") Cronaca
+			img&attributes(attributes).img-responsive
+		h1.post-title
+			a(href="#")= title
+		if block
+			block
+		else
+			//- h2.post-desc No content provided.
+			//- h2.post-desc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae vitae a alias facer
+		.post-toolbar
+			span.author Antonio Mautone
+			span.controls
+				a(href="#") #[span 32] Condivisioni 
+				a(href="#") F
+				a(href="#") T
+
+mixin post-sidebar(title, attributes)
+	.post.post-sidebar(class!=attributes.class)
+		.row
+			.col-xs-6
+				.post-img
+					.category
+						a(href="#") Cronaca
+					img&attributes(attributes).img-responsive
+			.col-xs-6
+				h1.post-title
+					a(href="#")= title
+				.post-toolbar
+					span.author Michele Crotti

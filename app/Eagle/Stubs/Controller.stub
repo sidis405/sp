@@ -1,0 +1,39 @@
+<?php
+
+namespace __NAMESPACE__\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+__IMPORTS__
+
+class __MODELNAME__Controller extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(__INJECT__)
+    {
+        __FETCHALL__
+
+        __RETURNALL__
+
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id, __INJECT__)
+    {
+        __FETCHONE__
+
+        __RETURNONE__
+    }
+
+}
