@@ -20,11 +20,17 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
 
     // include(__DIR__.'/../Sp/Routes/routes_images.php');
 
-
-
-
 });
 
+Route::group(array('prefix' => 'utente', 'middleware' => 'auth'), function () {
+
+    // Route::get('/', function(){
+    //     return redirect()->to('admin/press');
+    // });
+
+    // include(__DIR__.'/../Sp/Routes/routes_images.php');
+
+});
 
 
 include(__DIR__.'/../Sp/Routes/routes_glide.php');
