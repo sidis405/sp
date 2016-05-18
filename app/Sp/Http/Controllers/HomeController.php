@@ -29,7 +29,7 @@ class HomeController extends Controller
 
     public function single()
     {
-        return view('pages.item');
+        return view('pages.single');
     }
 
     public function create_post()
@@ -37,7 +37,7 @@ class HomeController extends Controller
         return view('pages.create-post');
     }
 
-    public function lista_articolo()
+    public function post_list()
     {
         return view('pages.post-list');
     }

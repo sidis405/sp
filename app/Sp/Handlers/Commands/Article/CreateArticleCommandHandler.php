@@ -37,7 +37,8 @@ class CreateArticleCommandHandler
         $command->slug,
         $command->description,
         $command->body,
-        $command->featured_photo_id
+        $command->featured_photo_id,
+        $command->active
             );
 
         $article = $this->repo->save($article_object);

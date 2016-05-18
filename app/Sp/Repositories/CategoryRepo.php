@@ -21,11 +21,11 @@ class CategoryRepo
 
     public function getById($id)
     {
-        return Category::where('id', $id);
+        return Category::where('id', $id)->first();
     } 
 
     public function getBySlug($slug)
     {
-        return Category::where('slug', $slug);
+        return Category::with('articles.user')->where('slug', $slug)->first();
     } 
 }

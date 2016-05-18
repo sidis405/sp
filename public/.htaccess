@@ -14,3 +14,6 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+<FilesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif)$">
+    Header set Cache-Control "max-age=3600, public"
+</FilesMatch>

@@ -5,6 +5,13 @@
 // });
 
 Route::get('categoria', '\Sp\Http\Controllers\HomeController@category');
+
+Route::get('categorie/{category_slug}', '\Sp\Http\Controllers\CategoryController@show');
+
+
+Route::get('categorie/{category_slug}/articolo/{article_id}/{article_slug}', '\Sp\Http\Controllers\ArticleController@show');
+
+
 Route::get('crea-articolo', '\Sp\Http\Controllers\HomeController@create_post');
 Route::get('/', '\Sp\Http\Controllers\HomeController@home');
 Route::get('news', '\Sp\Http\Controllers\HomeController@news');

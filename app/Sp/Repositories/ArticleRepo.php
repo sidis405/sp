@@ -21,11 +21,11 @@ class ArticleRepo
 
     public function getById($id)
     {
-        return Article::where('id', $id);
+        return Article::with('category', 'user', 'related.user', 'related.category')->where('id', $id)->first();
     } 
 
     public function getBySlug($slug)
     {
-        return Article::where('slug', $slug);
+        return Article::with('category', 'user', 'related.user', 'related.category')->where('slug', $slug)->first();
     } 
 }

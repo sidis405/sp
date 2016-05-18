@@ -3,14 +3,15 @@
 namespace Sp\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Laracasts\Presenter\PresentableTrait;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
+// use Laracasts\Presenter\PresentableTrait;
+// use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+// use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
 
-class Category extends Model implements HasMedia
+class Category extends Model 
+// implements HasMedia
 {
-    use PresentableTrait, HasMediaTrait;
+    // use PresentableTrait, HasMediaTrait;
 
     protected $presenter = 'Sp\Presenters\CategoryPresenter';
 
@@ -34,7 +35,7 @@ class Category extends Model implements HasMedia
         return $item;
     }
 
-    public function article(){
+    public function articles(){
 
         return $this->hasMany('Sp\Models\Article', 'category_id');
 

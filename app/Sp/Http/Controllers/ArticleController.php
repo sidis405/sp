@@ -30,11 +30,11 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, ArticleRepo $article_repo)
+    public function show($category_slug, $article_id, $article_slug, ArticleRepo $article_repo)
     {
-        $article = $article_repo->getById($id);
+        $article = $article_repo->getById($article_id);
 
-        return view('article.show', compact('article'));
+        return view('articles.show', compact('article'));
     }
 
 }
