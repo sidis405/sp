@@ -1,7 +1,14 @@
 <header>
       <div class="container">
         <div class="l-header">
-          <div class="btns-container"><a class="btn btn-primary">Accedi</a><a class="btn btn-primary">Registrati</a></div>
+          <div class="btns-container">
+          @if($currentUser)
+    
+          <a class="btn btn-primary" href="/utente/{{$currentUser->id}}"><span class="profile-thumb-holder" style="background: url({{$currentUser->avatar}});"></span><span class="profile-label">{{$currentUser->name}}</span></a>
+          @else
+          <a class="btn btn-primary" href="/">Accedi</a><a class="btn btn-primary" href="/">Registrati</a>
+          @endif
+          </div>
           <div class="search-container">
             <form role="search" class="navbar-form">
               <div class="form-group">

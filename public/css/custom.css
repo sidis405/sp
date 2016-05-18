@@ -19,3 +19,20 @@
 .post .category {
     z-index: 10;
 }
+
+.profile-thumb-holder {
+    background-size: contain!important;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;margin-top: 4px;
+    float: left;
+    margin-top: 1px;
+    margin-right: 6px;
+}
+
+.profile-label {
+    margin-top: 3px;
+    display: inline-block;
+    float: left;
+}

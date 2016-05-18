@@ -1,6 +1,7 @@
 <?php
 
-
+Route::get('login', 'Auth\AuthController@getLogin');
+Route::get('logout', 'Auth\AuthController@getLogout');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
