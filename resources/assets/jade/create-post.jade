@@ -1,0 +1,53 @@
+extends master
+
+block title
+	title Sito Pubblico
+
+include partials/mixins
+
+block content
+
+	.page-bg.news-bg.holderjs
+
+	include partials/header
+
+	.container
+		.l-create-post-page
+			h1.page-title Scrivi un articolo
+
+			.row
+				.col-sm-8
+					form(action="", method="POST", role="form")
+						.form-group
+							input(type="text", placeholder="Titolo", required="required").form-control
+						.form-group
+							input(type="text", placeholder="Sottotitolo", required="required").form-control
+						.form-group
+							textarea(type="", rows="12", placeholder="Scrivi qui il testo dell'articolo", required="required").form-control
+						.form-group
+							button.btn.btn-primary.btn-lg.pull-right(type="submit") #[i.fa.fa-paper-plane] Invia per approvazione
+							.clearfix
+				.col-sm-4
+					p Seleziona una categoria:
+					.form-group
+						input.form-control(data-role="tagsinput", value="Category 1, Category2").tagsinput
+					.form-group
+						.row
+							.col-xs-6
+								a.btn.btn-default.btn-lg.btn-block.btn-upload #[i.fa.fa-camera] Carica foto
+							.col-xs-6
+								a.btn.btn-default.btn-lg.btn-block.btn-upload #[i.fa.fa-play] Carica video
+					
+					.social-share
+						a.btn.btn-default.btn-block(type="submit") #[i.fa.fa-facebook] Share on Facebook
+						a.btn.btn-default.btn-block(type="submit") #[i.fa.fa-twitter] Share on Twitter
+						a.btn.btn-default.btn-block(type="submit") #[i.fa.fa-google] Share on Google+
+
+					.form-group
+						.row
+							.col-xs-6
+								a.btn.btn-default.btn-lg.btn-block(type="submit") #[i.fa.fa-save] Salva bozza
+							.col-xs-6
+								a.btn.btn-default.btn-lg.btn-block(type="submit") #[i.fa.fa-eye] Anteprima
+						
+	include partials/footer

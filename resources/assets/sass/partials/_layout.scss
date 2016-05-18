@@ -22,7 +22,29 @@
 	.white-sidebar {
 		background: #fff;
 		padding: 0 15px;
+		// margin-bottom: 15px;
 	}
+}
+
+.l-profile-page {
+	background: $smoke;	
+	padding: 15px 15px 0;
+}
+
+.l-profile-sidebar {
+	.white-sidebar {
+		padding: 15px;
+	}
+}
+
+.l-create-post-page {
+	background: $smoke;	
+	padding: 15px 15px 0;
+}
+
+.l-post-list-page {
+	background: $smoke;
+	padding: 15px 15px 0;
 }
 
 .l-footer {}

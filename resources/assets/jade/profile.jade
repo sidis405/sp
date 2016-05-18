@@ -1,0 +1,59 @@
+extends master
+
+block title
+	title Sito Pubblico
+
+include partials/mixins
+
+block content
+
+	.page-bg.news-bg.holderjs
+
+	include partials/header
+
+	.container
+		.l-profile-page
+			.row
+				.col-sm-4
+					include partials/profile-sidebar
+				.col-sm-8
+					.l-main
+						.module-title.no-margin
+							h3.top Le Top News di Michele Crotti
+						
+							.row
+								.col-sm-6
+									+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit.')(data-src="holder.js/100px150", class="post-blue")
+								.col-sm-6
+									+post('Lorem ipsum dolor sit amet, consectetur adipisicing elit.')(data-src="holder.js/100px150", class="post-blue")
+									
+							.module-title.no-margin
+								h3.list Tutti gli Articoli di M. Crotti
+
+							.profile-post-list(role="tab-panel")
+								ul.nav.nav-tabs
+									li.active(role='presentation')
+										a(href='#category1', aria-controls="category1", role="tab", data-toggle="tab") Category 1
+									li(role='presentation')
+										a(href='#category2', aria-controls="category2", role="tab", data-toggle="tab") Category 2
+									li(role='presentation')
+										a(href='#category3', aria-controls="category3", role="tab", data-toggle="tab") Category 3
+									li(role='presentation')
+										a(href='#category4', aria-controls="category4", role="tab", data-toggle="tab") Category 4
+
+								.tab-content
+									#category1.tab-pane.active(role="tabpanel")
+										+post-profile('Lorem ipsum dolor sit amet, consectetur adipisicing elit impedit.')(data-src="holder.js/100px150", class="post-red")
+										+post-profile('Lorem ipsum dolor sit amet, consectetur adipisicing elit impedit.')(data-src="holder.js/100px150", class="post-green")
+										+post-profile('Lorem ipsum dolor sit amet, consectetur adipisicing elit impedit.')(data-src="holder.js/100px150", class="post-blue")
+
+									#category2.tab-pane(role="tabpanel")
+										+post-profile('Lorem ipsum dolor sit amet, consectetur adipisicing elit impedit.')(data-src="holder.js/100px150", class="post-green")
+										+post-profile('Lorem ipsum dolor sit amet, consectetur adipisicing elit impedit.')(data-src="holder.js/100px150", class="post-blue")
+										+post-profile('Lorem ipsum dolor sit amet, consectetur adipisicing elit impedit.')(data-src="holder.js/100px150", class="post-red")
+
+									#category3.tab-pane(role="tabpanel") ...
+
+									#category4.tab-pane(role="tabpanel") ...
+
+	include partials/footer

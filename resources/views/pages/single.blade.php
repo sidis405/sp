@@ -11,10 +11,18 @@
     <title>Sito Pubblico</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- build:css css/vendor.css-->
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    <!-- endbuild-->
+    <!-- build:css css/main.css-->
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+    <!-- endbuild-->
+    <!-- build:js js/modernizr.js-->
     <script src="/js/modernizr.js"></script>
+    <!-- endbuild-->
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="/css/vendor.css" rel="stylesheet" type="text/css">
-    <link href="/css/main.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet" type="text/css">
   </head>
   <body>
@@ -151,7 +159,13 @@
       </div>
     </div>
   </body>
-  <script src="/js/vendor.js"></script>
+  <!-- build:js js/vendor.js-->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/bower_components/holderjs/holder.js"></script>
+  <script src="/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+  <!-- endbuild-->
+  <!-- build:js js/main.js-->
   <script src="/js/main.js"></script>
   <!-- endbuild-->
 </html>

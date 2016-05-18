@@ -27,11 +27,25 @@ class HomeController extends Controller
         return view('pages.category');
     }
 
-    public function item()
+    public function single()
     {
         return view('pages.item');
     }
 
+    public function create_post()
+    {
+        return view('pages.create-post');
+    }
+
+    public function lista_articolo()
+    {
+        return view('pages.post-list');
+    }
+
+    public function profile()
+    {
+        return view('pages.profile');
+    }
 
     /**
      * Display a listing of the resource.

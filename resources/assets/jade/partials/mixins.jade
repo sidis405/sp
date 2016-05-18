@@ -15,8 +15,8 @@ mixin post(title, attributes)
 			span.author Antonio Mautone
 			span.controls
 				a(href="#") #[span 32] Condivisioni 
-				a(href="#") F
-				a(href="#") T
+				a.btn.btn-facebook(href="#") #[i.fa.fa-facebook]
+				a.btn.btn-twitter(href="#") #[i.fa.fa-twitter]
 
 mixin post-sidebar(title, attributes)
 	.post.post-sidebar(class!=attributes.class)
@@ -31,3 +31,22 @@ mixin post-sidebar(title, attributes)
 					a(href="#")= title
 				.post-toolbar
 					span.author Michele Crotti
+
+mixin post-profile(title, attributes)
+	.post.post-profile(class!=attributes.class)
+		.row
+			.col-xs-6
+				.post-img
+					.category
+						a(href="#") Cronaca
+					img&attributes(attributes).img-responsive
+			.col-xs-6
+				h1.post-title
+					a(href="#")= title
+				.post-toolbar
+					span.author Michele Crotti
+					span.date
+					span.controls
+						a(href="#") #[span 32] Condivisioni 
+						a.btn.btn-facebook(href="#") #[i.fa.fa-facebook]
+						a.btn.btn-twitter(href="#") #[i.fa.fa-twitter]

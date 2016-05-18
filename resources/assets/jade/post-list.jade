@@ -1,0 +1,99 @@
+extends master
+
+block title
+	title Sito Pubblico
+
+include partials/mixins
+
+block content
+
+	.page-bg.news-bg.holderjs
+
+	include partials/header
+	
+	.container
+		.l-post-list-page
+
+			h1.page-title I miei articoli
+
+			.post-list
+				.row
+					.col-sm-4
+						.form-group
+							label.label Categoria
+							select.form-control
+								option Option 1
+								option Option 2
+								option Option 3
+					.col-sm-4
+						.form-group
+							label.label Stato
+							select.form-control
+								option Option 1
+								option Option 2
+								option Option 3
+					.col-sm-4
+						label.label Reset
+						a(href="#").btn.btn-default.btn-md.btn-block #[i.fa.fa-close] Azzera filtri
+
+				table.table.table-bordered
+					thead
+						tr
+							th Data
+							th Titolo
+							th Categoria
+							th Stato
+							th Azioni
+					tbody
+						tr
+							td 25-12-2015
+							td Istanbul, diverse esplosioni in città: 10 morti e molti...
+							td Cronaca
+							td In Approvazione
+							td
+								a(href="#").action #[i.fa.fa-edit.fa-fw]
+								a(href="#").action #[i.fa.fa-trash-o.fa-fw]
+						tr
+							td 25-12-2015
+							td Istanbul, diverse esplosioni in città: 10 morti e molti...
+							td Cronaca
+							td In Approvazione
+							td
+								a(href="#").action #[i.fa.fa-edit.fa-fw]
+								a(href="#").action #[i.fa.fa-trash-o.fa-fw]
+						tr
+							td 25-12-2015
+							td Istanbul, diverse esplosioni in città: 10 morti e molti...
+							td Cronaca
+							td In Approvazione
+							td
+								a(href="#").action #[i.fa.fa-edit.fa-fw]
+								a(href="#").action #[i.fa.fa-trash-o.fa-fw]
+						tr
+							td 25-12-2015
+							td Istanbul, diverse esplosioni in città: 10 morti e molti...
+							td Cronaca
+							td In Approvazione
+							td
+								a(href="#").action #[i.fa.fa-edit.fa-fw]
+								a(href="#").action #[i.fa.fa-trash-o.fa-fw]
+						tr
+							td 25-12-2015
+							td Istanbul, diverse esplosioni in città: 10 morti e molti...
+							td Cronaca
+							td In Approvazione
+							td
+								//- a(href="#").action #[i.fa.fa-edit.fa-fw]
+								a(href="#").action #[i.fa.fa-trash-o.fa-fw]
+						tr
+							td 25-12-2015
+							td Istanbul, diverse esplosioni in città: 10 morti e molti...
+							td Cronaca
+							td In Approvazione
+							td
+								//- a(href="#").action #[i.fa.fa-edit.fa-fw]
+								a(href="#").action #[i.fa.fa-trash-o.fa-fw]
+
+	include partials/footer
+
+	//- include partials/footer
