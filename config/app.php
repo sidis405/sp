@@ -146,7 +146,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //SP Providers
-        Laravel\Socialite\SocialiteServiceProvider::class
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
 
     ],
 

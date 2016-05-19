@@ -17,10 +17,19 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
     $email = $localisedFaker->safeEmail;
 
+    $name = $localisedFaker->firstName;
+
+    $surname = $localisedFaker->lastName;
+
     return [
-        'name' => $localisedFaker->name,
+        'name' => $name,
+        'surname' => $surname,
+        'username' => str_slug($name . ' ' . $surname),
         'email' => $email,
-        'avatar' => $localisedFaker->imageUrl(320, 320),
+        'avatar' => 'https://api.adorable.io/avatars/285/' . $email .'.png',
+        // 'avatar' => 'http://fillmurray.com/320/320',
+        // 'avatar' => 'http://placebeard.com/320',
+        // 'avatar' => $localisedFaker->imageUrl(320, 320),
         'facebook_id' => bcrypt($email),
         'password' => bcrypt($email),
         'remember_token' => str_random(10),
@@ -38,6 +47,23 @@ $factory->define(Sp\Models\Article::class, function (Faker\Generator $faker) {
     $users = array_pluck(App\User::all(), 'id');
     $categories = array_pluck(Sp\Models\Category::all(), 'id');
 
+    $width = 730;
+    $height = 350;
+
+                // 'http://placebeard.com/width/height'
+    $lorem_images = [
+                'https://spaceholder.cc/widthxheight' , 
+                'https://placebear.com/width/height',
+                'http://fillmurray.com/width/height',
+                'http://www.placecage.com/width/height',
+                'http://placekitten.com/width/height',
+                'http://baconmockup.com/width/height/',
+                'http://placezombie.com/widthxheight'
+                ];
+
+    $provider = $lorem_images[array_rand([0, 1, 2 ,3,4,5,6])];
+
+    $image = str_replace('height', $height, str_replace('width', $width, $provider));
 
     return [
         'user_id' => $localisedFaker->randomElement($users),
@@ -46,6 +72,9 @@ $factory->define(Sp\Models\Article::class, function (Faker\Generator $faker) {
         'slug' => $slug,
         'description' => $localisedFaker->paragraph,
         'body' => $localisedFaker->paragraph(60),
-        'image_path' => $localisedFaker->imageUrl(730, 350)
+        'image_path' => $image
+        // 'image_path' => 'http://fillmurray.com/730/350'
+        // 'image_path' => 'http://placebeard.com/730/350'
+        // 'image_path' => $localisedFaker->imageUrl(730, 350)
     ];
 });

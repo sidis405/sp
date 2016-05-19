@@ -55,21 +55,22 @@ class CategoryController extends Controller
 
         $section1 = [];
         //Main featured slider
-        $section1['main_carousel'] = json_decode(json_encode(array_slice($articles->toArray(), 0, 3)));
-        $section1['featured'] = json_decode(json_encode(array_slice($articles->toArray(), 3, 1)));
-        $section1['medium'] = json_decode(json_encode(array_slice($articles->toArray(), 4, 2)));
-        $section1['sidebar'] = json_decode(json_encode(array_slice($articles->toArray(), 7, 3)));
-
+        $section1['main_carousel'] =    $articles->slice(0, 3);
+        $section1['featured'] =         $articles->slice(4, 1);
+        $section1['medium'] =           $articles->slice(5, 2);
+        $section1['sidebar'] =          $articles->slice(8, 3);
 
 
         $section2 = [];
         //Main featured slider
-        $section2['small'] = json_decode(json_encode(array_slice($articles->toArray(), 10, 4)));
+        $section2['small'] = $articles->slice(11, 4);
 
 
         $section3 = [];
-        $section3['medium'] = json_decode(json_encode(array_slice($articles->toArray(), 14, 2)));
-        $section3['small'] = json_decode(json_encode(array_slice($articles->toArray(), 16, 6)));
+        $section3['big'] = $articles->slice(15, 2);
+        $section3['small1'] = $articles->slice(17, 3);
+        $section3['small2'] = $articles->slice(21, 3);
+
 
 
 

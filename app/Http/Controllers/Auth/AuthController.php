@@ -45,6 +45,7 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
+            'surname' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -60,6 +61,7 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'surname' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
@@ -111,12 +113,16 @@ class AuthController extends Controller
             return $authUser;
         }
 
-        // dd($facebookUser->id);
+        $name = $facebookUser->name;
+        list($first_name, $last_name) = explode(' ', $name, 2);
+        // dd($facebookUser);
+
         return User::create([
-            'name' => $facebookUser->name,
+            'name' => $first_name,
+            'surname' => $last_name,
             'email' => $facebookUser->email,
             'facebook_id' => $facebookUser->id,
-            'avatar' => $facebookUser->avatar
+            'avatar' => str_replace('1920', '320', $facebookUser->avatar_original)
         ]);
     }
 }

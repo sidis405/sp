@@ -36,3 +36,80 @@
     display: inline-block;
     float: left;
 }
+
+
+
+.post.post-pink .post-title a {
+  color: #c52f76;
+}
+
+.post.post-pink .single-title {
+  color: #c52f76;
+}
+
+.post.post-pink .category {
+  background: #c52f76;
+}
+.post.post-grey .post-title a {
+  color: #b1b1b1;
+}
+
+.post.post-grey .single-title {
+  color: #b1b1b1;
+}
+
+.post.post-grey .category {
+  background: #b1b1b1;
+}
+
+.post.post-brown .post-title a {
+  color: #927265;
+}
+
+.post.post-brown .single-title {
+  color: #927265;
+}
+
+.post.post-brown .category {
+  background: #927265;
+}
+
+
+
+.post.post-azure .post-title a {
+  color: #008397;
+}
+
+.post.post-azure .single-title {
+  color: #008397;
+}
+
+.post.post-azure .category {
+  background: #008397;
+}
+
+
+.post.post-sky .post-title a {
+  color: #7cbbdc;
+}
+
+.post.post-sky .single-title {
+  color: #7cbbdc;
+}
+
+.post.post-sky .category {
+  background: #7cbbdc;
+}
+
+.post.post-black .post-title a {
+  color: #000000;
+}
+
+.post.post-black .single-title {
+  color: #000000;
+}
+
+.post.post-black .category {
+  background: #000000;
+}
+
