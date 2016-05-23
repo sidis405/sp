@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-sm-8">
             <div class="l-main">
-              <div class="post post-single post-blue">
+              <div class="post post-single post-{{$article->category->color}}">
                 <div class="post-meta">
                   <div class="category">{{$article->category->name}}</div>
                   <div class="date">Pubblicato il {{$article->created_at->format('d.m.Y')}} alle {{$article->created_at->format('H:i')}}</div>
@@ -19,7 +19,7 @@
                 <h1 class="single-title">{{$article->title}}</h1>
                 <p class="post-desc">{{$article->description}}</p>
                 <div class="post-meta">
-                  <div class="author"><img src="/images/placeholder-user.jpg"><span>Articolo di <a href="#">{{$article->user->name}}</a></span></div>
+                  <div class="author"><img src="{{$article->user->avatar}}"><span>Articolo di <a href="{{$article->user->present()->user_url()}}">{{$article->user->present()->user_name()}}</a></span></div>
                 </div>
                 <div class="post-img"><img src="{{$article->image_path}}"></div>
                 <div class="post-toolbar"><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a><a href="#" class="btn btn-default btn-right"><i class="fa fa-envelope-o"></i></a></div>
@@ -56,7 +56,7 @@
                     <h3 class="star">In evidenza</h3>
                   </div>
                   @foreach($article->related as $related)
-                  <div class="post post-sidebar post-red">
+                  <div class="post post-sidebar post-{{$related->category->color}}">
                     <div class="row">
                       <div class="col-xs-6">
                         <div class="post-img">

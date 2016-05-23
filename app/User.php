@@ -41,4 +41,9 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function articles()
+    {
+        return $this->hasMany(\Sp\Models\Article::class, 'user_id')->orderBy('created_at', 'DESC');
+    }
 }

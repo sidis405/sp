@@ -46,5 +46,4 @@
       </div>
     </div>
     @include('auth.partials.registration')
-    
 @stop

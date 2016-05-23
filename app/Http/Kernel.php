@@ -30,6 +30,6 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'auth.sp.admin' => \Sp\Http\Middleware\AuthenticateAdmin::class,
-        'auth.sp.operator' => \Sp\Http\Middleware\AuthenticateOperator::class,
+        'auth.sp.user' => \Sp\Http\Middleware\AuthenticateUser::class,
     ];
 }

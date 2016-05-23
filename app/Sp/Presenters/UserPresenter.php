@@ -21,4 +21,9 @@ class UserPresenter extends Presenter
     {
         return $this->name . ' ' . $this->surname;
     }
+
+    public function user_name_short()
+    {
+        return substr($this->name, 0, 1) . '. ' . $this->surname;
+    }
 }

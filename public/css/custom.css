@@ -113,3 +113,6 @@
   background: #000000;
 }
 
+.profile-pic img {
+  width: 320px;
+}

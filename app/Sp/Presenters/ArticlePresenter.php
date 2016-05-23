@@ -108,6 +108,26 @@ class ArticlePresenter extends Presenter
                 </div>';
     }
 
+    public function small_profile()
+    {
+      return '<div class="post post-profile post-'.$this->category->color.'"">
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <div class="post-img">
+                              <div class="category">' . $this->category->present()->category_url(). '</div>
+                              <a href="' . $this->article_url() . '">'. $this->article_image() .'</a>
+                            </div>
+                          </div>
+                          <div class="col-xs-6">
+                            <h1 class="post-title"><a href="' . $this->article_url() . '">' . $this->title . '</a></h1>
+                            <div class="post-toolbar">
+                            <span class="author">' . $this->user->present()->user_name(). '</span>
+                            <span class="date"></span><span class="controls"><a href="#"><span>32</span> Condivisioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
+                          </div>
+                        </div>
+                      </div>';
+    }
+
 
     public function article_url()
     {

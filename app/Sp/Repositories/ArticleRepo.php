@@ -24,6 +24,11 @@ class ArticleRepo
         return Article::with('category', 'user', 'related.user', 'related.category')->where('id', $id)->first();
     } 
 
+    public function getByIdForEditing($id, $user_id)
+    {
+        return Article::with('category', 'user', 'related.user', 'related.category')->where('id', $id)->where('user_id', $user_id)->first();
+    } 
+
     public function getBySlug($slug)
     {
         return Article::with('category', 'user', 'related.user', 'related.category')->where('slug', $slug)->first();

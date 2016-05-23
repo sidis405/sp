@@ -19,6 +19,7 @@ Route::get('lista-articoli', '\Sp\Http\Controllers\HomeController@post_list');
 Route::get('profile', '\Sp\Http\Controllers\HomeController@profile');
 Route::get('single', '\Sp\Http\Controllers\HomeController@single');
 
+Route::get('@{slug}', '\Sp\Http\Controllers\UsersController@show');
 include(__DIR__.'/../Sp/Routes/routes_auth.php');
 
 
@@ -32,13 +33,10 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
 
 });
 
-Route::group(array('prefix' => 'utente', 'middleware' => 'auth'), function () {
+Route::group(array('middleware' => 'auth.sp.user'), function () {
 
-    // Route::get('/', function(){
-    //     return redirect()->to('admin/press');
-    // });
-
-    // include(__DIR__.'/../Sp/Routes/routes_images.php');
+    Route::get('dashboard', '\Sp\Http\Controllers\DashboardController@index');
+    Route::get('dashboard/articoli/{id}/modifica', '\Sp\Http\Controllers\DashboardController@edit');
 
 });
 
