@@ -53,7 +53,7 @@
                         <div class="category"><a href="#">Cronaca</a></div><img class="img-responsive post-blue" data-src="holder.js/100px150"/>
                       </div>
                       <h1 class="post-title"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h1>
-                      <div class="post-toolbar"><span class="author">Antonio Mautone</span><span class="controls"><a href="#"><span>32</span> Condivisioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
+                      <div class="post-toolbar"><span class="author">{{$user->present()->user_name()}}</span><span class="controls"><a href="#"><span>32</span> Condivisioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
                     </div>
                   </div>
                   <div class="col-sm-6">
