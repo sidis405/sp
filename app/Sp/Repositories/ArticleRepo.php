@@ -12,7 +12,7 @@ class ArticleRepo
         $article->save();
 
         return $article;
-    }
+    }   
 
     public function getAll()
     {

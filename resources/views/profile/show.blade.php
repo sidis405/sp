@@ -45,7 +45,7 @@
           <div class="col-sm-8">
             <div class="l-main">
               <div class="module-title no-margin">
-                <h3 class="top">Le Top News di Michele Crotti</h3>
+                <h3 class="top">Le Top News di {{$user->present()->user_name()}}</h3>
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="post post-blue">
