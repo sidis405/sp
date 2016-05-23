@@ -1,14 +1,18 @@
 <header>
       <div class="container">
         <div class="l-header">
+         <div class="btns-container">
           @if(@$currentUser)
               
           <a class="btn btn-primary" href="/dashboard">
               @if(strlen($currentUser->avatar) >2)<span class="profile-thumb-holder" style="background: url({{$currentUser->avatar}});"></span>@endif
-            <span class="profile-label">{{$currentUser->name}}</span></a>
+            <span class="profile-label">{{$currentUser->name}}</span>
+          </a>
           @else
           <a class="btn btn-primary" href="/auth/login">Accedi</a><a class="btn btn-primary" href="/auth/register">Registrati</a>
           @endif
+        </div>
+          
           <div class="search-container">
             <form role="search" class="navbar-form">
               <div class="form-group">
