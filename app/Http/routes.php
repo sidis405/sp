@@ -37,6 +37,7 @@ Route::group(array('middleware' => 'auth.sp.user'), function () {
 
     Route::get('dashboard', '\Sp\Http\Controllers\DashboardController@index');
     Route::get('dashboard/articoli/{id}/modifica', '\Sp\Http\Controllers\DashboardController@edit');
+    Route::post('dashboard/articoli/{id}', '\Sp\Http\Controllers\DashboardController@update');
 
 });
 

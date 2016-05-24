@@ -19,12 +19,16 @@
     <!-- build:css css/main.css-->
     <link type="text/css" rel="stylesheet" href="/css/main.css">
     <link type="text/css" rel="stylesheet" href="/css/custom.css">
+
+    @yield('header_scripts')
+
     <!-- endbuild-->
     <!-- build:js js/modernizr.js-->
     <script src="/js/modernizr.js"></script>
     <!-- endbuild-->
     <link rel="shortcut icon" href="/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet" type="text/css">
+
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -68,5 +72,8 @@
   <!-- build:js js/main.js-->
   <script src="/js/main.js"></script>
   <script src="/js/custom.js"></script>
+
+  @yield('footer_scripts')
+
   <!-- endbuild-->
 </html>

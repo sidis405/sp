@@ -16,7 +16,12 @@ class CategoryRepo
 
     public function getAll()
     {
-        return Category::with('article')->get();
+        return Category::with('articles')->orderBy('name', 'ASC')->get();
+    } 
+
+    public function getAllList()
+    {
+        return Category::orderBy('name', 'ASC')->get();
     } 
 
     public function getById($id)

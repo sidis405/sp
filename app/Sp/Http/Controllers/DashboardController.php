@@ -2,10 +2,11 @@
 
 namespace Sp\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 use Sp\Repositories\ArticleRepo;
+use Sp\Repositories\CategoryRepo;
 use Sp\Repositories\UsersRepo;
 
 
@@ -27,14 +28,35 @@ class DashboardController extends Controller
     }
 
 
-    public function edit($id, ArticleRepo $article_repo)
+    public function edit($id, ArticleRepo $article_repo, CategoryRepo $category_repo)
     {
         $article = $article_repo->getByIdForEditing($id, \Auth::user()->id);
 
         if(! $article ) return abort(404);
 
-        return view('dashboard.edit-article', compact('article'));
+        $categories = $category_repo->getAllList();
+
+        return view('dashboard.edit-article', compact('article', 'categories'));
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        return $request->input();
+
+        $article = $this->dispatchFrom('Sp\Commands\Article\UpdateArticleCommand', $request);
+        flash()->success('Articolo aggiornato con successo.');
+
+        return redirect()->to('/dashboard/articolo/' . $article->id .'/modifica');
+    }
+
+
    
 
 }

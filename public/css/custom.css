@@ -116,3 +116,52 @@
 .profile-pic img {
   width: 320px;
 }
+
+#cke_body {
+      border-top: 1px solid #b3b3b3;
+    border-bottom: 1px solid #b3b3b3;
+    border-left: 1px solid #b3b3b3;
+    border-right: 1px solid #b3b3b3;
+}
+
+#cke_1_top {
+  background: whitesmoke;
+    /*border-bottom: 1px solid #991722;*/
+}
+
+.form-control {
+  border-color: #b3b3b3;
+}
+
+.bootstrap-tagsinput {
+  border-color: #b3b3b3;
+}
+
+/***********/
+
+.pink {
+  background: #c52f76;
+  color: #fff;
+}
+
+.grey {
+  background: #b1b1b1;
+  color: #fff;
+}
+
+.brown {
+  background: #927265;
+  color: #fff;
+}
+
+.azure {
+  background: #008397;
+  color: #fff;
+}
+
+.black {
+  background: #000000;
+  color: #fff;
+}
+
+

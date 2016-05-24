@@ -148,7 +148,8 @@ return [
         //SP Providers
         Laravel\Socialite\SocialiteServiceProvider::class,
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
-
+        Unisharp\Ckeditor\ServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
     ],
 
     /*
@@ -198,7 +199,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
 
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Flash' => Laracasts\Flash\Flash::class,
 
     ],
 

@@ -82,7 +82,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $article = $this->dispatchFrom('Sp\Commands\Article\CreateArticleCommand', $request);
+        $article = $this->dispatchFrom('Sp\Commands\Article\UpdateArticleCommand', $request);
 
         return redirect()->to('/admin/article/' . $article->id .'/edit');
     }
