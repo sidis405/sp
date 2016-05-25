@@ -33,7 +33,7 @@ class CategoryController extends Controller
      */
     public function show($slug, CategoryRepo $category_repo)
     {
-        $category = $category_repo->getBySlug($slug);
+        $category = $category_repo->getBySlugFront($slug);
 
         // return $category;
         $featured = json_decode(json_encode(array_slice($category->articles->toArray(), 0, 3)));

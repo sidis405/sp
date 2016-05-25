@@ -2,6 +2,7 @@
 
 @section('header_scrips')
 <link rel="stylesheet" href="/css/bootstrap-select.min.css">
+
 @stop
 
 @section('content')
@@ -9,12 +10,12 @@
     <div class="page-bg news-bg holderjs"></div>
     @include('layouts.header')
     <div class="container">
+            <form  method="POST" role="form" action="/dashboard/articoli/{{$article->id}}">
       <div class="l-create-post-page">
         <h1 class="page-title">Modifica articolo: '{{$article->title}}'</h1>
         @include('errors.errors')
         <div class="row">
           <div class="col-sm-8">
-            <form  method="POST" role="form" action="/dashboard/articoli/{{$article->id}}">
                {{csrf_field()}}
                <input type="hidden" name="article_id" value="{{$article->id}}">
               <div class="form-group">
@@ -30,7 +31,6 @@
                 <button type="submit" class="btn btn-primary btn-lg pull-right"><i class="fa fa-paper-plane"></i> Invia per approvazione</button>
                 <div class="clearfix"></div>
               </div>
-            </form>
           </div>
           <div class="col-sm-4">
             <p>Seleziona una categoria:</p>
@@ -46,8 +46,19 @@
             </div> -->
             <div class="form-group">
               <div class="row">
-                <div class="col-xs-6"><a class="btn btn-default btn-lg btn-block btn-upload"><i class="fa fa-camera"></i> Carica foto</a></div>
-                <div class="col-xs-6"><a class="btn btn-default btn-lg btn-block btn-upload"><i class="fa fa-play"></i> Carica video</a></div>
+                <div class="col-xs-12">
+                  <div class="btn-upload-image-container">
+                    <a class="btn btn-default btn-lg btn-block btn-upload btn-upload-image" onClick="$('#article-featured-image').trigger('click');">
+                      <i class="fa fa-camera"></i> Carica foto
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="btn-upload-image-container">
+                    <input type="file" name="article-featured-image file-loading"  id="article-featured-image">
+                  </div>
+                </div>
+                <!-- <div class="col-xs-6"><a class="btn btn-default btn-lg btn-block btn-upload"><i class="fa fa-play"></i> Carica video</a></div> -->
               </div>
             </div>
             <div class="social-share"><a type="submit" class="btn btn-default btn-block"><i class="fa fa-facebook"></i> Share on Facebook</a><a type="submit" class="btn btn-default btn-block"><i class="fa fa-twitter"></i> Share on Twitter</a><a type="submit" class="btn btn-default btn-block"><i class="fa fa-google"></i> Share on Google+</a></div>
@@ -60,6 +71,8 @@
           </div>
         </div>
       </div>
+            </form>
+      
     </div>
   @stop
 
@@ -67,11 +80,32 @@
 <!--   <script src="/js/bootstrap-select.min.js"></script>
   
   <script> $('.cat-select').selectpicker();</script> -->
-
+  
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
       <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+  
+
+
       <script>
           $('textarea#body').ckeditor();
-          // $('.textarea').ckeditor(); // if class is prefered.
+          $("#article-featured-image").fileinput(
+            {
+              initialPreview: [
+                          'http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg',
+                          'http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg'
+                      ],
+                      initialPreviewAsData: true,
+                      initialPreviewConfig: [
+                          {caption: "Moon.jpg", size: 930321, width: "120px", key: 1},
+                          {caption: "Earth.jpg", size: 1218822, width: "120px", key: 2}
+                      ],
+                      deleteUrl: "/site/file-delete",
+                      overwriteInitial: false,
+                      maxFileSize: 100,
+                      initialCaption: "The Moon and the Earth"
+            }
+            );
       </script>
+
+
       @stop

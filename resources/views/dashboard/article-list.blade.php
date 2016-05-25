@@ -51,8 +51,14 @@
                 <td>{{$article->created_at->format('d-m-Y')}}</td>
                 <td>{{$article->title}}</td>
                 <td class="article-list-category">{{$article->category->name}}</td>
-                <td class="article-list-state">In Approvazione</td>
-                <td><a href="/dashboard/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a><a href="/dashboard/articoli/{{$article->id}}/rimuovi" class="action"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                <td class="article-list-state">{{$article->status->name}}</td>
+                <td>
+                  @if($article->status->id == 1)
+                  <a href="/dashboard/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a><a href="/dashboard/articoli/{{$article->id}}/rimuovi" class="action"><i class="fa fa-trash-o fa-fw"></i></a>
+                  @else
+                    <a href="/dashboard/articoli/{{$article->id}}" class="action"><i class="fa fa-eye fa-fw"></i></a>
+                  @endif
+                </td>
               </tr>
               @endforeach
             </tbody>

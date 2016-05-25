@@ -14,6 +14,6 @@ class UsersRepo
 
     public function getById($id)
     {
-        return User::with('articles.category')->where('id', $id)->first();
+        return User::with('articles.category', 'articles.status')->where('id', $id)->first();
     } 
 }

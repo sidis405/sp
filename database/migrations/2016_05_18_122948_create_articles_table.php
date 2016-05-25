@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('slug');
             $table->text('description');
             $table->longtext('body');
+            $table->integer('status_id')->default(1);
             $table->integer('featured_photo_id')->nullable();
             $table->integer('image_path')->nullable();
             $table->integer('active')->default(1);

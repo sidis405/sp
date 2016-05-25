@@ -16,7 +16,7 @@ class ArticleRepo
 
     public function getAll()
     {
-        return Article::all();
+        return Article::with('status')->get();
     } 
 
     public function getById($id)

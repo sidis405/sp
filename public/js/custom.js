@@ -47,10 +47,11 @@ $(document).on("change", "#dashboard-state-filter", function(){
         // Loop through the comment list
         $('.article-list-table').find('tr.article-list-row').each(function(){
 
-            if($(this).css('display') == 'block'){
+            // if($(this).css('display') !== 'none'){
                 
                 if(filter !== 'all')
                 {
+                    // console.log('s');
                     // If the list item does not contain the text phrase fade it out
                     if ($(this).find('.article-list-state').text().search(new RegExp(filter, "i")) < 0) {
                         $(this).hide();
@@ -65,7 +66,7 @@ $(document).on("change", "#dashboard-state-filter", function(){
                     count++;
                 }
 
-            }
+            // }
 
         });
  

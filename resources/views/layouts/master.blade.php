@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap-fileinput/css/fileinput.css">
     <!-- endbuild-->
     <!-- build:css css/main.css-->
     <link type="text/css" rel="stylesheet" href="/css/main.css">
@@ -68,6 +69,8 @@
   <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="/bower_components/holderjs/holder.js"></script>
   <script src="/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+  <script src="/bower_components/bootstrap-fileinput/js/fileinput.js"></script>
+  <script src="/bower_components/bootstrap-fileinput/js/fileinput_locale_it.js"></script>
   <!-- endbuild-->
   <!-- build:js js/main.js-->
   <script src="/js/main.js"></script>

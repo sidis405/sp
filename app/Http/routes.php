@@ -1,7 +1,24 @@
 <?php
 
-// Route::get('/', function(){
-//     return view('static.index');
+Route::get('/', function(){
+    return view('static.index');
+});
+
+// Route::get('statuses', function(){
+
+//     $articles = \Sp\Models\Article::all();
+
+//     $statuses = [1,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3];
+
+//     foreach ($articles as $article) {
+        
+//         $article->status_id = $statuses[array_rand($statuses)];
+//         $article->save();
+
+//     }
+
+//     return 'done';
+
 // });
 
 Route::get('categoria', '\Sp\Http\Controllers\HomeController@category');

@@ -21,6 +21,8 @@ class DashboardController extends Controller
     {
         $user = $users_repo->getById(\Auth::user()->id);
 
+        // return $user->articles;
+
         $categories = array_values(array_unique(array_pluck(array_pluck($user->articles, 'category'), 'name')));
 
         return view('dashboard.article-list', compact('user', 'categories'));

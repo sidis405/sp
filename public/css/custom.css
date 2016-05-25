@@ -164,4 +164,13 @@
   color: #fff;
 }
 
-
+.btn-upload-image-container
+{
+  display: table;
+  min-height: 200px;
+  width: 100%;
+}
+.btn-upload-image {
+  display: table-cell;
+  vertical-align: middle;
+}

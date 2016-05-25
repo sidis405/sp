@@ -52,6 +52,11 @@ class Article extends Model  implements HasMedia
         return $this->hasMany(\Sp\Models\Article::class, 'category_id', 'category_id')->take(3);
     }
 
+    public function status()
+    {
+        return $this->belongsTo(\Sp\Models\Status::class, 'status_id');
+    }
+
 
 
 }

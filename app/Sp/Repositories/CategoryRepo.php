@@ -33,4 +33,9 @@ class CategoryRepo
     {
         return Category::with('articles.user')->where('slug', $slug)->first();
     } 
+
+    public function getBySlugFront($slug)
+    {
+        return Category::with('articles.user')->where('slug', $slug)->first();
+    } 
 }
