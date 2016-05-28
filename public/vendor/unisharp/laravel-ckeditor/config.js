@@ -12,18 +12,17 @@ CKEDITOR.editorConfig = function( config ) {
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup'] },
-		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+		{ name: 'links' },
+		{ name: 'paragraph',   groups: [ 'list', 'indent' ] },
 
 		// { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
 		// { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
 		// { name: 'forms' },
+		{ name: 'insert'},
 		// { name: 'tools' },
 		// { name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
 		// { name: 'others' },
-		{ name: 'styles' },
-		// '/',
-		{ name: 'oEmbed' },
-		{ name: 'links' },
+		{ name: 'styles', groups: [ 'styles' ] },
 	];
 
 	// Remove some buttons provided by the standard plugins, which are
@@ -39,5 +38,6 @@ CKEDITOR.editorConfig = function( config ) {
 	config.skin = 'minimalist';
 	config.height = 400; 
 	// config.extraPlugins = 'oembed,widget';
-	// config.toolbar= [['oembed']]
-};
+	// config.toolbar= [['oembed']];
+
+};	

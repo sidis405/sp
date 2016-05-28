@@ -138,30 +138,47 @@
 }
 
 /***********/
+.red {
+  background: #991722;
+  color: #fff!important;
+  
+}
+
+.blue {
+  background: #25387d;
+  color: #fff!important;
+  
+}
+
+.green {
+  background: #00a651;
+  color: #fff!important;
+  
+}
 
 .pink {
   background: #c52f76;
-  color: #fff;
+  color: #fff!important;
 }
 
 .grey {
   background: #b1b1b1;
-  color: #fff;
+  color: #fff!important;
 }
 
 .brown {
   background: #927265;
-  color: #fff;
+  color: #fff!important;
 }
 
 .azure {
   background: #008397;
-  color: #fff;
+  color: #fff!important;
 }
 
 .black {
   background: #000000;
-  color: #fff;
+  color: #fff!important;
 }
 
 .btn-upload-image-container

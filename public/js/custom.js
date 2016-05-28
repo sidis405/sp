@@ -79,3 +79,15 @@ $(document).on("click", '.article-list-reset-filter', function(event){
     $('#dashboard-state-filter').prop('selectedIndex',0);
     $('#dashboard-state-filter').trigger('change');
 });
+
+$('.cat-select').on('change', function(){
+
+    var target_btn = $(this).parent().find('button').first();
+
+    target_btn.removeAttr('class');
+    target_btn.addClass('btn');
+    target_btn.addClass('dropdown-toggle');
+    target_btn.addClass( $(".cat-select option:selected" ).data("class"));
+
+
+});

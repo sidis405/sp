@@ -15,13 +15,12 @@
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
-    <link rel="stylesheet" href="/bower_components/bootstrap-fileinput/css/fileinput.css">
+    @yield('header_scripts')
     <!-- endbuild-->
     <!-- build:css css/main.css-->
     <link type="text/css" rel="stylesheet" href="/css/main.css">
     <link type="text/css" rel="stylesheet" href="/css/custom.css">
 
-    @yield('header_scripts')
 
     <!-- endbuild-->
     <!-- build:js js/modernizr.js-->
@@ -69,14 +68,13 @@
   <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="/bower_components/holderjs/holder.js"></script>
   <script src="/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
-  <script src="/bower_components/bootstrap-fileinput/js/fileinput.js"></script>
-  <script src="/bower_components/bootstrap-fileinput/js/fileinput_locale_it.js"></script>
+
   <!-- endbuild-->
   <!-- build:js js/main.js-->
+  @yield('footer_scripts')
   <script src="/js/main.js"></script>
   <script src="/js/custom.js"></script>
 
-  @yield('footer_scripts')
 
   <!-- endbuild-->
 </html>

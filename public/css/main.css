@@ -63,6 +63,10 @@ textarea {
   resize: vertical;
 }
 
+label {
+  font-weight: normal;
+}
+
 /* =======================
    Layout
    ======================= */
@@ -97,6 +101,11 @@ textarea {
 }
 
 .l-post-list-page {
+  background: #f5f5f5;
+  padding: 15px 15px 0;
+}
+
+.l-profile-settings-page {
   background: #f5f5f5;
   padding: 15px 15px 0;
 }
@@ -900,6 +909,18 @@ aside .module-title h3 {
 
 .post-list table tr td {
   vertical-align: middle;
+}
+
+.profile-pic-settings-box {
+  margin-top: 40px;
+}
+
+.profile-settings-panel h4 {
+  font-weight: bold;
+}
+
+.input-block {
+  margin: 30px 0;
 }
 
 /* =======================

@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
-@section('header_scrips')
+@section('header_scripts')
 <link rel="stylesheet" href="/css/bootstrap-select.min.css">
+
+    <link rel="stylesheet" href="/bower_components/bootstrap-fileinput/css/fileinput.css">
 
 @stop
 
@@ -35,9 +37,9 @@
           <div class="col-sm-4">
             <p>Seleziona una categoria:</p>
 
-            <select name="category_id" class="cat-select">
+            <select name="category_id" class="cat-select"  data-style="{{$article->category->color}}">
               @foreach($categories as $category)
-                <option value="{{$category->id}}" @if($category->id == $article->category->id) selected @endif>{{$category->name}}</option>
+                <option value="{{$category->id}}" @if($category->id == $article->category->id) selected @endif class="{{$category->color}}" data-class="{{$category->color}}">{{$category->name}}</option>
               @endforeach
             </select>
 
@@ -46,7 +48,7 @@
             </div> -->
             <div class="form-group">
               <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-12" style="display:none;">
                   <div class="btn-upload-image-container">
                     <a class="btn btn-default btn-lg btn-block btn-upload btn-upload-image" onClick="$('#article-featured-image').trigger('click');">
                       <i class="fa fa-camera"></i> Carica foto
@@ -77,33 +79,43 @@
   @stop
 
   @section('footer_scripts')
-<!--   <script src="/js/bootstrap-select.min.js"></script>
+  <script src="/js/bootstrap-select.min.js"></script>
   
-  <script> $('.cat-select').selectpicker();</script> -->
+  <script> $('.cat-select').selectpicker();</script>
   
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
       <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
-  
+
+    <script src="/bower_components/bootstrap-fileinput/js/fileinput.js"></script>
+  <script src="/bower_components/bootstrap-fileinput/js/fileinput_locale_it.js"></script>
 
 
       <script>
           $('textarea#body').ckeditor();
           $("#article-featured-image").fileinput(
-            {
-              initialPreview: [
-                          'http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg',
-                          'http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg'
-                      ],
-                      initialPreviewAsData: true,
-                      initialPreviewConfig: [
-                          {caption: "Moon.jpg", size: 930321, width: "120px", key: 1},
-                          {caption: "Earth.jpg", size: 1218822, width: "120px", key: 2}
-                      ],
-                      deleteUrl: "/site/file-delete",
-                      overwriteInitial: false,
-                      maxFileSize: 100,
-                      initialCaption: "The Moon and the Earth"
-            }
+              {
+                'browseClass': "btn btn-primary btn-block",
+                'language': "it",
+                'showCaption': false,
+                'maxFileCount': 1,
+                'showRemove': false,
+                'showUpload': false,
+                'previewFileType':'image',
+                'initialPreview': [
+                          "<img src='{{$article->image_path}}' class='img-responsive'>",
+                        ],
+                'initialPreviewAsData': true,
+                'initialPreviewConfig': [
+                            {caption: "Immagine di Copertina", size: 930321, width: "120px", key: 1}
+                        ],
+                'overwriteInitial': true,
+                'maxFileSize': 500,
+                'allowedFileExtensions': ["jpg", "png"],
+                   // 'maxImageWidth': 250,
+                   // 'maxImageHeight': 250,
+                'minImageWidth': 730,
+                'minImageHeight': 350,
+              }
             );
       </script>
 

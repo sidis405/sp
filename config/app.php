@@ -150,6 +150,8 @@ return [
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -201,6 +203,8 @@ return [
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Flash' => Laracasts\Flash\Flash::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+
 
     ],
 

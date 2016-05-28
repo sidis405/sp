@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
     <!-- endbuild-->
     <!-- build:css css/main.css-->
-    <link type="text/css" rel="stylesheet" href="/css/style.css">
+    <link type="text/css" rel="stylesheet" href="/css/main.css">
     <!-- endbuild-->
     <!-- build:js js/modernizr.js-->
     <script src="/js/modernizr.js"></script>
