@@ -4,6 +4,7 @@ namespace Sp\Http\Requests;
 
 use App\Http\Requests\Request;
 use App\User;
+use Auth;
 
 class UpdateUserProfileRequest extends Request
 {
@@ -14,7 +15,7 @@ class UpdateUserProfileRequest extends Request
      */
     public function authorize()
     {
-        dd($this->get('user_id') == \Auth::user()->id);
+        // dd($this->get('user_id') == \Auth::user()->id);
         return ($this->get('user_id') == \Auth::user()->id);
     }
 
@@ -28,8 +29,8 @@ class UpdateUserProfileRequest extends Request
         return [
             'name' => 'required|min:3',
             'surname' => 'required|min:3',
-            'username' => 'required|min:3|max:255|unique:users',
-            'email' => 'required|email|max:255|unique:users',
+            'username' => 'required|min:3|max:255|unique:users,id,'.Auth::user()->id,
+            'email' => 'required|email|max:255|unique:users,id,'.Auth::user()->id,
         ];
     }
 }

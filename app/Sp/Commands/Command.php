@@ -1,4 +1,6 @@
-<?php namespace __NAMESPACE__\Commands;
+<?php
+
+namespace Sp\Commands;
 
 abstract class Command {
 

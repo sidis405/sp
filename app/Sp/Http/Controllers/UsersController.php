@@ -42,7 +42,14 @@ class UsersController extends Controller
 
     public function profile_form_save(UpdateUserProfileRequest $request)
     {
-        return $request->input();
+        $user = $this->dispatchFrom('Sp\Commands\Users\UpdateUserProfileCommand', $request);
+        
+
+        flash()->success('Profilo aggiornato con successo.');
+
+
+        return redirect()->to('/impostazioni');
+
     }
 
     public function flattenByCategory($articles)

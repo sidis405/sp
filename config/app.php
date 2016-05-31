@@ -146,6 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //SP Providers
+        App\Providers\BusServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,

@@ -46,4 +46,17 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany(\Sp\Models\Article::class, 'user_id')->orderBy('created_at', 'DESC');
     }
+
+
+    public static function edit($user_id, $name, $surname, $username, $email)
+    {
+        $user = static::find($user_id);
+
+        $user->name = $name;
+        $user->surname = $surname;
+        $user->username = $username;
+        $user->email = $email;
+
+        return $user;
+    }
 }
