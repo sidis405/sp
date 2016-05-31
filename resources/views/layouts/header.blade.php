@@ -8,6 +8,9 @@
               @if(strlen($currentUser->avatar) >2)<span class="profile-thumb-holder" style="background: url({{$currentUser->avatar}});"></span>@endif
             <span class="profile-label">{{$currentUser->name}}</span>
           </a>
+          <a class="btn btn-primary" href="/impostazioni">
+            <span class="profile-label">Impostazioni</span>
+          </a>
           @else
           <a class="btn btn-primary" href="/auth/login">Accedi</a><a class="btn btn-primary" href="/auth/register">Registrati</a>
           @endif
@@ -22,7 +25,7 @@
             </form>
           </div>
           <div class="logo-container">
-            <h1 class="logo">Sito Pubblico</h1>
+            <a href="/news"><h1 class="logo">Sito Pubblico</h1></a>
           </div>
           <ul class="nav nav-pills nav-justified">
             <li><a href="/news">Home</a></li>

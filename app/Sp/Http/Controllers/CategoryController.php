@@ -38,10 +38,6 @@ class CategoryController extends Controller
         // return $category;
         $featured = json_decode(json_encode(array_slice($category->articles->toArray(), 0, 3)));
         
-
-
-        // $featured = array_slice($category->articles, 3);
-        
         // return count($featured);
         $articles = $this->sliceSections($category->articles);
 
