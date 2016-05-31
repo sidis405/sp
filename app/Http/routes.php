@@ -11,6 +11,7 @@ Route::get('categorie/{category_slug}/articolo/{article_id}/{article_slug}', '\S
 
 
 Route::get('@{slug}', '\Sp\Http\Controllers\UsersController@show');
+Route::get('utente/{id}', '\Sp\Http\Controllers\UsersController@showId');
 
     Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
 

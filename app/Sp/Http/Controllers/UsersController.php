@@ -30,6 +30,19 @@ class UsersController extends Controller
         return view('profile.show', compact('user', 'articles'));
     }
 
+      public function showId($user_id, UsersRepo $users_repo)
+    {
+        $user = $users_repo->getById($user_id);
+
+        if(! $user) return abort(404);
+
+        $articles = $this->flattenByCategory($user->articles);
+
+        // return $articles;
+
+        return view('profile.show', compact('user', 'articles'));
+    }
+
     public function settings_form(UsersRepo $users_repo)
     {
         $user = $users_repo->getById(\Auth::user()->id);
