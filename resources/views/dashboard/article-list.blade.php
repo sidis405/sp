@@ -6,13 +6,18 @@
     @include('layouts.header')
     <div class="container">
       <div class="l-post-list-page">
-        <h1 class="page-title">I miei articoli</h1>
+          
+        <h1 class="page-title">I miei articoli 
+            <!-- <span class="pull-right"><a href="/dashboard/articoli/scrivi"><i class="fa fa-plus-circle fw">Scrivi nuovo</i></a></span> -->
+        </h1>
+        <div class="row">
+        </div>
         <div class="post-list">
           <div class="row">
             <div class="col-sm-4">
               <div class="form-group">
                 <label class="label">Categorie</label>
-                <select class="form-control" id="dashboard-category-filter">
+                 <select class="form-control" id="dashboard-category-filter">
                      <option class="dashboard-category-filter-option" value="all">Tutte</option>
                   @foreach($categories as $category)
                      <option class="dashboard-category-filter-option" value="{{$category}}">{{$category}}</option>
@@ -56,7 +61,7 @@
                   @if($article->status->id == 1)
                   <a href="/dashboard/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a><a href="/dashboard/articoli/{{$article->id}}/rimuovi" class="action"><i class="fa fa-trash-o fa-fw"></i></a>
                   @else
-                    <a href="/dashboard/articoli/{{$article->id}}" class="action"><i class="fa fa-eye fa-fw"></i></a>
+                    <a href="{{$article->present()->article_url()}}" target="_blank" class="action"><i class="fa fa-eye fa-fw"></i></a>
                   @endif
                 </td>
               </tr>

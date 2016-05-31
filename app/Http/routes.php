@@ -19,7 +19,10 @@ Route::get('@{slug}', '\Sp\Http\Controllers\UsersController@show');
 Route::group(array('middleware' => 'auth.sp.user'), function () {
 
     Route::get('dashboard', '\Sp\Http\Controllers\DashboardController@index');
+    Route::get('dashboard/articoli/scrivi', '\Sp\Http\Controllers\DashboardController@create');
+    Route::post('dashboard/articoli', '\Sp\Http\Controllers\DashboardController@store');
     Route::get('dashboard/articoli/{id}/modifica', '\Sp\Http\Controllers\DashboardController@edit');
+    Route::get('dashboard/articoli/{id}/anteprima', '\Sp\Http\Controllers\DashboardController@preview');
     Route::post('dashboard/articoli/{id}', '\Sp\Http\Controllers\DashboardController@update');
     
     Route::get('impostazioni', '\Sp\Http\Controllers\UsersController@settings_form');

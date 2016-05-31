@@ -136,7 +136,17 @@ class ArticlePresenter extends Presenter
 
     public function article_image($width=730, $height = 350)
     {
-        return '<img src="' . $this->image_path . '" class="img-responsive">';
+       $path = (strpos($this->image_path, "htt") !== 0) ? '/media/'.$this->image_path : $this->image_path;
+
+        return '<img src="' . $path . '" class="img-responsive">';
         // return '<img src="' . $this->image_path . 'w=' . $width . '&h=' . $height . '&fit=crop" class="img-responsive">';
+    }
+
+    public function article_image_url()
+    {
+
+      $path = (strpos($this->image_path, "htt") !== 0) ? '/media/'.$this->image_path : $this->image_path;
+
+      return $path;
     }
 }

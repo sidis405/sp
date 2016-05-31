@@ -27,7 +27,7 @@
       <div class="intro-desc">
         <div class="row">
           <div class="col-sm-3">
-            <div class="intro-img"><img src="images/intro1.jpg" class="img-responsive"></div>
+            <div class="intro-img"><img src="/images/intro1.jpg" class="img-responsive"></div>
           </div>
           <div class="col-sm-6">
             <p><i>Sito Pubblico</i> è una comunità di autori, blogger e cittadini che hanno voglia di comunicare attraverso un’unica piattaforma comune, ben più visibile dei piccoli blog personali, o dei profili social.</p>
@@ -35,7 +35,7 @@
             <p><i>Sito Pubblico</i> distribuisce ai contributori dal 50% al 90% dei ricavi pubblicitari generati da ciascun articolo pubblicato sul sito, tramite una piattaforma utente dove puoi monitorare quante visite hanno ottenuto i tuoi contenuti e quanti ricavi hanno generato.</p>
           </div>
           <div class="col-sm-3">
-            <div class="intro-img"><img src="images/intro1.jpg" class="img-responsive"></div>
+            <div class="intro-img"><img src="/  images/intro1.jpg" class="img-responsive"></div>
           </div>
         </div>
         <div class="row">

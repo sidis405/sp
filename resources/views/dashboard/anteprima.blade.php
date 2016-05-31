@@ -16,12 +16,12 @@
                   <div class="date">Pubblicato il {{$article->created_at->format('d.m.Y')}} alle {{$article->created_at->format('H:i')}}</div>
                 </div>
                 <div class="clearfix"></div>
-                <h1 class="single-title">{{$article->title}}</h1>
+                <h1 class="single-title">{{$article->title}} (ANTEPRIMA)</h1>
                 <p class="post-desc">{{$article->description}}</p>
                 <div class="post-meta">
                   <div class="author"><img src="{{$article->user->avatar}}"><span>Articolo di <a href="{{$article->user->present()->user_url()}}">{{$article->user->present()->user_name()}}</a></span></div>
                 </div>
-                <div class="post-img"><img src="{{$article->present()->article_image_url()}}"></div>
+                <div class="post-img"><img src="{{$article->present()->article_image_url}}"></div>
                 <div class="post-toolbar"><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a><a href="#" class="btn btn-default btn-right"><i class="fa fa-envelope-o"></i></a></div>
                 <div class="post-body">
                   <div class="row">

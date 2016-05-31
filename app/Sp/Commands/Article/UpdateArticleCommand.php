@@ -1,17 +1,19 @@
 <?php
 
-namespace Sp\Commands;
+namespace Sp\Commands\Article;
 
 use Sp\Commands\Command;
 
 class UpdateArticleCommand extends Command
 {
 
+      public $article_id;
       public $title;
       public $slug;
       public $description;
       public $body;
-      public $featured_photo_id;
+      public $category_id;
+      public $file;
       public $active;
 
     /**
@@ -19,13 +21,14 @@ class UpdateArticleCommand extends Command
      *
      * @return void
      */
-    public function __construct($title, $slug, $description, $body, $featured_photo_id, $active)
+    public function __construct($article_id, $title, $description, $body, $category_id,  $file, $active = null)
     {
+        $this->article_id = $article_id;
         $this->title = $title;
-        $this->slug = $slug;
         $this->description = $description;
         $this->body = $body;
-        $this->featured_photo_id = $featured_photo_id;
-    $this->active = $active;
+        $this->category_id = $category_id;
+        $this->file = $file;
+        $this->active = $active;
     }
 }
