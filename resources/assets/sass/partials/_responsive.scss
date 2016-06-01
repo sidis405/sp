@@ -14,26 +14,61 @@ header {
 	}
 }
 
-
+.intro {
+	.login-btns {
+		.btn {
+			width: auto;
+			display: block;
+		}
+	}
+}
 
 }
 
 // Small devices (from 768px to 991px)
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
 
-	
+	.intro {
+		.login-btns {
+			.btn {
+				width: auto;
+				display: block;
+			}
+		}
+	}
 
 }
 
 // Medium devices (from 992px to 1199px)
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
 
-	
+	.intro {
+		.login-btns {
+			.btn {
+				width: auto;
+				display: block;
+			}
+		}
+	}
 
 }
 
 // Large devices (from 1200px and up)
-@media (min-width: $screen-lg-min) {
+@media (min-width: $screen-lg-min) and (max-width: 1364px) {
+
+	.intro {
+		.login-btns {
+			.btn {
+				width: auto;
+				display: block;
+			}
+		}
+	}		
+
+}
+
+// Large devices (from 1200px and up)
+@media (min-width: 1365px) {
 
 	
 

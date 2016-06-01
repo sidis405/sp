@@ -17,7 +17,7 @@ class ArticlePresenter extends Presenter
                     </a>
                     <div class="container">
                       <div class="carousel-caption">
-                        ' . $this->category->present()->category_url(). '
+                        ' . $this->category->present()->carousel_category_url(). '
                         <span class="post-date">' . date('d.m.Y', strtotime($this->created_at)) .'</span>
                         <h1><a href="' . $this->article_url() . '">' . $this->title.'</a></h1>
                         <a href="' . $this->user->present()->user_url(). '" class="author">

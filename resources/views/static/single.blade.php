@@ -62,7 +62,7 @@
     </header>
     <div class="container">
       <div class="l-news-page">
-        <div class="adv"><img data-src="holder.js/100px90?theme=social"></div>
+        <div class="adv"><img src="holder.js/100px90?theme=social"></div>
         <div class="row">
           <div class="col-sm-8">
             <div class="l-main">
@@ -77,16 +77,16 @@
                 <div class="post-meta">
                   <div class="author"><img src="images/placeholder-user.jpg"><span>Articolo di <a href="#">Antonio Mautone</a></span></div>
                 </div>
-                <div class="post-img"><img data-src="holder.js/100px250"></div>
+                <div class="post-img"><img src="holder.js/100px250"></div>
                 <div class="post-toolbar"><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a><a href="#" class="btn btn-default btn-right"><i class="fa fa-envelope-o"></i></a></div>
                 <div class="post-body">
                   <p>ISTANBUL. All’indomani dell’attacco kamikaze nel centro di Istanbul, che ha ucciso 10 turisti tedeschi in piazza Sultanahmet, la polizia turca ha arrestato una persona in mattina a e altre quattro nel pomeriggio. Sarebbero tutti coinvolti con l’attentato nel cuore della Istanbul turistica. A dare la notizia del primo arresto è stato questa mattina il ministero degli interni di Ankara. Nel pomeriggio il primo ministro turco Ahmet Davutoglu, che ha annunciato gli altri arresti, ha spiegato che le indagini hanno confermato il coinvolgimento diretto dello Stato Islamico nella strage. Non solo, ha aggiunto che lo Stato islamico potrebbe essere solo “una pedina” nell’attentato e si indaga su presunti “attori segreti dietro l’attacco” che avrebbero usato l’Is come “subappaltatore”. Il riferimento, tra gli altri, sarebbe al presidente siriano Bashar al Assad, affermando che miliziani dell’organizzazione jihadista sono stati trasferiti nel nord della Siria per combattere contro l’opposizione moderata, con l’aiuto delle forze di Damasco. “Alcune potenze straniere mostrano un atteggiamento ostruzionistico nei confronti delle incursioni aree della Turchia contro l’Is” ha concluso Davutoglu, facendo intendere che le forze aeree russe sembrano voler proteggere i jihadisti all’interno dello spazio aereo siriano.</p>
                   <div class="row">
                     <div class="col-sm-6">
-                      <div class="adv body-adv"><img data-src="holder.js/100px150?theme=social"></div>
+                      <div class="adv body-adv"><img src="holder.js/100px150?theme=social"></div>
                     </div>
                     <div class="col-sm-6">
-                      <div class="adv body-adv"><img data-src="holder.js/100px150?theme=social"></div>
+                      <div class="adv body-adv"><img src="holder.js/100px150?theme=social"></div>
                     </div>
                   </div>
                   <p>Il premier ha inoltre chiarito che i feriti ancora ricoverati sono 6, mentre gli altri 9 sono già stati dimessi. I feriti sono tutti tedeschi (due dei quali gravi), a parte un norvegese e un peruviano. La strage, secondo le prime informazioni, non era un attacco diretto alla Germania. Berlino ha fatto sapere che non c’è nessuna prova che l’attentato avesse come obiettivo un gruppo di turisti provenienti dalla Germania. Con il passare delle ore, si fa luce anche sull’identità dell’attentatore. Aveva presentato domanda di asilo politico in Turchia la settimana scorsa. Nabil Fadli, 28 anni,  era nato in Arabia Saudita nel 1988, ed era entrato in territorio turco di recente passando dalla Siria. Fadli si era presentato in un ufficio per l’accoglienza dei profughi a Istanbul insieme ad altre quattro persone, e gli erano state prese le impronte digitali come da procedura. Le autorità sottolineano che il suo nome non figurava su liste di ricercati né in Turchia né in altri Paesi. L’uomo è stato filmato nell’ufficio immigrazione, come riporta il giornale turco Haber Turk.</p>
@@ -94,10 +94,10 @@
                 <div class="post-toolbar"><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a><a href="#" class="btn btn-default btn-right"><i class="fa fa-envelope-o"></i></a></div>
                 <div class="row">
                   <div class="col-sm-6">
-                    <div class="adv body-adv"><img data-src="holder.js/100px150?theme=social"></div>
+                    <div class="adv body-adv"><img src="holder.js/100px150?theme=social"></div>
                   </div>
                   <div class="col-sm-6">
-                    <div class="adv body-adv"><img data-src="holder.js/100px150?theme=social"></div>
+                    <div class="adv body-adv"><img src="holder.js/100px150?theme=social"></div>
                   </div>
                 </div>
               </div>
@@ -105,8 +105,8 @@
           </div>
           <div class="col-sm-4">
             <div class="l-sidebar">
-              <div class="adv"><img data-src="holder.js/100px250?theme=social"></div>
-              <div class="adv"><img data-src="holder.js/100px250?theme=social"></div>
+              <div class="adv"><img src="holder.js/100px250?theme=social"></div>
+              <div class="adv"><img src="holder.js/100px250?theme=social"></div>
               <aside>
                 <div class="white-sidebar">
                   <div class="module-title">
@@ -116,7 +116,7 @@
                     <div class="row">
                       <div class="col-xs-6">
                         <div class="post-img">
-                          <div class="category"><a href="#">Cronaca</a></div><img class="img-responsive post-red" data-src="holder.js/100px150"/>
+                          <div class="category"><a href="#">Cronaca</a></div><img src="holder.js/100px150" class="img-responsive"/>
                         </div>
                       </div>
                       <div class="col-xs-6">
@@ -129,7 +129,7 @@
                     <div class="row">
                       <div class="col-xs-6">
                         <div class="post-img">
-                          <div class="category"><a href="#">Cronaca</a></div><img class="img-responsive post-green" data-src="holder.js/100px150"/>
+                          <div class="category"><a href="#">Cronaca</a></div><img src="holder.js/100px150" class="img-responsive"/>
                         </div>
                       </div>
                       <div class="col-xs-6">
@@ -142,7 +142,7 @@
                     <div class="row">
                       <div class="col-xs-6">
                         <div class="post-img">
-                          <div class="category"><a href="#">Cronaca</a></div><img class="img-responsive post-blue" data-src="holder.js/100px150"/>
+                          <div class="category"><a href="#">Cronaca</a></div><img src="holder.js/100px150" class="img-responsive"/>
                         </div>
                       </div>
                       <div class="col-xs-6">
