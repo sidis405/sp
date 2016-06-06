@@ -13,11 +13,10 @@ First Visit counts. The Ip cannot count for 24 hours fot that ip
 
 Check if adblock is active
 
-Defaul quanto paga _ si puo cambiare - x categoria - scadenza monetizzazione  - 15 settimane
+Defaul quanto paga _ si puo cambiare - x categoria - scadenza monetizzazione  - 15 gg / 2 settimane
 
 Massimale earning articolo 200€
 
 Approvazione abbilita condivizione link
 
-
-All profile links become compulsore when asking fro payment
+All profile external links become compulsore when asking fro payment
