@@ -33,7 +33,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'surname', 'email', 'password', 'facebook_id', 'avatar'];
+    protected $fillable = ['name', 'surname', 'email', 'password', 'facebook_id', 'avatar', 'social_facebook', 'social_twitter', 'social_google', 'social_website'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -45,5 +45,18 @@ class User extends Model implements AuthenticatableContract,
     public function articles()
     {
         return $this->hasMany(\Sp\Models\Article::class, 'user_id')->orderBy('created_at', 'DESC');
+    }
+
+
+    public static function edit($user_id, $name, $surname, $username, $email)
+    {
+        $user = static::find($user_id);
+
+        $user->name = $name;
+        $user->surname = $surname;
+        $user->username = $username;
+        $user->email = $email;
+
+        return $user;
     }
 }

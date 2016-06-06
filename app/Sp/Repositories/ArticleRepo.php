@@ -19,6 +19,11 @@ class ArticleRepo
         return Article::with('status')->get();
     } 
 
+    public function getAllFront()
+    {
+        return Article::with('status', 'user')->where('status_id', 3)->orderBy('created_at', 'DESC')->get();
+    } 
+
     public function getById($id)
     {
         return Article::with('category', 'user', 'related.user', 'related.category')->where('id', $id)->first();

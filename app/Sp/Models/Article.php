@@ -14,23 +14,30 @@ class Article extends Model  implements HasMedia
 
     protected $presenter = 'Sp\Presenters\ArticlePresenter';
 
-    public static function make($title, $slug, $description, $body, $featured_photo_id, $active)
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public static function make($title, $description, $body, $category_id)
     {
-        $item = new static(compact('title', 'slug', 'description', 'body', 'featured_photo_id', 'active'));
+        $slug = str_slug($title);
+
+        $user_id = \Auth::user()->id;
+
+        $item = new static(compact('title', 'slug', 'description', 'body', 'category_id', 'user_id'));
 
         return $item;
     }
 
-    public static function edit($item_id, $title, $slug, $description, $body, $featured_photo_id, $active)
+    public static function edit($article_id, $title, $description, $body, $category_id)
     {
-        $item = static::find($item_id);
+        $item = static::find($article_id);
 
         $item->title = $title;
-        $item->slug = $slug;
+        $item->slug = str_slug($title);
         $item->description = $description;
         $item->body = $body;
-        $item->featured_photo_id = $featured_photo_id;
-        $item->active = $active;
+        $item->category_id = $category_id;
+        // $item->featured_photo_id = $featured_photo_id;
+        // $item->active = $active;
 
         return $item;
     }

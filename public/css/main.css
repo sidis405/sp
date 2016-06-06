@@ -947,6 +947,32 @@ aside .module-title h3 {
   header .search-container .btn {
     display: none;
   }
+
+  .intro .login-btns .btn {
+    width: auto;
+    display: block;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .intro .login-btns .btn {
+    width: auto;
+    display: block;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .intro .login-btns .btn {
+    width: auto;
+    display: block;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1364px) {
+  .intro .login-btns .btn {
+    width: auto;
+    display: block;
+  }
 }
 
 /* =======================

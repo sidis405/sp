@@ -7,6 +7,13 @@ use App\User;
 class UsersRepo
 {
 
+    public function save(User $user)
+    {
+        $user->save();
+
+        return $user;
+    }
+
     public function getBySlug($slug)
     {
         return User::with('articles.category')->where('username', $slug)->first();

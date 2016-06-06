@@ -2,8 +2,8 @@
 
 namespace Sp\Events\Article;
 
-use Sp\Events\Event;
-use Sp\Article\Models\Article;
+use Event;
+use Sp\Models\Article;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 

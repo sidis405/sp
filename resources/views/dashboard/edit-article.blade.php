@@ -12,11 +12,12 @@
     <div class="page-bg news-bg holderjs"></div>
     @include('layouts.header')
     <div class="container">
-            <form  method="POST" role="form" action="/dashboard/articoli/{{$article->id}}">
+      <form  method="POST" role="form" action="/dashboard/articoli/{{$article->id}}" enctype="multipart/form-data">
       <div class="l-create-post-page">
         <h1 class="page-title">Modifica articolo: '{{$article->title}}'</h1>
         @include('errors.errors')
         <div class="row">
+        <form action="/dashboard/articoli/{{$article->id}}" method="POST" enctype="multipart/form-data">
           <div class="col-sm-8">
                {{csrf_field()}}
                <input type="hidden" name="article_id" value="{{$article->id}}">
@@ -30,9 +31,11 @@
                 <textarea name="body" id="body" placeholder="Scrivi Il tuo articolo" cols="30" rows="15" class="form-control" required>{!!old('body', $article->body)!!}</textarea>
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg pull-right"><i class="fa fa-paper-plane"></i> Invia per approvazione</button>
-                <div class="clearfix"></div>
-              </div>
+                            <div class="row">
+                              <div class="col-xs-6"><button type="submit" class="btn btn-default btn-lg btn-block"><i class="fa fa-save"></i> Salva bozza</button></div>
+                              <div class="col-xs-6"><a href="/dashboard/articoli/{{$article->id}}/anteprima" target="_blank" class="btn btn-default btn-lg btn-block"><i class="fa fa-eye"></i> Anteprima</a></div>
+                            </div>
+                          </div>
           </div>
           <div class="col-sm-4">
             <p>Seleziona una categoria:</p>
@@ -43,9 +46,6 @@
               @endforeach
             </select>
 
-            <!-- <div class="form-group">
-              <input data-role="tagsinput" value="Category 1, Category2" class="form-control tagsinput">
-            </div> -->
             <div class="form-group">
               <div class="row">
                 <div class="col-xs-12" style="display:none;">
@@ -57,20 +57,19 @@
                 </div>
                 <div class="col-xs-12">
                   <div class="btn-upload-image-container">
-                    <input type="file" name="article-featured-image file-loading"  id="article-featured-image">
+                    <input type="file" name="article-featured-image" class="file-loading" id="article-featured-image">
                   </div>
                 </div>
-                <!-- <div class="col-xs-6"><a class="btn btn-default btn-lg btn-block btn-upload"><i class="fa fa-play"></i> Carica video</a></div> -->
               </div>
             </div>
             <div class="social-share"><a type="submit" class="btn btn-default btn-block"><i class="fa fa-facebook"></i> Share on Facebook</a><a type="submit" class="btn btn-default btn-block"><i class="fa fa-twitter"></i> Share on Twitter</a><a type="submit" class="btn btn-default btn-block"><i class="fa fa-google"></i> Share on Google+</a></div>
+            
             <div class="form-group">
-              <div class="row">
-                <div class="col-xs-6"><a type="submit" class="btn btn-default btn-lg btn-block"><i class="fa fa-save"></i> Salva bozza</a></div>
-                <div class="col-xs-6"><a type="submit" class="btn btn-default btn-lg btn-block"><i class="fa fa-eye"></i> Anteprima</a></div>
-              </div>
+              <a  class="btn btn-primary btn-lg pull-right col-sm-12"><i class="fa fa-paper-plane"></i> Invia per approvazione</a>
+              <div class="clearfix"></div>
             </div>
           </div>
+          </form>
         </div>
       </div>
             </form>
@@ -102,7 +101,7 @@
                 'showUpload': false,
                 'previewFileType':'image',
                 'initialPreview': [
-                          "<img src='{{$article->image_path}}' class='img-responsive'>",
+                          "<img src='{{$article->present()->article_image_url()}}' class='img-responsive'>",
                         ],
                 'initialPreviewAsData': true,
                 'initialPreviewConfig': [

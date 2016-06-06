@@ -17,7 +17,7 @@ class ArticlePresenter extends Presenter
                     </a>
                     <div class="container">
                       <div class="carousel-caption">
-                        ' . $this->category->present()->category_url(). '
+                        ' . $this->category->present()->carousel_category_url(). '
                         <span class="post-date">' . date('d.m.Y', strtotime($this->created_at)) .'</span>
                         <h1><a href="' . $this->article_url() . '">' . $this->title.'</a></h1>
                         <a href="' . $this->user->present()->user_url(). '" class="author">
@@ -84,7 +84,7 @@ class ArticlePresenter extends Presenter
                 <h1 class="post-title"><a href="' . $this->article_url() . '">' . $this->title . '</a></h1>
                 <div class="post-toolbar">
                     <span class="author">
-                        <a href="' . $this->user->present()->user_url(). '">' . $this->user->present()->user_name(). '</a>
+                        <a href="' . $this->user->present()->user_url(). '">' . $this->user->present()->user_name_short(). '</a>
                     </span>
                     <span class="controls"><a href="#"><span>32</span> Condivisioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
               </div>';
@@ -136,7 +136,17 @@ class ArticlePresenter extends Presenter
 
     public function article_image($width=730, $height = 350)
     {
-        return '<img src="' . $this->image_path . '" class="img-responsive">';
+       $path = (strpos($this->image_path, "htt") !== 0) ? '/media/'.$this->image_path : $this->image_path;
+
+        return '<img src="' . $path . '" class="img-responsive">';
         // return '<img src="' . $this->image_path . 'w=' . $width . '&h=' . $height . '&fit=crop" class="img-responsive">';
+    }
+
+    public function article_image_url()
+    {
+
+      $path = (strpos($this->image_path, "htt") !== 0) ? '/media/'.$this->image_path : $this->image_path;
+
+      return $path;
     }
 }

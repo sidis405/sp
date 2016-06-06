@@ -3,7 +3,7 @@ mixin post(title, attributes)
 		.post-img
 			.category
 				a(href="#") Cronaca
-			img&attributes(attributes).img-responsive
+			img(src!=attributes.src).img-responsive
 		h1.post-title
 			a(href="#")= title
 		if block
@@ -25,7 +25,7 @@ mixin post-sidebar(title, attributes)
 				.post-img
 					.category
 						a(href="#") Cronaca
-					img&attributes(attributes).img-responsive
+					img(src!=attributes.src).img-responsive
 			.col-xs-6
 				h1.post-title
 					a(href="#")= title
@@ -39,7 +39,7 @@ mixin post-profile(title, attributes)
 				.post-img
 					.category
 						a(href="#") Cronaca
-					img&attributes(attributes).img-responsive
+					img(src!=attributes.src).img-responsive
 			.col-xs-6
 				h1.post-title
 					a(href="#")= title

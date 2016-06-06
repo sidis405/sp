@@ -191,3 +191,23 @@
   display: table-cell;
   vertical-align: middle;
 }
+
+.cat-select {
+  width: 100%!important;
+  margin-bottom: 10px!important;
+}
+
+.profile-pic-settings-box {
+    width: 320px;
+    height: 320px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.post-title {
+  height: 5%;
+}
+
+.intro .inner-intro-login {
+  background: #fff;
+}

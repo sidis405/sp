@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Sp\Repositories\CategoryRepo;
+use Sp\Repositories\ArticleRepo;
 
 
 class HomeController extends Controller
@@ -17,10 +18,10 @@ class HomeController extends Controller
         return view('pages.home');
     }
 
-    public function news()
-    {
-        return view('pages.news');
-    }
+    // public function news()
+    // {
+    //     return view('pages.news');
+    // }
 
     public function category()
     {
@@ -60,6 +61,56 @@ class HomeController extends Controller
 
     }
 
+    public function news(ArticleRepo $article_repo,  CategoryRepo $category_repo)
+    {
+        $articles = $article_repo->getAllFront();
+
+        // return $category;
+        $featured = json_decode(json_encode(array_slice($articles->toArray(), 0, 3)));
+        
+        // return count($featured);
+        $articles = $this->sliceSections($articles);
+
+        // return $articles;
+        return view('home.show', compact('featured', 'articles'));
+    }
+
+    public function sliceSections($articles)
+    {
+        $data = [];
+        
+
+        $section1 = [];
+        //Main featured slider
+        $section1['main_carousel'] =    $articles->slice(0, 3);
+        $section1['featured'] =         $articles->slice(4, 1);
+        $section1['medium'] =           $articles->slice(5, 2);
+        $section1['sidebar'] =          $articles->slice(8, 3);
+
+
+        $section2 = [];
+        //Main featured slider
+        $section2['small'] = $articles->slice(11, 4);
+
+
+        $section3 = [];
+        $section3['big'] = $articles->slice(15, 2);
+        $section3['small1'] = $articles->slice(17, 3);
+        $section3['small2'] = $articles->slice(21, 3);
+
+
+
+
+        $data = [
+            'section1' => $section1,
+            'section2' => $section2,
+            'section3' => $section3
+        ];
+
+        return $data;
+
+    }
+
 
     /**
      * Display the specified resource.
@@ -67,11 +118,11 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, CategoryRepo $category_repo)
-    {
-        $category = $category_repo->getById($id);
+    // public function show($id, CategoryRepo $category_repo)
+    // {
+    //     $category = $category_repo->getById($id);
 
-        return view('category.show', compact('category'));
-    }
+    //     return view('category.show', compact('category'));
+    // }
 
 }
