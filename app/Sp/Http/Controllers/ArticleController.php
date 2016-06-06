@@ -2,11 +2,12 @@
 
 namespace Sp\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use Event;
+use Illuminate\Http\Request;
+use Sp\Events\Article\ArticleWasVisited;
 use Sp\Repositories\ArticleRepo;
-
 
 class ArticleController extends Controller
 {
@@ -30,9 +31,20 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($category_slug, $article_id, $article_slug, ArticleRepo $article_repo)
+    public function show($category_slug, $article_id, $article_slug, ArticleRepo $article_repo, Request $request)
     {
+
+        $referrer = $request->headers->get('referer');
+
         $article = $article_repo->getById($article_id);
+
+        $article_visit = $article;
+        $article_visit->referrer = $referrer;
+        $article_visit->sharecode = $request->input('ref');
+        $article_visit->ip = request()->ip();
+
+
+        Event::fire(ArticleWasVisited::class, $article_visit);
 
         return view('articles.show', compact('article'));
     }

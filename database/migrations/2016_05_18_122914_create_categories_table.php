@@ -17,6 +17,8 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description');
+            $table->string('color');
+            $table->double('payoff');
             $table->integer('active')->default(1);
             $table->timestamps();
         });

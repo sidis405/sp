@@ -40,7 +40,7 @@ class ArticlePresenter extends Presenter
                 <h1 class="post-title"><a href="' . $this->article_url() . '">' . $this->title .'</a></h1>
                 <h2 class="post-desc">' . $this->description .'</h2>
                 <div class="post-toolbar"><span class="author"><a href="' . $this->user->present()->user_url(). '">' . $this->user->present()->user_name(). '</a></span>
-                <span class="controls"><a href="#"><span>32</span> Condivisioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
+                <span class="controls"><a href="#"><span>' . $this->view_counter. '</span> Visualizzazioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
               </div>';
     } 
 
@@ -55,7 +55,7 @@ class ArticlePresenter extends Presenter
                 <h1 class="post-title"><a href="' . $this->article_url() . '">' . $this->title .'</a></h1>
                 <h2 class="post-desc">' . $this->description .'</h2>
                 <div class="post-toolbar"><span class="author"><a href="' . $this->user->present()->user_url(). '">' . $this->user->present()->user_name(). '</a></span>
-                <span class="controls"><a href="#"><span>32</span> Condivisioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
+                <span class="controls"><a href="#"><span>' . $this->view_counter. '</span> Visualizzazioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
               </div>';
     } 
 
@@ -69,7 +69,7 @@ class ArticlePresenter extends Presenter
                       <a href="' . $this->article_url() . '">'. $this->article_image() .'</a>
                     </div>
                     <h1 class="post-title"><a href="' . $this->article_url() . '">' . $this->title . '</a></h1>
-                    <div class="post-toolbar"><span class="author"><a href="' . $this->user->present()->user_url(). '">' . $this->user->present()->user_name(). '</a></span><span class="controls"><a href="#"><span>32</span> Condivisioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
+                    <div class="post-toolbar"><span class="author"><a href="' . $this->user->present()->user_url(). '">' . $this->user->present()->user_name(). '</a></span><span class="controls"><a href="#"><span>' . $this->view_counter. '</span> Visualizzazioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
                   </div>
                 </div>';
     }
@@ -86,7 +86,7 @@ class ArticlePresenter extends Presenter
                     <span class="author">
                         <a href="' . $this->user->present()->user_url(). '">' . $this->user->present()->user_name_short(). '</a>
                     </span>
-                    <span class="controls"><a href="#"><span>32</span> Condivisioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
+                    <span class="controls"><a href="#"><span>' . $this->view_counter. '</span> Visualizzazioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
               </div>';
     }   
 
@@ -122,7 +122,7 @@ class ArticlePresenter extends Presenter
                             <h1 class="post-title"><a href="' . $this->article_url() . '">' . $this->title . '</a></h1>
                             <div class="post-toolbar">
                             <span class="author">' . $this->user->present()->user_name(). '</span>
-                            <span class="date"></span><span class="controls"><a href="#"><span>32</span> Condivisioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
+                            <span class="date"></span><span class="controls"><a href="#"><span>' . $this->view_counter. '</span> Visualizzazioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
                           </div>
                         </div>
                       </div>';

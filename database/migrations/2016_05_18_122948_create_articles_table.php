@@ -23,6 +23,7 @@ class CreateArticlesTable extends Migration
             $table->integer('status_id')->default(1);
             $table->integer('featured_photo_id')->nullable();
             $table->integer('image_path')->nullable();
+            $table->integer('view_counter')->default(0);
             $table->integer('active')->default(1);
             $table->timestamps();
         });

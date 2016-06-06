@@ -64,6 +64,11 @@ class Article extends Model  implements HasMedia
         return $this->belongsTo(\Sp\Models\Status::class, 'status_id');
     }
 
+    public function visits()
+    {
+        return $this->hasMany(\Sp\Models\Visits::class, 'article_id');
+    }
+
 
 
 }

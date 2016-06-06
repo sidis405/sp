@@ -36,6 +36,24 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(Sp\Models\Visits::class, function(Faker\Generator $faker){
+
+    $sources = ['', '','', '','', '','', '','', '','', '','facebook.com', 'facebook.com', 'facebook.com', 'facebook.com', 'facebook.com', 'twitter.com', 'twitter.com', 'twitter.com', 'twitter.com', env('LOCAL_URL'), env('LOCAL_URL'), env('LOCAL_URL'), env('LOCAL_URL'), env('LOCAL_URL'), env('LOCAL_URL'), env('LOCAL_URL')];
+
+    $source = $sources[array_rand(range(0, count($sources)-1))];
+
+    $article = Sp\Models\Article::where('status_id', 3)->orderBy(DB::raw('RAND()'))->first();
+
+
+    $article->increment('view_counter'); 
+
+    return [
+        'article_id' => $article->id,
+        'origin' => $source,
+        'payoff' => '0.005',
+    ];
+});
+
 $factory->define(Sp\Models\Article::class, function (Faker\Generator $faker) {
 
     $localisedFaker = Faker\Factory::create("it_IT");
