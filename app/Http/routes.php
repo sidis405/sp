@@ -1,5 +1,10 @@
 <?php
 
+\DB::listen(function($sql, $bindings, $time) {
+    logger($sql);
+    logger($bindings);
+    logger($time);
+});
 
 Route::get('/', '\Sp\Http\Controllers\HomeController@news');
 
@@ -24,6 +29,7 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
 Route::group(array('middleware' => 'auth.sp.user'), function () {
 
     Route::get('dashboard', '\Sp\Http\Controllers\DashboardController@index');
+    Route::get('guadagni-pagamenti', '\Sp\Http\Controllers\EarningsController@index');
     Route::get('dashboard/articoli/scrivi', '\Sp\Http\Controllers\DashboardController@create');
     Route::post('dashboard/articoli', '\Sp\Http\Controllers\DashboardController@store');
     Route::get('dashboard/articoli/{id}/modifica', '\Sp\Http\Controllers\DashboardController@edit');

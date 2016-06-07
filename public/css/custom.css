@@ -210,4 +210,14 @@
 
 .intro .inner-intro-login {
   background: #fff;
+} 
+
+.chart-holder {
+  padding: 10px!important;
+/*  height: 800px;
+  width: 100%;*/
+}
+
+.month-selector {
+  margin-top: 25px;
 }

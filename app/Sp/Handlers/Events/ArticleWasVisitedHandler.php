@@ -17,18 +17,12 @@ class ArticleWasVisitedHandler {
 
     public function handle(Article $article)
     {
-        // logger('from the handler : ' . $article->title);
-        // logger('referrer : ' . $article->referrer);
-        // logger('referrer : ' . Help::get_domain($article->referrer));
 
         if($this->checkCountConditions($article))
         {
             $article->increment('view_counter');
             $this->countVisit($article);
-            // logger('counted');
-            
-        }else{
-            // logger('not counted');
+            $this->storeArticle($article);
         }
 
     }

@@ -42,15 +42,24 @@ $factory->define(Sp\Models\Visits::class, function(Faker\Generator $faker){
 
     $source = $sources[array_rand(range(0, count($sources)-1))];
 
-    $article = Sp\Models\Article::where('status_id', 3)->orderBy(DB::raw('RAND()'))->first();
+    $article = Sp\Models\Article::where('status_id', 3)->with('category')->orderBy(DB::raw('RAND()'))->first();
+
 
 
     $article->increment('view_counter'); 
 
+    $payoff = $article->category->payoff/1000;
+
+    // $dates = Sp\Utils\Help::createDateRangeArray('2016-06-01', Carbon\Carbon::now()->format('Y-m-d'));
+    $dates = Sp\Utils\Help::createDateRangeArray('2016-04-01', '2016-05-31');
+
+    $date = $dates[array_rand($dates)];
+
     return [
         'article_id' => $article->id,
         'origin' => $source,
-        'payoff' => '0.005',
+        'payoff' => $payoff,
+        'created_at' => $date,
     ];
 });
 

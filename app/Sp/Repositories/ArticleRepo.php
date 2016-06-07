@@ -2,7 +2,11 @@
 
 namespace Sp\Repositories;
 
+use Carbon\Carbon;
 use Sp\Models\Article;
+use Sp\Models\Visits;
+use Sp\Utils\Help;
+
 
 class ArticleRepo
 {
@@ -38,4 +42,76 @@ class ArticleRepo
     {
         return Article::with('category', 'user', 'related.user', 'related.category')->where('slug', $slug)->first();
     } 
+
+    public function getForUserByMonthForEarnings($user_id, $start_date, $end_date)
+    {
+        // $ids = $this->getUserPubblichedArticleIds($user_id);
+        
+        $articles = Article::whereHas('visits', function($q01) use($start_date, $end_date, $user_id){
+
+            $q01 = $q01->where('visits.created_at', '>=', $start_date );
+            $q01 = $q01->where('visits.created_at', '<', $end_date );
+
+        })->with('category')->with(array('visits' => function($q03) use($start_date, $end_date, $user_id){
+
+            $q03 = $q03->where('visits.created_at', '>=', $start_date );
+            $q03 = $q03->where('visits.created_at', '<', $end_date );
+
+        }))->where('user_id', $user_id)->get();
+
+        $queries = \DB::getQueryLog();
+
+        return $articles;
+
+    }
+
+    public function getForUserByMonthForEarningsChart($user_id, $start_date, $end_date)
+    {
+        // $ids = $this->getUserPubblichedArticleIds($user_id);
+
+        $date_array = Help::createDateRangeArray($start_date, $end_date);
+        
+        $article_ids = $this->getUserPubblichedArticleIdsForRange($user_id);
+
+        $visits = Visits::whereIn('article_id', $article_ids)->where('created_at', '>=', $start_date )->where('created_at', '<', $end_date )->get()->groupBy(function($val) {
+            return Carbon::parse($val->created_at)->format('d');
+     });
+
+        // return $date_array;
+
+        $labels_out = [];
+        $vals_out = [];
+        $pay_out = [];
+
+        foreach ($date_array as $dt) {
+
+
+            $dt = date('d', strtotime($dt));
+
+            $val = count(@$visits[$dt]);
+            if(@$visits[$dt])
+            {
+                $pay = array_sum(array_values(array_pluck(@$visits[$dt]->toArray(), 'payoff')));
+                
+            }else{
+                $pay = 0.00;
+            }
+            $labels_out[] = $dt;
+            $vals_out[] = $val;
+            $pay_out[] = $pay;
+        }
+
+
+        return ['labels' => $labels_out, 'data' => $vals_out, 'payoff' => $pay_out];
+
+    }
+
+    
+    protected function getUserPubblichedArticleIdsForRange($user_id)
+    {
+        return array_pluck(Article::where('user_id', $user_id)
+            ->where('status_id', 3)
+            ->orderBy('created_at', 'DESC')
+            ->get(['id']), 'id');
+    }
 }
