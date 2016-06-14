@@ -1,6 +1,6 @@
 <?php
 
-namespace Sp\Http\Controllers;
+namespace Sp\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -54,9 +54,7 @@ class DashboardController extends Controller
 
     public function edit($id, ArticleRepo $article_repo, CategoryRepo $category_repo)
     {
-        $article = $article_repo->getById($id);
-
-        // return $article;
+        $article = $article_repo->getByIdForEditing($id, \Auth::user()->id);
 
         if(! $article ) return abort(404);
 

@@ -43,6 +43,11 @@ class ArticleRepo
         return Article::with('category', 'user', 'related.user', 'related.category')->where('slug', $slug)->first();
     } 
 
+    public function getByStatus($status_id)
+    {
+        return Article::with('category', 'user', 'status')->where('status_id', $status_id)->orderBy('updated_at', 'DESC')->get();
+    }
+
     public function getForUserByMonthForEarnings($user_id, $start_date, $end_date)
     {
         // $ids = $this->getUserPubblichedArticleIds($user_id);

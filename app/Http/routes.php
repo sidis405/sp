@@ -1,10 +1,10 @@
 <?php
 
-\DB::listen(function($sql, $bindings, $time) {
-    logger($sql);
-    logger($bindings);
-    logger($time);
-});
+// \DB::listen(function($sql, $bindings, $time) {
+//     // logger($sql);
+//     // logger($bindings);
+//     // logger($time);
+// });
 
 Route::get('/', '\Sp\Http\Controllers\HomeController@news');
 
@@ -21,8 +21,19 @@ Route::get('utente/{id}', '\Sp\Http\Controllers\UsersController@showId');
 Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
 
     Route::get('/', function(){
-        return 'admin';
+        return redirect()->to('/admin/dashboard');
     });
+    Route::get('dashboard', '\Sp\Http\Controllers\Admin\DashboardController@index');
+    Route::get('nuovi-articoli', '\Sp\Http\Controllers\Admin\ArticlesController@index_new');
+    Route::get('articoli', '\Sp\Http\Controllers\Admin\ArticlesController@index');
+    Route::get('articoli/{id}/modifica', '\Sp\Http\Controllers\Admin\ArticlesController@edit');
+    Route::get('articoli/{id}/anteprima', '\Sp\Http\Controllers\Admin\ArticlesController@preview');
+
+
+    Route::get('categorie', '\Sp\Http\Controllers\Admin\CategoriesController@index');
+    Route::get('utenti', '\Sp\Http\Controllers\Admin\UsersController@index');
+    Route::get('pagamenti', '\Sp\Http\Controllers\Admin\EarningsController@index');
+    Route::get('impostazioni', '\Sp\Http\Controllers\Admin\SettingsController@index');
 
 });
 
@@ -32,6 +43,7 @@ Route::group(array('middleware' => 'auth.sp.user'), function () {
     Route::get('guadagni-pagamenti', '\Sp\Http\Controllers\EarningsController@index');
     Route::get('dashboard/articoli/scrivi', '\Sp\Http\Controllers\DashboardController@create');
     Route::post('dashboard/articoli', '\Sp\Http\Controllers\DashboardController@store');
+
     Route::get('dashboard/articoli/{id}/modifica', '\Sp\Http\Controllers\DashboardController@edit');
     Route::get('dashboard/articoli/{id}/anteprima', '\Sp\Http\Controllers\DashboardController@preview');
     Route::post('dashboard/articoli/{id}', '\Sp\Http\Controllers\DashboardController@update');

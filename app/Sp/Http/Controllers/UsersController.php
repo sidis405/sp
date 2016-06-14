@@ -24,10 +24,11 @@ class UsersController extends Controller
         if(! $user) return abort(404);
 
         $articles = $this->flattenByCategory($user->articles);
+        $main = $users_repo->getFeaturedForProfile($user->id);
 
         // return $articles;
 
-        return view('profile.show', compact('user', 'articles'));
+        return view('profile.show', compact('user', 'articles', 'main'));
     }
 
       public function showId($user_id, UsersRepo $users_repo)
@@ -37,10 +38,12 @@ class UsersController extends Controller
         if(! $user) return abort(404);
 
         $articles = $this->flattenByCategory($user->articles);
+        $main = $users_repo->getFeaturedForProfile($user->id);
+
 
         // return $articles;
 
-        return view('profile.show', compact('user', 'articles'));
+        return view('profile.show', compact('user', 'articles', 'main'));
     }
 
     public function settings_form(UsersRepo $users_repo)

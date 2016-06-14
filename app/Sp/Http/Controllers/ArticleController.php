@@ -38,6 +38,8 @@ class ArticleController extends Controller
 
         $article = $article_repo->getById($article_id);
 
+        if(!$article->status_id !== 3)  return abort(404);
+
         $article_visit = $article;
         $article_visit->referrer = $referrer;
         $article_visit->sharecode = $request->input('ref');

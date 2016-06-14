@@ -1,6 +1,6 @@
 <?php
 
-namespace Sp\Http\Controllers;
+namespace Sp\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -10,7 +10,7 @@ use Sp\Repositories\CategoryRepo;
 use Sp\Repositories\UsersRepo;
 
 
-class DashboardController extends Controller
+class ArticlesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,8 +27,30 @@ class DashboardController extends Controller
 
         // return $categories;
 
-        return view('dashboard.article-list', compact('user', 'categories'));
+        // return view('admin.article-list', compact('user', 'categories'));
 
+    }
+
+    public function index_new(ArticleRepo $article_repo)
+    {
+        $new = $article_repo->getByStatus(2);
+
+        $categories = array_values(array_unique(array_pluck(array_pluck($new, 'category'), 'name')));
+
+
+        return view('admin.articles.index_new', compact('new', 'categories'));
+
+    }
+
+    public function edit($id, ArticleRepo $article_repo, CategoryRepo $category_repo)
+    {
+        $article = $article_repo->getById($id);
+
+        if(! $article ) return abort(404);
+
+        $categories = $category_repo->getAllList();
+
+        return view('admin.articles.edit', compact('article', 'categories'));
     }
 
 
@@ -52,18 +74,7 @@ class DashboardController extends Controller
         return redirect()->to('/dashboard/articoli/' . $article->id .'/modifica');
     }
 
-    public function edit($id, ArticleRepo $article_repo, CategoryRepo $category_repo)
-    {
-        $article = $article_repo->getById($id);
 
-        // return $article;
-
-        if(! $article ) return abort(404);
-
-        $categories = $category_repo->getAllList();
-
-        return view('dashboard.edit-article', compact('article', 'categories'));
-    }
 
     /**
      * Update the specified resource in storage.
@@ -88,9 +99,10 @@ class DashboardController extends Controller
     {
         $article = $article_repo->getById($article_id);
 
-        if(! $article || $article->user_id !== \Auth::user()->id) return abort(404);
 
-        return view('dashboard.anteprima', compact('article'));
+        if(! $article || ($article->user_id !== \Auth::user()->id && \Auth::user()->role !== 'admin')) return abort(404);
+
+        return view('admin.articles.anteprima', compact('article'));
 
     }
 

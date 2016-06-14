@@ -47,24 +47,11 @@
               <div class="module-title no-margin">
                 <h3 class="top">Le Top News di {{$user->present()->user_name()}}</h3>
                 <div class="row">
-                  <div class="col-sm-6">
-                    <div class="post post-blue">
-                      <div class="post-img">
-                        <div class="category"><a href="#">Cronaca</a></div><img class="img-responsive post-blue" data-src="holder.js/100px150"/>
-                      </div>
-                      <h1 class="post-title"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h1>
-                      <div class="post-toolbar"><span class="author">{{$user->present()->user_name()}}</span><span class="controls"><a href="#"><span>32</span> Condivisioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="post post-blue">
-                      <div class="post-img">
-                        <div class="category"><a href="#">Cronaca</a></div><img class="img-responsive post-blue" data-src="holder.js/100px150"/>
-                      </div>
-                      <h1 class="post-title"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h1>
-                      <div class="post-toolbar"><span class="author">Antonio Mautone</span><span class="controls"><a href="#"><span>32</span> Condivisioni </a><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a></span></div>
-                    </div>
-                  </div>
+                @foreach($main as $main_item)
+
+                     {!! $main_item->present()->medium() !!}
+
+                @endforeach
                 </div>
                 <div class="module-title no-margin">
                   <h3 class="list">Tutti gli Articoli di {{$user->present()->user_name_short()}}</h3>

@@ -1,13 +1,13 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 
 @section('content')
 
     <div class="page-bg news-bg holderjs"></div>
-    @include('layouts.header')
+    @include('admin.layouts.header')
     <div class="container">
       <div class="l-post-list-page">
           
-        <h1 class="page-title">I miei articoli 
+        <h1 class="page-title">Articoli in coda ({{count($new)}})
             <!-- <span class="pull-right"><a href="/dashboard/articoli/scrivi"><i class="fa fa-plus-circle fw">Scrivi nuovo</i></a></span> -->
         </h1>
         <div class="row">
@@ -25,17 +25,7 @@
                 </select>
               </div>
             </div>
-            <div class="col-sm-4">
-              <div class="form-group">
-                <label class="label">Stato</label>
-                <select class="form-control" id="dashboard-state-filter">
-                  <option value="all">Tutte</option>
-                  <option value="Bozza">Bozza</option>
-                  <option value="In Approvazione">In Approvazione</option>
-                  <option value="Pubblicato">Pubblicato</option>
-                </select>
-              </div>
-            </div>
+
             <div class="col-sm-4">
               <label class="label">Reset</label><a class="btn btn-default btn-md btn-block article-list-reset-filter"><i class="fa fa-close"></i> Azzera filtri</a>
             </div>
@@ -46,23 +36,22 @@
                 <th>Data</th>
                 <th>Titolo</th>
                 <th>Categoria</th>
-                <th>Stato</th>
+                <th>Utente</th>
                 <th>Azioni</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($user->articles as $article)
+              @foreach($new as $article)
               <tr class="article-list-row">
-                <td>{{$article->created_at->format('d-m-Y')}}</td>
-                <td>{{$article->title}}</td>
+                <td>{{$article->updated_at->format('d-m-Y H:i')}}</td>
+                <td><a href="/admin/articoli/{{$article->id}}">{{$article->title}}</a></td>
                 <td class="article-list-category">{{$article->category->name}}</td>
-                <td class="article-list-state">{{$article->status->name}}</td>
+                <td class="article-list-category"><a href="{{$article->user->present()->user_url()}}" class="author">
+                            <i class="fa fa-user fa-fw"></i>{{$article->user->present()->user_name()}}</a></td>
                 <td>
-                  @if($article->status->id == 1)
-                  <a href="/dashboard/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a><a href="/dashboard/articoli/{{$article->id}}/rimuovi" class="action"><i class="fa fa-trash-o fa-fw"></i></a>
-                  @else
-                    <a href="/dashboard/articoli/{{$article->id}}/anteprima" target="_blank" class="action"><i class="fa fa-eye fa-fw"></i></a>
-                  @endif
+                  <a href="/admin/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a><a href="/dashboard/articoli/{{$article->id}}/rimuovi" class="action"><i class="fa fa-trash-o fa-fw"></i></a>
+                    <a href="/admin/articoli/{{$article->id}}/anteprima" class="action"><i class="fa fa-eye fa-fw"></i></a>
+                    <!-- <a href="{{$article->present()->article_url()}}" target="_blank" class="action"><i class="fa fa-check fa-fw"></i></a> -->
                 </td>
               </tr>
               @endforeach
