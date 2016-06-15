@@ -45,6 +45,7 @@
             <th>Visite Mese</th>
             <th>Payoff</th>
             <th>Totale Visite</th>
+            <th>Totale Payoff</th>
           </tr>
         </thead>
         <tbody>
@@ -58,6 +59,7 @@
             <td class="article-list-state">{{count($article->visits)}}</td>
             <td class="article-list-state">€&nbsp;{{number_format($payoff, 3, ',', '.')}}</td>
             <td class="article-list-state">{{$article->view_counter}}</td>
+            <td class="article-list-state">€&nbsp;{{number_format($article->payoff_counter, 3, ',', '.')}}</td>
           </tr>
           @endforeach
           <tr class="article-list-row">

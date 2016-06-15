@@ -6,14 +6,14 @@
 //     // logger($time);
 // });
 
-// Route::get('ratings', function(){
+// Route::get('payoff', function(){
 
-//     $articles = Sp\Models\Article::where('status_id', 3)->get();
+//     $articles = Sp\Models\Article::where('status_id', 3)->with('visits')->get();
 
 //     foreach($articles as $article)
 //     {
-//         $rating = rand(1, 5);
-//         $article->rating = $rating;
+//         $payoff = array_sum(array_pluck($article->visits, 'payoff'));
+//         $article->payoff_counter = $payoff;
 //         $article->save();
 //     }
 

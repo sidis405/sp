@@ -21,6 +21,7 @@ class ArticleWasVisitedHandler {
         if($this->checkCountConditions($article))
         {
             $article->increment('view_counter');
+            $article->increment('payoff_counter', $article->category()->get()->toArray()[0]['payoff']/1000);
             $this->countVisit($article);
             $this->storeArticle($article);
         }
@@ -29,13 +30,13 @@ class ArticleWasVisitedHandler {
 
     public function checkCountConditions($article)
     {
-        return true;
+        // return true;
         // check that the referres is neither empty or a local url
         if($article->referrer != env('LOCAL_URL'))
         // if($article->referrer != env('LOCAL_URL') && strlen($article->referrer) > 0)
         {
             // check that the uses is either unlogged or not an admin
-            if((\Auth::user() && \Auth::user()->role !== 'admin') || !\Auth::user()) 
+            if((\Auth::user() && \Auth::user()->role !== 'admin' && $article->user_id !== \Auth::user()->id) || !\Auth::user() ) 
             {
                 // check that the visitor has not stored this article in the session (24 hrs)
                 if ( ! $this->isArticleVisited($article))
