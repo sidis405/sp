@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Sp\Repositories\ArticleRepo;
 use Sp\Repositories\CategoryRepo;
 use Sp\Repositories\UsersRepo;
+use Sp\Models\Article;
 
 
 class ArticlesController extends Controller
@@ -104,6 +105,33 @@ class ArticlesController extends Controller
 
         return view('admin.articles.anteprima', compact('article'));
 
+    }
+
+    public function show($article_id, ArticleRepo $article_repo, UsersRepo $users_repo)
+    {
+        $article = $article_repo->getById($article_id);
+
+        $user = $users_repo->getWithLatestArticles($article->user->id);
+
+
+
+        if(! $article || ($article->user_id !== \Auth::user()->id && \Auth::user()->role !== 'admin')) return abort(404);
+
+        return view('admin.articles.show', compact('article', 'user'));
+
+    }
+
+    public function rating($article_id, Request $request)
+    {
+
+        $article = Article::find($article_id);
+
+        // return $article_id;
+
+        $article->rating = $request->input('payload');
+        $article->save();
+
+        return 'true';
     }
 
     public function manageFields(Request $request)

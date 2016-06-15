@@ -44,7 +44,17 @@ class User extends Model implements AuthenticatableContract,
 
     public function articles()
     {
+        return $this->hasMany(\Sp\Models\Article::class, 'user_id')->where('status_id', 3)->orderBy('created_at', 'DESC');
+    }
+
+    public function all_articles()
+    {
         return $this->hasMany(\Sp\Models\Article::class, 'user_id')->orderBy('created_at', 'DESC');
+    }
+
+    public function latest_articles()
+    {
+        return $this->hasMany(\Sp\Models\Article::class, 'user_id')->where('status_id', 3)->orderBy('created_at', 'DESC')->take(5);
     }
 
 

@@ -25,6 +25,11 @@ class UsersRepo
         return User::with('articles.category', 'articles.status')->where('id', $id)->first();
     } 
 
+    public function getWithLatestArticles($user_id)
+    {
+        return User::where('id', $user_id)->with('articles', 'latest_articles.visits', 'latest_articles.category')->first();
+    }   
+
     public function getFeaturedForProfile($user_id)
     {
         return Article::where('user_id', $user_id)->where('status_id', 3)->orderBy('view_counter', 'DESC')->take(2)->get();

@@ -91,3 +91,31 @@ $('.cat-select').on('change', function(){
 
 
 });
+
+
+function ajaxCall(payload, route, method,  message) {
+
+    var token = $('meta[name="_token"]').attr('content');
+
+    $.ajax({
+        url: '/admin/' + route,
+        type: 'POST',
+        data: {
+            payload: payload,
+            _method: method,
+            _token: token
+        },
+        success: function(data) {
+            if(message != false)
+            {
+                console.log(data);
+            }
+        },
+        error: function(XMLHttpRequest, textstatus, error) {
+
+            return false;
+
+        }
+    });
+
+}

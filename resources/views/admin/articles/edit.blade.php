@@ -9,7 +9,7 @@
 
 @section('content')
 
-    <div class="page-bg news-bg holderjs"></div>
+    <div class="page-bg news-bg"></div>
     @include('layouts.header')
     <div class="container">
       <form  method="POST" role="form" action="/dashboard/articoli/{{$article->id}}" enctype="multipart/form-data">
@@ -62,7 +62,7 @@
                 </div>
               </div>
             </div>
-            <div class="social-share"><a type="submit" class="btn btn-default btn-block"><i class="fa fa-facebook"></i> Share on Facebook</a><a type="submit" class="btn btn-default btn-block"><i class="fa fa-twitter"></i> Share on Twitter</a><a type="submit" class="btn btn-default btn-block"><i class="fa fa-google"></i> Share on Google+</a></div>
+         
        
           </div>
           </form>

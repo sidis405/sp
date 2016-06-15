@@ -6,6 +6,19 @@
 //     // logger($time);
 // });
 
+// Route::get('ratings', function(){
+
+//     $articles = Sp\Models\Article::where('status_id', 3)->get();
+
+//     foreach($articles as $article)
+//     {
+//         $rating = rand(1, 5);
+//         $article->rating = $rating;
+//         $article->save();
+//     }
+
+// });
+
 Route::get('/', '\Sp\Http\Controllers\HomeController@news');
 
 Route::get('news', '\Sp\Http\Controllers\HomeController@news');
@@ -26,8 +39,10 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
     Route::get('dashboard', '\Sp\Http\Controllers\Admin\DashboardController@index');
     Route::get('nuovi-articoli', '\Sp\Http\Controllers\Admin\ArticlesController@index_new');
     Route::get('articoli', '\Sp\Http\Controllers\Admin\ArticlesController@index');
+    Route::get('articoli/{id}', '\Sp\Http\Controllers\Admin\ArticlesController@show');
     Route::get('articoli/{id}/modifica', '\Sp\Http\Controllers\Admin\ArticlesController@edit');
     Route::get('articoli/{id}/anteprima', '\Sp\Http\Controllers\Admin\ArticlesController@preview');
+    Route::post('articoli/{id}/rating', '\Sp\Http\Controllers\Admin\ArticlesController@rating');
 
 
     Route::get('categorie', '\Sp\Http\Controllers\Admin\CategoriesController@index');
