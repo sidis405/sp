@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Sp\Repositories\CategoryRepo;
 
 
-class CategoryController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class CategoryController extends Controller
      */
     public function index(CategoryRepo $category_repo)
     {
-        $category = $category_repo->getAll();
+        $categories = $category_repo->getAll();
 
-        return view('admin.category.index', compact('category'));
+        return view('admin.categories.index', compact('categories'));
 
     }
 
