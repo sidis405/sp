@@ -123,3 +123,14 @@ function ajaxCall(payload, route, method,  message, callback) {
 function goto(destination){
     window.location.href = destination;
 }
+
+//Jqurey code
+$('.dropdown-toggle').click(function (){
+        dropDownFixPosition($('#dropdownMenu1'),$(".dropdown-menu"));
+}); 
+
+function dropDownFixPosition(button,dropdown){
+        var dropDownTop = button.outerHeight();
+        dropdown.css('top', dropDownTop + "px");
+        // dropdown.css('left', button.offset().left + "px");
+}

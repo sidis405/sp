@@ -66,7 +66,7 @@
   @section('footer_scripts')
 
   <script src="https://cdn.datatables.net/u/bs-3.3.6/jqc-1.12.3,dt-1.10.12,af-2.1.2,fh-3.1.2/datatables.min.js"></script>
-  sc
+
   <script>
 
         $(document).ready(function() {
