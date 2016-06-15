@@ -238,3 +238,8 @@ tfoot input {
         padding: 3px;
         box-sizing: border-box;
     }
+
+
+    #datatable .actions a {
+      /*font-size: 15px;*/
+    }
