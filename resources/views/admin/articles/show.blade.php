@@ -2,6 +2,7 @@
 
 @section('header_scripts')
 <link rel="stylesheet" href="/css/star-rating.min.css">
+<link rel="stylesheet" href="/css/sweetalert.css">
 
 <meta name="_token" content="{{ csrf_token() }}" />
 
@@ -31,13 +32,22 @@
                   <div class="author"><img src="{{$article->user->avatar}}"><span>Articolo di <a href="{{$article->user->present()->user_url()}}">{{$article->user->present()->user_name()}}</a></span></div>
                 </div>
                 <div class="post-img"><img src="{{$article->present()->article_image_url}}"></div>
-
+                <br>
                 <div class="post-body">
 
-                  <p>{{$article->body}}</p>
+                  <p>{!!$article->body!!}</p>
+                </div>
+                <br>
+
+                <div class="row">
+                  <div class="col-xs-12"><a href="/admin/articoli/{{$article->id}}/modifica" class="btn btn-default btn-lg btn-block"><i class="fa fa-edit"></i> Modifica</a></div>
+                 
                 </div>
 
-         
+                
+
+                <br>
+
               </div>
             </div>
           </div>
@@ -51,7 +61,6 @@
                     <h3 class="star">Valuta Articolo</h3>
                   </div>
                   <div>
-                    <label for="input-1" class="control-label">Rate This</label>
                     <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="1" data-article-id="{{$article->id}}" value="{{$article->rating}}" data-size="md" >
                   </div>
                 </div>
@@ -101,6 +110,12 @@
                           </tbody>
                         </table>
                       </div>
+                      <div>
+                        <div class="row">
+                          <div class="col-xs-12"><button type="submit" class="btn btn-primary btn-lg btn-block approve-button"><i class="fa fa-edit"></i> Approva</button></div>
+                         
+                        </div>
+                      </div>
                   </div>
                 </div>
               </aside>
@@ -115,6 +130,7 @@
 
   <script src="/js/star-rating.min.js"></script>
   <script src="/js/star-rating_locale_it.js"></script>
+  <script src="/js/sweetalert.min.js"></script>
 
   <script>
 
@@ -125,13 +141,35 @@
         );
 
       $('.rating').on('rating.change', function(event, value, caption) {
-          console.log(value);
-          ajaxCall(value, 'articoli/{{$article->id}}/rating', 'POST', null);
+
+          ajaxCall(value, 'articoli/{{$article->id}}/rating', 'POST', false, false);
       });
 
       $('.rating').on('rating.clear', function(event) {
-          ajaxCall(0, 'articoli/{{$article->id}}/rating', 'POST', null);
+          ajaxCall(0, 'articoli/{{$article->id}}/rating', 'POST', false, false);
       });
+
+      $('.approve-button').click(function(){
+          swal({   
+            title: "Sei sicuro di voler approvare questo articolo?",   
+            text: "",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Si, approva!",   
+            cancelButtonText: "No, ho cambiato idea!",   
+            closeOnConfirm: false,   
+            closeOnCancel: true 
+          }, 
+            function(isConfirm){   
+              if (isConfirm) {     
+                swal("Approvato!", "Questo Articolo è stato pubblciato.", "success");   
+                ajaxCall(3, 'articoli/{{$article->id}}/status', 'POST', false, goto('/admin/nuovi-articoli'));
+              } else {     
+                swal("Cancelled", "Your imaginary file is safe :)", "error");   
+              } 
+            });
+      })
 
 
   </script>

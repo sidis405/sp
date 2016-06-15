@@ -16,7 +16,7 @@ class CategoryRepo
 
     public function getAll()
     {
-        return Category::with('articles')->orderBy('created_at', 'DESC')->get();
+        return Category::with('articles')->orderBy('name', 'ASC')->get();
     } 
 
     public function getAllList()

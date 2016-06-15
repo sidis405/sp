@@ -221,3 +221,20 @@
 .month-selector {
     margin-top: 25px;
 }
+
+.rating-container .caption {
+  width: 100%;
+}
+
+.rating-container .caption .label {
+  width: 100%;
+  display: block;
+  padding: 0.5em .6em .3em;
+}
+
+
+tfoot input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }

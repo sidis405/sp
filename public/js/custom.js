@@ -93,7 +93,7 @@ $('.cat-select').on('change', function(){
 });
 
 
-function ajaxCall(payload, route, method,  message) {
+function ajaxCall(payload, route, method,  message, callback) {
 
     var token = $('meta[name="_token"]').attr('content');
 
@@ -106,9 +106,9 @@ function ajaxCall(payload, route, method,  message) {
             _token: token
         },
         success: function(data) {
-            if(message != false)
+            if(callback != false)
             {
-                console.log(data);
+                eval(callback);
             }
         },
         error: function(XMLHttpRequest, textstatus, error) {
@@ -118,4 +118,8 @@ function ajaxCall(payload, route, method,  message) {
         }
     });
 
+}
+
+function goto(destination){
+    window.location.href = destination;
 }

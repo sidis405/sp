@@ -18,17 +18,17 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(UsersRepo $users_repo)
+    public function index(UsersRepo $users_repo, ArticleRepo $article_repo, CategoryRepo $category_repo)
     {
-        $user = $users_repo->getById(\Auth::user()->id);
+        $users = $users_repo->getAll();
 
-        // return $user->articles;
 
-        $categories = array_values(array_unique(array_pluck(array_pluck($user->articles, 'category'), 'name')));
+        // $categories = $category_repo->getAllList();
+        $categories = array_values(array_unique(array_pluck($category_repo->getAllList(), 'name')));
+        
+        $articles = $article_repo->getAll();
 
-        // return $categories;
-
-        // return view('admin.article-list', compact('user', 'categories'));
+        return view('admin.articles.index', compact('users', 'categories', 'articles'));
 
     }
 
@@ -93,7 +93,7 @@ class ArticlesController extends Controller
         $article = $this->dispatchFrom('Sp\Commands\Article\UpdateArticleCommand', $request, $data);
         flash()->success('Articolo aggiornato con successo.');
 
-        return redirect()->to('/dashboard/articoli/' . $article->id .'/modifica');
+        return redirect()->to('/admin/articoli/' . $article->id .'/modifica');
     }
 
     public function preview($article_id, ArticleRepo $article_repo)
@@ -129,6 +129,19 @@ class ArticlesController extends Controller
         // return $article_id;
 
         $article->rating = $request->input('payload');
+        $article->save();
+
+        return 'true';
+    }
+
+    public function status($article_id, Request $request)
+    {
+
+        $article = Article::find($article_id);
+
+        // return $article_id;
+
+        $article->status_id = $request->input('payload');
         $article->save();
 
         return 'true';

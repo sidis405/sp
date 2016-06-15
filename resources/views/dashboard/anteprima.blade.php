@@ -32,7 +32,7 @@
                       <div class="adv body-adv"><img data-src="holder.js/100px150?theme=social"></div>
                     </div>
                   </div>
-                  <p>{{$article->body}}</p>
+                  <p>{!!$article->body!!}</p>
                 </div>
                 <div class="post-toolbar"><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a><a href="#" class="btn btn-default btn-right"><i class="fa fa-envelope-o"></i></a></div>
                 <div class="row">

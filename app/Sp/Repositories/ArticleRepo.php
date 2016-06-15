@@ -20,7 +20,7 @@ class ArticleRepo
 
     public function getAll()
     {
-        return Article::with('status')->get();
+        return Article::with('status',  'category', 'user')->get();
     } 
 
     public function getAllFront()

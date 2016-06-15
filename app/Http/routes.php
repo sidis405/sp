@@ -41,8 +41,12 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
     Route::get('articoli', '\Sp\Http\Controllers\Admin\ArticlesController@index');
     Route::get('articoli/{id}', '\Sp\Http\Controllers\Admin\ArticlesController@show');
     Route::get('articoli/{id}/modifica', '\Sp\Http\Controllers\Admin\ArticlesController@edit');
+    Route::post('articoli/{id}', '\Sp\Http\Controllers\Admin\ArticlesController@update');
+
+
     Route::get('articoli/{id}/anteprima', '\Sp\Http\Controllers\Admin\ArticlesController@preview');
     Route::post('articoli/{id}/rating', '\Sp\Http\Controllers\Admin\ArticlesController@rating');
+    Route::post('articoli/{id}/status', '\Sp\Http\Controllers\Admin\ArticlesController@status');
 
 
     Route::get('categorie', '\Sp\Http\Controllers\Admin\CategoriesController@index');

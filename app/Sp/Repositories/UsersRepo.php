@@ -20,6 +20,11 @@ class UsersRepo
         return User::with('articles.category')->where('username', $slug)->first();
     } 
 
+    public function getAll()
+    {
+        return User::orderBy('name', 'ASC')->get();
+    } 
+
     public function getById($id)
     {
         return User::with('articles.category', 'articles.status')->where('id', $id)->first();
