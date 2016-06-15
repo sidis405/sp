@@ -38,7 +38,7 @@ class ArticleController extends Controller
 
         $article = $article_repo->getById($article_id);
 
-        // return $article->status_id;
+        return $article->status_id;
 
         if($article->status_id !== 3)  return abort(404);
 
