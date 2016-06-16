@@ -1,5 +1,14 @@
 @extends('admin.layouts.master')
 
+@section('header_scripts')
+
+<link rel="stylesheet" href="/css/sweetalert.css">
+
+<meta name="_token" content="{{ csrf_token() }}" />
+
+
+@stop
+
 @section('content')
 
     <div class="page-bg news-bg holderjs"></div>
@@ -38,6 +47,9 @@
                 <td class="actions">
                   <a href="/admin/categorie/{{$category->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a>
                   <a href="#" class="action"><i class="fa fa-bar-chart fa-fw"></i></a>
+                  @if(count($category->articles) == 0)
+                    <a href="#" class="action category-delete-trigger" data-category-id="{{$category->id}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                  @endif
                 </td>
               </tr>
               @endforeach
@@ -48,3 +60,37 @@
       </div>
     </div>
   @stop
+
+
+@section('footer_scripts')
+  <script src="/js/sweetalert.min.js"></script>
+
+<script>
+  $('.category-delete-trigger').click(function(){
+
+    var id = $(this).data('category-id');
+
+      swal({   
+        title: "Sei sicuro di voler rimuovere questa categoria?",   
+        text: "Non sarà possibili recuperare questo dato",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Si, rimuovi!",   
+        cancelButtonText: "No, ho cambiato idea!",   
+        closeOnConfirm: false,   
+        closeOnCancel: true 
+      }, 
+        function(isConfirm){   
+          if (isConfirm) {     
+            swal("Fatto!", "Questa categoria è stata rimossa.", "success");   
+            ajaxCall(3, 'categorie/' + id + '/rimuovi', 'POST', false, goto('/admin/categorie'));
+          } else {     
+            swal("Interroto", "La categoria non è stata cancellata", "error");   
+          } 
+        });
+        
+        });
+</script>
+
+@stop

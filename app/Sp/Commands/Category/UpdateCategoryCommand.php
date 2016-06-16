@@ -1,27 +1,29 @@
 <?php
 
-namespace Sp\Commands;
+namespace Sp\Commands\Category;
 
 use Sp\Commands\Command;
 
 class UpdateCategoryCommand extends Command
 {
 
+    public $category_id;
     public $name;
-      public $slug;
-      public $description;
-      public $active;
+    public $description;
+    public $payoff;
+    public $active;
 
     /**
      * Update a command instance.
      *
      * @return void
      */
-    public function __construct($name, $slug, $description, $active)
+    public function __construct($category_id, $name,  $payoff, $description, $active = 1)
     {
+        $this->category_id = $category_id;
         $this->name = $name;
-        $this->slug = $slug;
         $this->description = $description;
+        $this->payoff = $payoff;
         $this->active = $active;
     }
 }

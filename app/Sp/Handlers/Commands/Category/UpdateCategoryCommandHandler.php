@@ -1,13 +1,13 @@
 <?php
 
-namespace Sp\Handlers\Commands;
+namespace Sp\Handlers\Commands\Category;
 
-use Sp\Commands\CreateTestCommand;
-use Sp\Models\Category;
+use Event;
 use Illuminate\Queue\InteractsWithQueue;
-use Sp\Repositories\CategoryRepo;
+use Sp\Commands\Category\UpdateCategoryCommand;
 use Sp\Events\Category\CategoryWasUpdated;
-use Events;
+use Sp\Models\Category;
+use Sp\Repositories\CategoryRepo;
 
 
 class UpdateCategoryCommandHandler
@@ -30,15 +30,15 @@ class UpdateCategoryCommandHandler
      * @param  UpdateCategoryCommand  $command
      * @return void
      */
-    public function handle(CreateCategoryCommand $command)
+    public function handle(UpdateCategoryCommand $command)
     {
         $category_object = Category::edit(
-            $command->id,
+            $command->category_id,
             $command->name,
-        $command->slug,
-        $command->description,
-        $command->active
-            );
+            $command->description,
+            $command->payoff,
+            $command->active
+        );
 
         $category = $this->repo->save($category_object);
 

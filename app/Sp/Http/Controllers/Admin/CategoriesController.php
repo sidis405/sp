@@ -2,9 +2,10 @@
 
 namespace Sp\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use Sp\Models\Category;
 use Sp\Repositories\CategoryRepo;
 
 
@@ -31,7 +32,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -43,8 +44,10 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $category = $this->dispatchFrom('Sp\Commands\Category\CreateCategoryCommand', $request);
+
+        flash()->success('Categoria creata con successo.');
         
-        return redirect()->to('/admin/category/' . $category->id .'/edit');
+        return redirect()->to('/admin/categorie/' . $category->id .'/modifica');
     }
 
     /**
@@ -70,7 +73,9 @@ class CategoriesController extends Controller
     {
         $category = $category_repo->getById($id);
 
-        return view('admin.category.edit', compact('category'));
+        // return $category;
+
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -84,7 +89,10 @@ class CategoriesController extends Controller
     {
         $category = $this->dispatchFrom('Sp\Commands\Category\UpdateCategoryCommand', $request);
 
-        return redirect()->to('/admin/category/' . $category->id .'/edit');
+        flash()->success('Categoria aggiornata con successo.');
+
+
+        return redirect()->to('/admin/categorie/' . $category->id .'/modifica');
     }
 
     /**
@@ -95,6 +103,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        return Category::delete($id);
+        $cat = Category::find($id);
+        $cat->delete();
+        return 'true';
     }
 }

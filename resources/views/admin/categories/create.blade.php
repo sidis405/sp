@@ -7,26 +7,24 @@
 <div class="page-bg news-bg"></div>
 @include('layouts.header')
 <div class="container">
-  <form  method="POST" role="form" action="/admin/categorie/{{$category->id}}" enctype="multipart/form-data">
+  <form  method="POST" role="form" action="/admin/categorie" enctype="multipart/form-data">
     <div class="l-create-post-page">
-      <h1 class="page-title">Modifica categoria: '{{$category->name}}'</h1>
+      <h1 class="page-title">Crea una nuova categoria</h1>
       @include('errors.errors')
       <div class="row">
         <div class="col-sm-12">
           {{csrf_field()}}
-          <input type="hidden" name="category_id" value="{{$category->id}}">
           <div class="form-group">
-            <input type="text" placeholder="Nome" name="name"  value="{{old('name', $category->name)}}" required="required" class="form-control">
+            <input type="text" placeholder="Nome" name="name"  value="{{old('name')}}" required="required" class="form-control">
           </div>
           <div class="form-group">
-            <textarea name="description" placeholder="Breve descrizione" cols="30" rows="5" class="form-control">{{old('description', $category->description)}}</textarea>
+            <textarea name="description" placeholder="Breve descrizione" cols="30" rows="5" class="form-control">{{old('description')}}</textarea>
           </div>
           <div class="form-group">
           <div class="input-group">
-          <div class="input-group-addon">&euro;</div>
-            <input type="text" placeholder="Payoff (x 1000 visite)" name="payoff"  value="{{old('payoff', $category->payoff)}}" required="required" class="form-control">
-            
-          </div>
+            <div class="input-group-addon">&euro;</div>
+              <input type="text" placeholder="Payoff (x 1000 visite)" name="payoff"  value="{{old('payoff')}}" required="required" class="form-control">
+            </div>
           </div>
           <div class="form-group">
             <div class="row">

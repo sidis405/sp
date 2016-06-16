@@ -2,8 +2,8 @@
 
 namespace Sp\Events\Category;
 
-use Sp\Events\Event;
-use Sp\Category\Models\Category;
+use Event;
+use Sp\Models\Category;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 

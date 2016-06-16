@@ -50,7 +50,19 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
 
 
     Route::get('categorie', '\Sp\Http\Controllers\Admin\CategoriesController@index');
+
+    Route::get('categorie/crea', '\Sp\Http\Controllers\Admin\CategoriesController@create');
+    Route::post('categorie', '\Sp\Http\Controllers\Admin\CategoriesController@store');
+
+    Route::get('categorie/{id}/modifica', '\Sp\Http\Controllers\Admin\CategoriesController@edit');
+    Route::post('categorie/{id}', '\Sp\Http\Controllers\Admin\CategoriesController@update');
+    
+    Route::post('categorie/{id}/rimuovi', '\Sp\Http\Controllers\Admin\CategoriesController@destroy');
+
+
     Route::get('utenti', '\Sp\Http\Controllers\Admin\UsersController@index');
+    Route::get('utenti/{id}', '\Sp\Http\Controllers\Admin\UsersController@show');
+
     Route::get('pagamenti', '\Sp\Http\Controllers\Admin\EarningsController@index');
     Route::get('impostazioni', '\Sp\Http\Controllers\Admin\SettingsController@index');
 

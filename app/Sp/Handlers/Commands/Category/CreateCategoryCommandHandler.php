@@ -2,12 +2,12 @@
 
 namespace Sp\Handlers\Commands\Category;
 
-use Sp\Commands\CreateCategoryCommand;
-use Sp\Models\Category;
+use Event;
 use Illuminate\Queue\InteractsWithQueue;
-use Sp\Repositories\CategoryRepo;
+use Sp\Commands\Category\CreateCategoryCommand;
 use Sp\Events\Category\CategoryWasCreated;
-use Events;
+use Sp\Models\Category;
+use Sp\Repositories\CategoryRepo;
 
 
 class CreateCategoryCommandHandler
@@ -35,6 +35,7 @@ class CreateCategoryCommandHandler
         $category_object = Category::make(
         $command->name,
         $command->description,
+        $command->payoff,
         $command->active
             );
 

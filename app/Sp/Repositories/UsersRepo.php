@@ -25,6 +25,11 @@ class UsersRepo
         return User::orderBy('name', 'ASC')->get();
     } 
 
+    public function getAllForListing()
+    {
+        return User::where('role', 'user')->with('articles')->orderBy('name', 'ASC')->get();
+    } 
+
     public function getById($id)
     {
         return User::with('articles.category', 'articles.status')->where('id', $id)->first();

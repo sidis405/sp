@@ -14,21 +14,24 @@ class Category extends Model  implements HasMedia
 
     protected $presenter = 'Sp\Presenters\CategoryPresenter';
 
-    public static function make($name, $slug, $description, $active)
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public static function make($name, $description, $payoff, $active)
     {
         $name = str_slug($name);
-        $item = new static(compact('name', 'slug', 'description', 'active'));
+        $item = new static(compact('name', 'description', 'payoff', 'active'));
 
         return $item;
     }
 
-    public static function edit($item_id, $name, $description, $active)
+    public static function edit($item_id, $name, $description, $payoff, $active)
     {
         $item = static::find($item_id);
 
         $item->name = $name;
         $item->slug = str_slug($name);
         $item->description = $description;
+        $item->payoff = $payoff;
         $item->active = $active;
 
         return $item;
