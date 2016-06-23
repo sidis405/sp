@@ -3,7 +3,7 @@
         <div class="row">
           <div class="col-sm-3"></div>
           <div class="col-sm-6">
-            <h1>Registrati</h1>
+            <h1 id="register">Registrati</h1>
             <form class="form-horizontal" action="/auth/register" method="POST">
             {{csrf_field()}}
               <div class="form-group">

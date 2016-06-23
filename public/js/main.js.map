@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.js"],"names":[],"mappings":"AAAA","file":"main.js","sourcesContent":[""],"sourceRoot":"/source/"}
+{"version":3,"sources":["main.js"],"names":[],"mappings":"AAAA;AACA","file":"main.js","sourcesContent":["// Data tables and bootstrap dropdown fix\n$('body .dropdown-toggle').dropdown(); "],"sourceRoot":"/source/"}

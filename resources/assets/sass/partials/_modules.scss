@@ -762,3 +762,63 @@ aside {
 	margin: 30px 0;
 }
 
+.dropdown-menu {
+	background: $red;
+	border-radius: 0;
+	li a {
+		color: #fff;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		i {
+			margin-left: -10px;
+			margin-right: 5px;
+		}
+	}
+}
+
+.open > .dropdown-toggle.btn-primary {
+	background: $red;
+}
+
+#user-dropdown {
+	position: absolute;
+	top: 52px !important;
+}
+
+#notify-dropdown {
+	position: absolute;
+	top: 52px !important;
+	left: -5px;
+	padding: 0;
+	li {
+		&:last-of-type a {
+			border-bottom: 0;
+		}
+		&.viewed a {
+			background: darken($red, 10%);
+			color: #aaa;
+		}
+	}
+	li a {
+		border-bottom: 1px solid #fff;
+		padding: 10px 15px;
+	}
+}
+
+.btn-notify {
+	padding: 7.5px 15px;
+	margin-left: -5px;
+	position: relative;
+	.badge {
+		position: absolute;
+		top: -3px;
+		right: -7px;
+		border: 1px solid $red;
+		color: $red;
+	}
+}
+
+.dataTables_scrollHead{
+    position: static !important;
+    overflow: visible !important;
+}

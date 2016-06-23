@@ -15,7 +15,7 @@
                 <h1>Partecipa a <i>Sito Pubblico</i></h1>
                 <p><i>Sito Pubblico</i> è un portale di libera informazione che offre la possibilità a tutti i cittadini di esprimere le proprie idee ed opinioni, commentare avvenimenti di attualità e condividere conoscenze ed esperienze. C’è bisogno di voci nuove, INDIPENDENTI E LIBERE, che sappiano dire la loro al di fuori dei soliti cliché. Se anche tu senti il bisogno di comunicare le tue opinioni ad alta voce e condividerle col mondo intero, non esitare ed entra a far parte di <i>Sito Pubblico!</i></p>
                 <h2>Accedi ora</h2>
-                <div class="login-btns"><a href="/auth/facebook" class="btn btn-facebook btn-lg"><i class="fa fa-facebook fa-fw"></i> Accedi tramite Facebook</a><span class="or">oppure</span><a href="/auth/register" class="btn btn-primary btn-lg">Registrati</a></div>
+                <div class="login-btns"><a href="/auth/facebook" class="btn btn-facebook btn-lg"><i class="fa fa-facebook fa-fw"></i> Accedi tramite Facebook</a><span class="or">oppure</span><a href="#register" class="btn btn-primary btn-lg">Registrati</a></div>
               </div>
             </div>
             <div class="col-sm-3"></div>
