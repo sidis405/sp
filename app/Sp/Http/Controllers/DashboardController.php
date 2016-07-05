@@ -122,6 +122,19 @@ class DashboardController extends Controller
         return 'true';
     }
 
+    public function destroy(Request $request)
+    {
+
+
+        $article = Article::find($request->input('payload'));
+        logger($article);
+        if($article && $article->user_id == \Auth::user()->id && $request->input('payload'))
+        {
+            $article->delete();
+        }
+
+        return 'true';
+    }
 
    
 

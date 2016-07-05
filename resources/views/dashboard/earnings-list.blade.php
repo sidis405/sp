@@ -8,7 +8,7 @@
 <div class="container">
   <div class="l-post-list-page">
     
-    <h1 class="page-title">Guadagni e pagamenti
+    <h1 class="page-title">Dettaglio visite / guadagni per mese
     <!-- <span class="pull-right"><a href="/dashboard/articoli/scrivi"><i class="fa fa-plus-circle fw">Scrivi nuovo</i></a></span> -->
     </h1>
     <div class="row">

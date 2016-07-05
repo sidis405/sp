@@ -15,6 +15,8 @@ class UsersRepo
         return $user;
     }
 
+
+
     public function getBySlug($slug)
     {
         return User::with('articles.category')->where('username', $slug)->first();

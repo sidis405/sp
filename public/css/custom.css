@@ -302,3 +302,11 @@ position:fixed;
 .article-list-row img{
   width: 50px;
 }
+
+.status-pagato {
+  color: green;
+}
+
+.status-in-attesa {
+  color: orange;
+}

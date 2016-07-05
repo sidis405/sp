@@ -72,6 +72,8 @@ Route::group(array('middleware' => 'auth.sp.user'), function () {
 
     Route::get('dashboard', '\Sp\Http\Controllers\DashboardController@index');
     Route::get('guadagni-pagamenti', '\Sp\Http\Controllers\EarningsController@index');
+    Route::get('riepilogo-pagamenti', '\Sp\Http\Controllers\EarningsController@listingPerMonth');
+    Route::post('riepilogo-pagamenti', '\Sp\Http\Controllers\EarningsController@makePaymentRequest');
     Route::get('dashboard/articoli/scrivi', '\Sp\Http\Controllers\DashboardController@create');
     Route::post('dashboard/articoli', '\Sp\Http\Controllers\DashboardController@store');
 
@@ -79,6 +81,7 @@ Route::group(array('middleware' => 'auth.sp.user'), function () {
     Route::get('dashboard/articoli/{id}/anteprima', '\Sp\Http\Controllers\DashboardController@preview');
     Route::post('dashboard/articoli/{id}', '\Sp\Http\Controllers\DashboardController@update');
     Route::post('dashboard/articoli/{id}/invia', '\Sp\Http\Controllers\DashboardController@submit');
+    Route::delete('dashboard/articoli', '\Sp\Http\Controllers\DashboardController@destroy');
 
     
     Route::get('impostazioni', '\Sp\Http\Controllers\UsersController@settings_form');

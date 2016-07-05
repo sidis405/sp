@@ -67,7 +67,7 @@
                 <td>
                   @if($article->status->id == 1)
                   <a href="/dashboard/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a>
-                  <a href="/dashboard/articoli/{{$article->id}}/rimuovi" class="action remove-button"><i class="fa fa-trash-o fa-fw"></i></a>
+                  <a href="#" data-article-id="{{$article->id}}" class="action remove-button"><i class="fa fa-trash-o fa-fw"></i></a>
                   @else
                     <a href="/dashboard/articoli/{{$article->id}}/anteprima" target="_blank" class="action"><i class="fa fa-eye fa-fw"></i></a>
                   @endif
@@ -97,7 +97,10 @@
 
       <script>
          
-          $('.remove-button').click(function(){
+          $('.remove-button').click(function(event){
+            event.preventDefault();
+            var id = $(this).data('article-id');
+            console.log(id);
               swal({   
                 title: "Sei sicuro di voler cancellare permanentemente questo articolo?",   
                 text: "Non sarà più possibile disfare quest'azione.",   
@@ -111,8 +114,8 @@
               }, 
                 function(isConfirm){   
                   if (isConfirm) {     
-                    swal("Approvato!", "Questo Articolo è stato cancellato.", "success");   
-                    ajaxCallFront(2, '/dashboard/articoli/{{$article->id}}/invia', 'POST', false, goto('/dashboard'));
+                    swal("Rimosso!", "Questo Articolo è stato cancellato.", "success");   
+                    ajaxCallFront(id, '/dashboard/articoli', 'DELETE', false, goto('/dashboard'));
                   } else {     
                     swal("Cancelled", "Your imaginary file is safe :)", "error");   
                   } 
