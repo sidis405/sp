@@ -78,6 +78,8 @@ Route::group(array('middleware' => 'auth.sp.user'), function () {
     Route::get('dashboard/articoli/{id}/modifica', '\Sp\Http\Controllers\DashboardController@edit');
     Route::get('dashboard/articoli/{id}/anteprima', '\Sp\Http\Controllers\DashboardController@preview');
     Route::post('dashboard/articoli/{id}', '\Sp\Http\Controllers\DashboardController@update');
+    Route::post('dashboard/articoli/{id}/invia', '\Sp\Http\Controllers\DashboardController@submit');
+
     
     Route::get('impostazioni', '\Sp\Http\Controllers\UsersController@settings_form');
     Route::post('profilo', '\Sp\Http\Controllers\UsersController@profile_form_save');

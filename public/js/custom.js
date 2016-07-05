@@ -120,6 +120,34 @@ function ajaxCall(payload, route, method,  message, callback) {
 
 }
 
+
+function ajaxCallFront(payload, route, method,  message, callback) {
+
+    var token = $('meta[name="_token"]').attr('content');
+
+    $.ajax({
+        url: route,
+        type: 'POST',
+        data: {
+            payload: payload,
+            _method: method,
+            _token: token
+        },
+        success: function(data) {
+            if(callback != false)
+            {
+                eval(callback);
+            }
+        },
+        error: function(XMLHttpRequest, textstatus, error) {
+
+            return false;
+
+        }
+    });
+
+}
+
 function goto(destination){
     window.location.href = destination;
 }
