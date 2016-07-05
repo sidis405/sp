@@ -2,6 +2,9 @@
 
 @section('header_scripts')
 <link rel="stylesheet" href="/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/css/sweetalert.css">
+
+<meta name="_token" content="{{ csrf_token() }}" />
 
     <link rel="stylesheet" href="/bower_components/bootstrap-fileinput/css/fileinput.css">
 
@@ -65,7 +68,7 @@
             <div class="social-share"><a type="submit" class="btn btn-default btn-block"><i class="fa fa-facebook"></i> Share on Facebook</a><a type="submit" class="btn btn-default btn-block"><i class="fa fa-twitter"></i> Share on Twitter</a><a type="submit" class="btn btn-default btn-block"><i class="fa fa-google"></i> Share on Google+</a></div>
             
             <div class="form-group">
-              <a  class="btn btn-primary btn-lg pull-right col-sm-12"><i class="fa fa-paper-plane"></i> Invia per approvazione</a>
+              <a  class="btn btn-primary btn-lg pull-right col-sm-12 approve-button"><i class="fa fa-paper-plane"></i> Invia per approvazione</a>
               <div class="clearfix"></div>
             </div>
           </div>
@@ -87,10 +90,17 @@
 
     <script src="/bower_components/bootstrap-fileinput/js/fileinput.js"></script>
   <script src="/bower_components/bootstrap-fileinput/js/fileinput_locale_it.js"></script>
+  <script src="/js/sweetalert.min.js"></script>
+
 
 
       <script>
-          $('textarea#body').ckeditor();
+          $('textarea#body').ckeditor({
+            // filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+            // filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            // filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+          });
           $("#article-featured-image").fileinput(
               {
                 'browseClass': "btn btn-primary btn-block",
@@ -116,6 +126,28 @@
                 'minImageHeight': 350,
               }
             );
+
+          $('.approve-button').click(function(){
+              swal({   
+                title: "Sei sicuro di voler inviare per approvazione questo articolo?",   
+                text: "Non sarà più possibile fare modifiche aggiuntive.",   
+                type: "warning",   
+                showCancelButton: true,   
+                confirmButtonColor: "#DD6B55",   
+                confirmButtonText: "Si, invia!",   
+                cancelButtonText: "No, ho cambiato idea!",   
+                closeOnConfirm: false,   
+                closeOnCancel: true 
+              }, 
+                function(isConfirm){   
+                  if (isConfirm) {     
+                    swal("Approvato!", "Questo Articolo è stato inviato.", "success");   
+                    ajaxCallFront(2, '/dashboard/articoli/{{$article->id}}/invia', 'POST', false, goto('/dashboard'));
+                  } else {     
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                  } 
+                });
+          })
       </script>
 
 

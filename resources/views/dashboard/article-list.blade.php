@@ -1,5 +1,12 @@
 @extends('layouts.master')
 
+@section('header_scripts')
+<link rel="stylesheet" href="/css/sweetalert.css">
+
+<meta name="_token" content="{{ csrf_token() }}" />
+
+@stop
+
 @section('content')
 
     <div class="page-bg news-bg holderjs"></div>
@@ -51,7 +58,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($user->articles as $article)
+              @foreach($user->all_articles as $article)
               <tr class="article-list-row">
                 <td>{{$article->created_at->format('d-m-Y')}}</td>
                 <td>{{$article->title}}</td>
@@ -59,7 +66,8 @@
                 <td class="article-list-state">{{$article->status->name}}</td>
                 <td>
                   @if($article->status->id == 1)
-                  <a href="/dashboard/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a><a href="/dashboard/articoli/{{$article->id}}/rimuovi" class="action"><i class="fa fa-trash-o fa-fw"></i></a>
+                  <a href="/dashboard/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a>
+                  <a href="/dashboard/articoli/{{$article->id}}/rimuovi" class="action remove-button"><i class="fa fa-trash-o fa-fw"></i></a>
                   @else
                     <a href="/dashboard/articoli/{{$article->id}}/anteprima" target="_blank" class="action"><i class="fa fa-eye fa-fw"></i></a>
                   @endif
@@ -72,3 +80,45 @@
       </div>
     </div>
   @stop
+
+    @section('footer_scripts')
+  <script src="/js/bootstrap-select.min.js"></script>
+  
+  <script> $('.cat-select').selectpicker();</script>
+  
+  <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+      <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+
+    <script src="/bower_components/bootstrap-fileinput/js/fileinput.js"></script>
+  <script src="/bower_components/bootstrap-fileinput/js/fileinput_locale_it.js"></script>
+  <script src="/js/sweetalert.min.js"></script>
+
+
+
+      <script>
+         
+          $('.remove-button').click(function(){
+              swal({   
+                title: "Sei sicuro di voler cancellare permanentemente questo articolo?",   
+                text: "Non sarà più possibile disfare quest'azione.",   
+                type: "warning",   
+                showCancelButton: true,   
+                confirmButtonColor: "#DD6B55",   
+                confirmButtonText: "Si, invia!",   
+                cancelButtonText: "No, ho cambiato idea!",   
+                closeOnConfirm: false,   
+                closeOnCancel: true 
+              }, 
+                function(isConfirm){   
+                  if (isConfirm) {     
+                    swal("Approvato!", "Questo Articolo è stato cancellato.", "success");   
+                    ajaxCallFront(2, '/dashboard/articoli/{{$article->id}}/invia', 'POST', false, goto('/dashboard'));
+                  } else {     
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                  } 
+                });
+          })
+      </script>
+
+
+      @stop

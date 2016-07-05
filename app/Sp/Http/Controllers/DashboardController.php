@@ -5,6 +5,7 @@ namespace Sp\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Sp\Models\Article;
 use Sp\Repositories\ArticleRepo;
 use Sp\Repositories\CategoryRepo;
 use Sp\Repositories\UsersRepo;
@@ -21,9 +22,9 @@ class DashboardController extends Controller
     {
         $user = $users_repo->getById(\Auth::user()->id);
 
-        // return $user->articles;
+        // return count($user->all_articles);
 
-        $categories = array_values(array_unique(array_pluck(array_pluck($user->articles, 'category'), 'name')));
+        $categories = array_values(array_unique(array_pluck(array_pluck($user->all_articles, 'category'), 'name')));
 
         // return $categories;
 
@@ -106,6 +107,19 @@ class DashboardController extends Controller
         }
 
         return $data;
+    }
+
+    public function submit($article_id, Request $request)
+    {
+
+        $article = Article::find($article_id);
+
+        // return $article_id;
+
+        $article->status_id = 2;
+        $article->save();
+
+        return 'true';
     }
 
 

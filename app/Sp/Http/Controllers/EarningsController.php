@@ -45,7 +45,7 @@ class EarningsController extends Controller
 
         $visits = $article_repo->getForUserByMonthForEarningsChart(\Auth::user()->id, $start_date, $end_date);
 
-
+        // return $visits;
 
         return view('dashboard.earnings-list', compact('articles', 'visits', 'start_for_picker'));
 

@@ -31,7 +31,7 @@
     </div>
     <div class="row">
       <div class="chart-holder">
-        <canvas id="chart" width="300" height="200"></canvas>
+        <canvas id="chart" width="300" height="400"></canvas>
       </div>
     </div>
     <div class="post-list">
@@ -76,13 +76,15 @@
 @section('footer_scripts')
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 <script>
-
-var data = {
-labels: <?php echo json_encode($visits['labels']); ?>,
-datasets: [
-                {
-                label: "Visite",
-                fill: false,
+var canvas = document.getElementById('chart');
+new Chart(canvas, {
+  type: 'line',
+  data: {
+    labels: <?php echo json_encode($visits['labels']); ?>,
+    datasets: [{
+      label: 'Visite',
+      yAxisID: 'Visite',
+      fill: true,
                 lineTension: 0.1,
                 backgroundColor: "rgba(75,192,192,0.4)",
                 borderColor: "rgba(75,192,192,1)",
@@ -100,11 +102,10 @@ datasets: [
                 pointRadius: 1,
                 pointHitRadius: 10,
                 data: <?php echo json_encode($visits['data']); ?>,
-                },
-
-                {
-                label: "Payoff",
-                fill: false,
+    }, {
+      label: 'Payoff',
+      yAxisID: 'Payoff',
+      fill: false,
                 lineTension: 0.1,
                 backgroundColor: "#991722",
                 borderColor: "#991722",
@@ -121,21 +122,25 @@ datasets: [
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                data: <?php echo json_encode($visits['payoff']); ?>,
-                }
-          ]
-};
-var options = []
-var ctx = document.getElementById("chart").getContext("2d");
-ctx.canvas.height = 80;
-// ctx.canvas.width = 80;
-var myLineChart = new Chart(ctx, {
-type: 'line',
-data: data,
-options : {
-responsive: true,
-maintainAspectRatio: true
-}
+            data: <?php echo json_encode($visits['payoff']); ?>,
+    }]
+  },
+  options: {
+
+      responsive: true,
+      maintainAspectRatio: false,
+    scales: {
+      yAxes: [{
+        id: 'Visite',
+        type: 'linear',
+        position: 'left',
+      }, {
+        id: 'Payoff',
+        type: 'linear',
+        position: 'right'
+      }]
+    }
+  }
 });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"></script>
