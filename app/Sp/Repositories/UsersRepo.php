@@ -15,6 +15,8 @@ class UsersRepo
         return $user;
     }
 
+
+
     public function getBySlug($slug)
     {
         return User::with('articles.category')->where('username', $slug)->first();
@@ -32,7 +34,7 @@ class UsersRepo
 
     public function getById($id)
     {
-        return User::with('articles.category', 'articles.status')->where('id', $id)->first();
+        return User::with('all_articles.category', 'all_articles.status')->where('id', $id)->first();
     } 
 
     public function getWithLatestArticles($user_id)

@@ -70,6 +70,37 @@ class ArticleRepo
 
     }
 
+    public function getForUserByMonthEarnings($user_id){
+           $article_ids = $this->getUserPubblichedArticleIdsForRange($user_id);
+
+           $visits = Visits::whereIn('article_id', $article_ids)->orderBy('created_at', 'ASC')->get()->groupBy(function($val) {
+               return Carbon::parse($val->created_at)->format('Y-m');
+            });
+
+            $out = [];
+
+            foreach ($visits as $dt => $data) {
+
+
+                $month = $dt . '-01';
+
+                $val = count(@$visits[$dt]);
+                if(@$visits[$dt])
+                {
+                    $pay = array_sum(array_values(array_pluck(@$visits[$dt]->toArray(), 'payoff')));
+                    
+                }else{
+                    $pay = 0.00;
+                }
+
+                $out[$month] = ['visits' => $val, 'payoff' => $pay];
+            }
+
+
+        return $out;
+    }
+
+
     public function getForUserByMonthForEarningsChart($user_id, $start_date, $end_date)
     {
         // $ids = $this->getUserPubblichedArticleIds($user_id);

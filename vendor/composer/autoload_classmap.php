@@ -11,6 +11,8 @@ return array(
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2016_05_18_122914_create_categories_table.php',
     'CreateMediaTable' => $baseDir . '/database/migrations/2016_05_19_110258_create_media_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreatePaymentRequestsTable' => $baseDir . '/database/migrations/2016_07_05_142706_create_payment_requests_table.php',
+    'CreatePaymentStatusesTable' => $baseDir . '/database/migrations/2016_07_05_142541_create_payment_statuses_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'CreateVisitsTable' => $baseDir . '/database/migrations/2016_06_06_125156_create_visits_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
