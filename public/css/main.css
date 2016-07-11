@@ -460,10 +460,11 @@ header .search-container .navbar-form input {
 header h1.logo {
   display: inline-block;
   width: 100%;
-  max-width: 524px;
-  width: 100%;
-  height: 37px;
+  max-width: 100%;
+  width: 524px;
+  height: 103px;
   margin: 15px auto;
+  margin-top: 5px;
   text-align: center;
   background: url("../images/logo.png") no-repeat center center;
   background-size: contain;
@@ -602,8 +603,8 @@ footer .logo-container h1.logo {
   text-transform: uppercase;
   font-size: 2em;
   background: url("../images/logo-footer.png") no-repeat;
-  width: 328;
-  height: 23px;
+  width: 328px;
+  height: 65px;
   text-indent: -9999px;
 }
 
