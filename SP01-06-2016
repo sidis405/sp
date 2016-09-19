@@ -7,7 +7,6 @@ Hot trends, keep history
 
 Ask for password on changing the settings
 
-
 Modal after 40s to register and then after a week
 On the modal facebook widget
 Sidebar Widget of category facebook page
@@ -33,7 +32,8 @@ can ask for max 6 months back
 
 Gli autori piu seguiti per lettura
 
-Rating interno per articolo
+-------------
+== OK == Rating interno per articolo
 
 Se l'utente ha un voto alto, va in autoapprovazione
 
@@ -41,7 +41,8 @@ Se l'utente ha un voto alto, va in autoapprovazione
 
 SitoPubblico.Com primary
 
-First Visit counts. The Ip cannot count for 24 hours fot that ip
+-------------
+== OK == First Visit counts. The Ip cannot count for 24 hours fot that ip
 
 Check if adblock is active
 
