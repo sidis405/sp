@@ -1,22 +1,14 @@
 Sito Pubblico
 -------------
+#SitoPubblico.Com primary
+#First Visit counts. The Ip cannot count for 24 hours fot that ip
+#Defaul quanto paga _ si puo cambiare - x categoria - scadenza monetizzazione  - 15 gg / 2 settimane
 
 Messagge box - Daily messagge - suggerimenti del giorno
 
 Hot trends, keep history
-
 Tag categoria utente
-
-SitoPubblico.Com primary
-
-First Visit counts. The Ip cannot count for 24 hours fot that ip
-
 Check if adblock is active
-
-Defaul quanto paga _ si puo cambiare - x categoria - scadenza monetizzazione  - 15 gg / 2 settimane
-
 Massimale earning articolo 200€
-
 Approvazione abbilita condivizione link
-
 All profile external links become compulsore when asking fro payment
