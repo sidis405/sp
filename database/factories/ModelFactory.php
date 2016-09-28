@@ -51,7 +51,7 @@ $factory->define(Sp\Models\Visits::class, function(Faker\Generator $faker){
     $payoff = $article->category->payoff/1000;
 
     // $dates = Sp\Utils\Help::createDateRangeArray('2016-06-01', Carbon\Carbon::now()->format('Y-m-d'));
-    $dates = Sp\Utils\Help::createDateRangeArray('2016-04-01', '2016-05-31');
+    $dates = Sp\Utils\Help::createDateRangeArray('2016-09-01', '2016-09-28');
 
     $date = $dates[array_rand($dates)];
 
