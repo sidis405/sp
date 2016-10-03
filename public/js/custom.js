@@ -162,3 +162,10 @@ function dropDownFixPosition(button,dropdown){
         dropdown.css('top', dropDownTop + "px");
         // dropdown.css('left', button.offset().left + "px");
 }
+
+$('.social a').click(function(e){
+    e.preventDefault();
+
+    window.open($(this).attr('href'), $(this).data('title'), 'height=320, width=640, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no');
+
+});
