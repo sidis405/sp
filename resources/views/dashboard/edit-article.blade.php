@@ -3,6 +3,8 @@
 @section('header_scripts')
 <link rel="stylesheet" href="/css/bootstrap-select.min.css">
 <link rel="stylesheet" href="/css/sweetalert.css">
+<link rel="stylesheet" href="/css/select2.min.css">
+
 
 <meta name="_token" content="{{ csrf_token() }}" />
 
@@ -49,6 +51,13 @@
               @endforeach
             </select>
 
+            <p>Aggiungi tag:</p>
+            <select name="tags[]" class="tag-select form-control" multiple>
+              @foreach($tags as $tag)
+                <option value="{{$tag->tag}}" @if(in_array($tag->id ,array_pluck($article->tags, 'id'))) selected @endif>{{$tag->tag}}</option>
+              @endforeach
+            </select>
+
             <div class="form-group">
               <div class="row">
                 <div class="col-xs-12" style="display:none;">
@@ -82,6 +91,8 @@
 
   @section('footer_scripts')
   <script src="/js/bootstrap-select.min.js"></script>
+  <script src="/js/select2.min.js"></script>
+
   
   <script> $('.cat-select').selectpicker();</script>
   
@@ -147,6 +158,11 @@
                     swal("Cancelled", "Your imaginary file is safe :)", "error");   
                   } 
                 });
+          })
+
+          $(".tag-select").select2({
+            tags: true,
+            language: "it"
           })
       </script>
 

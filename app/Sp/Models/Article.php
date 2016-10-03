@@ -69,6 +69,12 @@ class Article extends Model  implements HasMedia
         return $this->hasMany(\Sp\Models\Visits::class, 'article_id');
     }
 
+    public function tags(){
+
+        return $this->belongsToMany('Sp\Models\Tags', 'articles_tags', 'article_id', 'tag_id');
+
+    }
+
 
 
 }

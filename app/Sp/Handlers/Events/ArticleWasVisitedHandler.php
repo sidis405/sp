@@ -61,8 +61,20 @@ class ArticleWasVisitedHandler {
         }
         $visit->sharecode = $article->sharecode;
         $visit->ip = $article->ip;
-        $visit->payoff = $article->category()->get()->toArray()[0]['payoff']/1000;
+        $visit->payoff = $this->getNewPayoff($article);
         $visit->save();
+    }
+
+    public function getNewPayoff($article)
+    {
+        $visit_payoff = $article->category()->get()->toArray()[0]['payoff']/1000;
+
+        if($article->payoff_counter + $visit_payoff < 200)
+        {
+            return $article->payoff_counter + $visit_payoff;
+        }
+
+        return 200;
     }
 
     private function isArticleVisited($article)

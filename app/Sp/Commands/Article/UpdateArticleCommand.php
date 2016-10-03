@@ -13,6 +13,7 @@ class UpdateArticleCommand extends Command
       public $description;
       public $body;
       public $category_id;
+      public $tags;
       public $file;
       public $active;
 
@@ -21,13 +22,14 @@ class UpdateArticleCommand extends Command
      *
      * @return void
      */
-    public function __construct($article_id, $title, $description, $body, $category_id,  $file, $active = null)
+    public function __construct($article_id, $title, $description, $body, $category_id, $tags = [], $file,  $active = null)
     {
         $this->article_id = $article_id;
         $this->title = $title;
         $this->description = $description;
         $this->body = $body;
         $this->category_id = $category_id;
+        $this->tags = $tags;
         $this->file = $file;
         $this->active = $active;
     }

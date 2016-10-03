@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use Sp\Models\Article;
 use Sp\Repositories\ArticleRepo;
 use Sp\Repositories\CategoryRepo;
+use Sp\Repositories\TagsRepo;
 use Sp\Repositories\UsersRepo;
+
 
 
 class DashboardController extends Controller
@@ -53,7 +55,7 @@ class DashboardController extends Controller
         return redirect()->to('/dashboard/articoli/' . $article->id .'/modifica');
     }
 
-    public function edit($id, ArticleRepo $article_repo, CategoryRepo $category_repo)
+    public function edit($id, ArticleRepo $article_repo, CategoryRepo $category_repo, TagsRepo $tags_repo)
     {
         $article = $article_repo->getById($id);
 
@@ -62,8 +64,9 @@ class DashboardController extends Controller
         if(! $article ) return abort(404);
 
         $categories = $category_repo->getAllList();
+        $tags = $tags_repo->getAll();
 
-        return view('dashboard.edit-article', compact('article', 'categories'));
+        return view('dashboard.edit-article', compact('article', 'categories', 'tags'));
     }
 
     /**
@@ -75,6 +78,9 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        // return $request->input();
+        
         $data = $this->manageFields($request);
 
         // return $request->input();
