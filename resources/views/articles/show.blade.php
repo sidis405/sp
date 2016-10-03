@@ -6,7 +6,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{$article->title}} | SitoPubblico">
     <meta property="og:description" content="{{$article->description}}">
-    <meta property="og:image" content="{{rawurlencode($article->present()->article_image_url())}}">
+    <meta property="og:image" content="{{$article->present()->article_image_url()}}">
 
 @stop
 
