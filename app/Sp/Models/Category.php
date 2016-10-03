@@ -40,7 +40,7 @@ class Category extends Model  implements HasMedia
     public function articles(){
 
         // return $this->hasMany('Sp\Models\Article', 'category_id');
-        return $this->hasMany('Sp\Models\Article', 'category_id')->where('status_id', 3);
+        return $this->hasMany('Sp\Models\Article', 'category_id')->where('status_id', 3)->orderBy('updated_at', 'DESC');
 
     }
 

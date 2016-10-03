@@ -28,4 +28,9 @@ class TagsRepo
     {
         return Tags::where('tag', $tag)->first();
     }
+
+    public function getBySlugFront($tag)
+    {
+        return Tags::with('articles.user', 'articles.category')->where('tag', $tag)->first();
+    } 
 }

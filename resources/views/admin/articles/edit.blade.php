@@ -2,6 +2,8 @@
 
 @section('header_scripts')
 <link rel="stylesheet" href="/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/css/select2.min.css">
+
 
     <link rel="stylesheet" href="/bower_components/bootstrap-fileinput/css/fileinput.css">
 
@@ -46,6 +48,13 @@
               @endforeach
             </select>
 
+            <p>Aggiungi tag:</p>
+            <select name="tags[]" class="tag-select form-control" multiple>
+              @foreach($tags as $tag)
+                <option value="{{$tag->tag}}" @if(in_array($tag->id ,array_pluck($article->tags, 'id'))) selected @endif>{{$tag->tag}}</option>
+              @endforeach
+            </select>
+
             <div class="form-group">
               <div class="row">
                 <div class="col-xs-12" style="display:none;">
@@ -75,6 +84,8 @@
 
   @section('footer_scripts')
   <script src="/js/bootstrap-select.min.js"></script>
+  <script src="/js/select2.min.js"></script>
+
   
   <script> $('.cat-select').selectpicker();</script>
   
@@ -112,6 +123,13 @@
                 'minImageHeight': 350,
               }
             );
+      </script>
+
+      <script>
+        $(".tag-select").select2({
+          tags: true,
+          language: "it"
+        })
       </script>
 
 

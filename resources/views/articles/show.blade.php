@@ -35,7 +35,7 @@
               <div class="post post-single post-{{$article->category->color}}">
                 <div class="post-meta">
                   <div class="category">{{$article->category->name}}</div>
-                  <div class="date">Pubblicato il {{$article->created_at->format('d.m.Y')}} alle {{$article->created_at->format('H:i')}}</div>
+                  <div class="date">Pubblicato il {{$article->updated_at->format('d.m.Y')}} alle {{$article->updated_at->format('H:i')}}</div>
                 </div>
                 <div class="clearfix"></div>
                 <h1 class="single-title">{{$article->title}}</h1>
@@ -58,9 +58,19 @@
                       <div class="adv body-adv"><img data-src="holder.js/100px150?theme=social"></div>
                     </div>
                   </div>
-                  <p>{{$article->body}}</p>
+                  <p>{!!$article->body!!}</p>
                 </div>
-                <div class="post-toolbar"><a href="#" class="btn btn-facebook"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i></a><a href="#" class="btn btn-default btn-right"><i class="fa fa-envelope-o"></i></a></div>
+                <div class="post-toolbar social">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{\Request::fullUrl()}}" class="btn btn-facebook"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/share?url={{\Request::fullUrl()}}&amp;text={{$article->title}}" class="btn btn-twitter"><i class="fa fa-twitter"></i></a>
+                <!-- <a href="#" class="btn btn-default btn-right"><i class="fa fa-envelope-o"></i></a> -->
+                </div>
+                <div class="post-toolbar">
+                Tag: 
+                  @foreach($article->tags as $tag)
+                      <a href="/tag/{{$tag->tag}}">#{{$tag->tag}}</a>
+                  @endforeach
+                </div>
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="adv body-adv"><img data-src="holder.js/100px150?theme=social"></div>

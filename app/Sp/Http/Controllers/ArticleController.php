@@ -36,7 +36,10 @@ class ArticleController extends Controller
 
         $referrer = $request->headers->get('referer');
 
+
         $article = $article_repo->getById($article_id);
+
+        // return $article;
 
         // return $article->status_id;
 

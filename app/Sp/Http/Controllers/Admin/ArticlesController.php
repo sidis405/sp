@@ -9,6 +9,8 @@ use Sp\Repositories\ArticleRepo;
 use Sp\Repositories\CategoryRepo;
 use Sp\Repositories\UsersRepo;
 use Sp\Models\Article;
+use Sp\Repositories\TagsRepo;
+
 
 
 class ArticlesController extends Controller
@@ -43,15 +45,18 @@ class ArticlesController extends Controller
 
     }
 
-    public function edit($id, ArticleRepo $article_repo, CategoryRepo $category_repo)
+    public function edit($id, ArticleRepo $article_repo, CategoryRepo $category_repo,  TagsRepo $tags_repo)
     {
         $article = $article_repo->getById($id);
+
+        // return $article;
 
         if(! $article ) return abort(404);
 
         $categories = $category_repo->getAllList();
+        $tags = $tags_repo->getAll();
 
-        return view('admin.articles.edit', compact('article', 'categories'));
+        return view('admin.articles.edit', compact('article', 'categories', 'tags'));
     }
 
 

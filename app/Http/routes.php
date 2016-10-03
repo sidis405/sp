@@ -25,6 +25,8 @@ Route::get('news', '\Sp\Http\Controllers\HomeController@news');
 
 Route::get('categorie/{category_slug}', '\Sp\Http\Controllers\CategoryController@show');
 
+Route::get('tag/{tag}', '\Sp\Http\Controllers\TagsController@show');
+
 Route::get('categorie/{category_slug}/articolo/{article_id}/{article_slug}', '\Sp\Http\Controllers\ArticleController@show');
 
 

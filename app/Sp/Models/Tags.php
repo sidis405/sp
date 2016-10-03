@@ -20,7 +20,7 @@ class Tags extends Model
 
     public function articles(){
 
-        return $this->belongsToMany('Sp\Models\Article', 'articles_tags', 'tag_id', 'article_id')->where('status_id', 3);
+        return $this->belongsToMany('Sp\Models\Article', 'articles_tags', 'tag_id', 'article_id')->where('status_id', 3)->orderBy('updated_at', 'DESC');
 
     }
 
