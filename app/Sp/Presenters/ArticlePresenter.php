@@ -145,7 +145,7 @@ class ArticlePresenter extends Presenter
     public function article_image_url()
     {
 
-      $path = (strpos($this->image_path, "htt") !== 0) ? '/media/'.$this->image_path : $this->image_path;
+      $path = (strpos($this->image_path, "htt") !== 0) ? 'http://' . env('LOCAL_URL') . '/media/'.$this->image_path : $this->image_path;
 
       return $path;
     }
