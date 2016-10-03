@@ -7,7 +7,7 @@
     <meta property="og:title" content="{{$article->title}} | SitoPubblico">
     <meta property="og:description" content="{{$article->description}}">
     <meta property="og:image" content="{{$article->present()->article_image_url()}}">
-    <meta property="fb:app_id" content="{{env('869483986514716')}}">
+    <meta property="fb:app_id" content="{{env('FACEBOOK_CLIENT_ID')}}">
 
 @stop
 
