@@ -26,8 +26,14 @@ class ArticleWasApproved extends Event implements ShouldBroadcast
         $this->user_id = $this->article['user_id'];
 
         $this->data = array(
-            'command'=> 'notify'
+            'command'=> 'notify',
+            'url' => $this->makeArticleUrl($this->article)
         );
+    }
+
+    public function makeArticleUrl($article)
+    {
+        return "/categorie/" . $article->category->slug . "/articolo/" . $article->id . "/" . $article->slug;
     }
 
     /**

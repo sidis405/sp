@@ -5,7 +5,7 @@
 
         // console.log(message.article);
 
-        notifyUserArticleWasPublished(message.article)
+        notifyUserArticleWasPublished(message.article, message.data.url)
 
      });
 
@@ -29,13 +29,11 @@
     // NOTIFIERS
     // 
     
-    function notifyUserArticleWasPublished(article)
+    function notifyUserArticleWasPublished(article, url)
     {
         var container = $('#notify-dropdown');
 
-        var markup = '<li><a href="' + window.location.origin + '/' + article.slug + '">Il tuo articolo "' + article.title +'" è stato approvato</a></li>'
-
-        console.log(markup);
+        var markup = '<li><a href="' + window.location.origin + url + '">Il tuo articolo "' + article.title +'" è stato approvato</a></li>'
 
         container.prepend( $(markup) );
 

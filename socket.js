@@ -15,8 +15,8 @@ function handler(req, res) {
 }
 
 io.on('connection', function(socket) {
-    socket.emit('ping', { payload: 'Successfully connected to socket. Awaiting connections.' });
-    console.log('client connected')
+    socket.emit('ping', { payload: 'Con.' });
+    // console.log('client connected')
 });
 
 redis.psubscribe('*', function(err, count) {
@@ -25,7 +25,7 @@ redis.psubscribe('*', function(err, count) {
 
 redis.on('pmessage', function(subscribed, channel, message) {
     message = JSON.parse(message);
-   console.log(channel);
-   console.log(message);
+   // console.log(channel);
+   // console.log(message);
     io.emit(channel + ':' + message.event, message.data);
 });
