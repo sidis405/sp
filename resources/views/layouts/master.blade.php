@@ -75,6 +75,23 @@
   <script src="/js/main.js"></script>
   <script src="/js/custom.js"></script>
 
+  @if(@$currentUser && $currentUser->role !== 'admin')
+    
+    <script src="{{ asset('/js/socket.io.js') }}"></script>
+    
+    <script> var userid = {{$currentUser->id}}; </script>
+    <script src="/js/sub_user.js"></script>          
+    
+  @elseif(@$currentUser && $currentUser->role == 'admin')
+  
+
+    <script src="{{ asset('/js/socket.io.js') }}"></script>
+      
+    <script src="/js/sub_admin.js"></script>          
+    
+  
+  @endif
+
 
   <!-- endbuild-->
 </html>

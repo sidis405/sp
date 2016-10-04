@@ -7,7 +7,7 @@ use Sp\Models\Article;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class ArticleWasCreated extends Event
+class ArticleWasCreated extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 
@@ -19,6 +19,9 @@ class ArticleWasCreated extends Event
     public function __construct(Article $article)
     {
         $this->article = $article;
+        $this->data = array(
+            'command'=> 'notify'
+        );
     }
 
     /**
@@ -28,6 +31,6 @@ class ArticleWasCreated extends Event
      */
     public function broadcastOn()
     {
-        return [];
+        return ['admin_'];
     }
 }

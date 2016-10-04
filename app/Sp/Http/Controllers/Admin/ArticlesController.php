@@ -2,15 +2,16 @@
 
 namespace Sp\Http\Controllers\Admin;
 
+use Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Sp\Models\Article;
 use Sp\Repositories\ArticleRepo;
 use Sp\Repositories\CategoryRepo;
-use Sp\Repositories\UsersRepo;
-use Sp\Models\Article;
 use Sp\Repositories\TagsRepo;
-
+use Sp\Repositories\UsersRepo;
+use Sp\Events\Article\ArticleWasApproved;
 
 
 class ArticlesController extends Controller
@@ -148,6 +149,14 @@ class ArticlesController extends Controller
 
         $article->status_id = $request->input('payload');
         $article->save();
+
+        if($request->input('payload') == 3)
+        {
+
+            Event::fire(new ArticleWasApproved($article));
+            
+        }
+
 
         return 'true';
     }

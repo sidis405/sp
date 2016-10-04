@@ -25,14 +25,13 @@
             <div class="dropdown" style="float: right;">
               <button class="btn btn-primary dropdown-toggle btn-notify" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <i class="fa fa-bell-o"></i>
-                <span class="badge">3</span>
+                <span class="badge" id="notification-count"></span>
               </button>
               <ul id="notify-dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu2"">
-                <li><a href="#">Il tuo articolo è stato approvato</a></li>
-                <li><a href="#">Il tuo articolo è stato rifiutato</a></li>
-                <li><a href="#"><b>Mario Rossi</b> ha iniziato a seguirti</a></li>
                 <li class="viewed"><a href="#">Il tuo articolo è stato approvato</a></li>
-                <!-- <li class="viewed"><a href="#">Il tuo articolo è stato rifiutato</a></li> -->
+                <li class="viewed"><a href="#">Il tuo articolo è stato rifiutato</a></li>
+                <li class="viewed"><a href="#"><b>Mario Rossi</b> ha iniziato a seguirti</a></li>
+                <li class="viewed"><a href="#">Il tuo articolo è stato approvato</a></li>
                 <li class="viewed"><a href="#"><b>Mario Rossi</b> ha iniziato a seguirti</a></li>
               </ul>
             </div>
