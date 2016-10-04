@@ -14,19 +14,20 @@
                   <div class="profile">
                     <div class="profile-pic"><img src="{{$user->avatar}}" class="img-responsive"></div>
                     <h1 class="profile-name">{{$user->present()->user_name()}}</h1><span>Iscritto dal {{$user->created_at->format('d.m.Y')}}</span>
+                     <span class="pull-right">{!!$user->present()->follow_button()!!}</span>
                     <div class="profile-data">
                       <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th>news</th>
-                            <th>condivisioni</th>
+                            <th>seguito da</th>
                             <th>contributor level</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td><b>{{count($user->articles)}}</b></td>
-                            <td><b>0</b></td>
+                            <td><b>{{count($user->followers)}}</b></td>
                             <td><img data-src="holder.js/48x48"></td>
                           </tr>
                         </tbody>

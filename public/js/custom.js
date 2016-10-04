@@ -169,3 +169,48 @@ $('.social a').click(function(e){
     window.open($(this).attr('href'), $(this).data('title'), 'height=320, width=640, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no');
 
 });
+
+$(document).on('click', '.notification-link', function(event){
+
+    var item = $(this);
+
+    ajaxCallFront(item.parent().data('id'), '/notifications/seen', 'POST',  null, null);
+
+
+});
+
+$('.follow-button').on('click', function(event){
+    
+    event.preventDefault();
+
+    var item = $(this);
+
+    ajaxCallFront(item.data('id'), '/profilo/segui', 'POST',  null, null);
+
+    item.attr("disabled", 'disabled');
+
+
+
+});
+
+
+$('.unfollow-button').on('click', function(event){
+    
+    event.preventDefault();
+
+    var item = $(this);
+
+    ajaxCallFront(item.data('id'), '/profilo/segui', 'DELETE',  null, removeRowFromIFollow(item.data('id')));
+
+});
+
+function removeRowFromIFollow(id)
+{
+    $('#ifollow_' + id).remove();
+}
+
+
+
+
+
+

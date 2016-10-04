@@ -5,7 +5,7 @@
 
         // console.log(message.article);
 
-        notifyUserArticleWasPublished(message.article, message.data.url)
+        notifyUserArticleWasPublished(message.article, message.data)
 
      });
 
@@ -14,6 +14,10 @@
      });
 
     socket.on("user_"+ userid + ":Sp\\Events\\Users\\UserFollowedYou", function(message){
+        console.log(message);
+     });
+
+    socket.on("user_"+ userid + ":Sp\\Events\\Article\\NewArticleFromFollowedUser", function(message){
         console.log(message);
      });
 
@@ -29,11 +33,11 @@
     // NOTIFIERS
     // 
     
-    function notifyUserArticleWasPublished(article, url)
+    function notifyUserArticleWasPublished(article, data)
     {
         var container = $('#notify-dropdown');
 
-        var markup = '<li><a href="' + window.location.origin + url + '">Il tuo articolo "' + article.title +'" è stato approvato</a></li>'
+        var markup = '<li data-id="' + data.notification_id + '" class="' + data.type + '"><a href="' + window.location.origin + data.url + '" class="notification-link">Il tuo articolo "' + article.title +'" è stato approvato</a></li>'
 
         container.prepend( $(markup) );
 

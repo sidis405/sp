@@ -26,4 +26,24 @@ class UserPresenter extends Presenter
     {
         return substr($this->name, 0, 1) . '. ' . $this->surname;
     }
+
+    public function follow_button()
+    {
+
+        if($this->id == \Auth::user()->id)
+        {
+            return '';
+        }
+
+        if(in_array(\Auth::user()->id, array_pluck($this->followers, 'id')))
+        {
+            return '<a class="btn btn-primary follow-button" disabled>Segui</a>';
+
+        }else{
+
+            return '<a class="btn btn-primary follow-button" data-id="' . $this->id . '">Segui</a>';
+
+        }
+
+    }
 }

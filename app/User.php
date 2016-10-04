@@ -62,6 +62,26 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany(\Sp\Models\Article::class, 'user_id')->where('status_id', 3)->orderBy('created_at', 'DESC')->take(5);
     }
 
+    public function newnotifications()
+    {
+        return $this->hasMany(\Sp\Models\UserNotifications::class, 'user_id')->where('seen', 0);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(\Sp\Models\UserNotifications::class, 'user_id')->orderBy('created_at', 'DESC')->take(50);
+    }
+
+    public function followers(){
+
+        return $this->belongsToMany('App\User', 'followers', 'user_id', 'follower_id');
+    }
+
+    public function ifollow(){
+
+        return $this->belongsToMany('App\User', 'followers', 'follower_id', 'user_id');
+
+    }
 
     public static function edit($user_id, $name, $surname, $username, $email)
     {

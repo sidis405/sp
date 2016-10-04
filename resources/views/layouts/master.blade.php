@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    <meta name="_token" content="{{ csrf_token() }}" />
     @yield('header_scripts')
     <!-- endbuild-->
     <!-- build:css css/main.css-->

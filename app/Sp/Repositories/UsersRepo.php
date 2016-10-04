@@ -19,7 +19,7 @@ class UsersRepo
 
     public function getBySlug($slug)
     {
-        return User::with('articles.category')->where('username', $slug)->first();
+        return User::with('articles.category', 'followers')->where('username', $slug)->first();
     } 
 
     public function getAll()

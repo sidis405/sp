@@ -90,6 +90,11 @@ Route::group(array('middleware' => 'auth.sp.user'), function () {
     Route::post('profilo', '\Sp\Http\Controllers\UsersController@profile_form_save');
     Route::post('password', '\Sp\Http\Controllers\UsersController@password_form_save');
     Route::post('metodi', '\Sp\Http\Controllers\UsersController@paymethods_form_save');
+    
+
+    Route::post('notifications/seen', '\Sp\Http\Controllers\NotificationsController@seen');
+    Route::post('profilo/segui', '\Sp\Http\Controllers\FollowersController@follow');
+    Route::delete('profilo/segui', '\Sp\Http\Controllers\FollowersController@unfollow');
 
 });
 
