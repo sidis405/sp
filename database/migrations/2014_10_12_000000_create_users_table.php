@@ -30,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->string('social_twitter')->nullable();
             $table->string('social_google')->nullable();
             $table->string('social_website')->nullable();
+            $table->datetime('last_login')->nullable();
+            $table->string('ip')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

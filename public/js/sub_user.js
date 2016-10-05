@@ -18,6 +18,8 @@
      });
 
     socket.on("user_"+ userid + ":Sp\\Events\\Article\\NewArticleFromFollowedUser", function(message){
+        notifyUserArticleByFollowedUserWasPublished(message.article, message.data)
+
         console.log(message);
      });
 
@@ -38,6 +40,18 @@
         var container = $('#notify-dropdown');
 
         var markup = '<li data-id="' + data.notification_id + '" class="' + data.type + '"><a href="' + window.location.origin + data.url + '" class="notification-link">Il tuo articolo "' + article.title +'" è stato approvato</a></li>'
+
+        container.prepend( $(markup) );
+
+        incrementCounter();
+
+    }
+
+    function notifyUserArticleByFollowedUserWasPublished(article, data)
+    {
+        var container = $('#notify-dropdown');
+
+        var markup = '<li data-id="' + data.notification_id + '" class="' + data.type + '"><a href="' + window.location.origin + data.url + '" class="notification-link">' + data.user_name +' ha pubblicato un nuovo articolo.</a></li>'
 
         container.prepend( $(markup) );
 

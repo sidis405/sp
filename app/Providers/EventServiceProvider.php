@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use Ibi\Listeners\ExternalUsersListener;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Ibi\Listeners\ExternalUsersListener;
+use Sp\Listeners\ArticlesApprovedListener;
 use Sp\Listeners\ArticlesVisitListener;
+use Sp\Listeners\UserLoginListener;
+
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -15,13 +18,18 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+        // 'Illuminate\Auth\Events\Login' => [
+        //     'Sp\Listeners\LogSuccessfulLogin',
+        // ],
+         'auth.login' => [
+            'Sp\Handlers\Events\UserLoggedInHandler',
         ],
     ];
 
     protected $subscribe = [
         ArticlesVisitListener::class,
+        ArticlesApprovedListener::class,
+        // UserLoginListener::class,
     ];
 
     /**
