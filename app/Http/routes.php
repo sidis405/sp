@@ -20,6 +20,7 @@
 // });
 
 Route::get('/', '\Sp\Http\Controllers\HomeController@news');
+Route::get('/home', '\Sp\Http\Controllers\HomeController@home');
 
 Route::get('news', '\Sp\Http\Controllers\HomeController@news');
 
