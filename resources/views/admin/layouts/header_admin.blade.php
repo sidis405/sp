@@ -7,6 +7,8 @@
             <ul class="dropdown-menu  multi-level" aria-labelledby="dropdownMenu1">
               <li><a href="/admin">Admin Dashboard</a></li>
               <li role="separator" class="divider"></li>
+              <li><a href="/admin/argomenti">Argomenti del giorno</a></li>
+              <li role="separator" class="divider"></li>
               <li><a href="/admin/nuovi-articoli">Articoli in coda</a></li>
               <li><a href="/admin/articoli">Listato Articoli</a></li>
               <li role="separator" class="divider"></li>

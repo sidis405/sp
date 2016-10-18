@@ -22,6 +22,25 @@
               <li><a href="/logout"><i class="fa fa-fw fa-power-off"></i> Esci</a></li>
             </ul>
 
+
+            <div class="dropdown" style="float: right;">
+              <button class="btn btn-primary dropdown-toggle btn-notify" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <i class="fa fa-list-ul" aria-hidden="true"></i>
+                <span class="badge" id="notification-count">@if(count($day_topics) >0) {{count($day_topics) }}@endif</span>
+              </button>
+              <ul id="notify-dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu2"">
+              @if(count($day_topics) > 0)
+                @foreach($day_topics as $single_topic)
+                  <li><a href="/dashboard/argomenti-del-giorno">{!!$single_topic->name!!}</a></li>
+                @endforeach
+
+              <li class="viewed"><a href="/dashboard/argomenti-del-giorno">Vedi lista</a></li>
+              @else
+                  <li class="viewed"><a href="#">Non ci argomenti suggeriti</a></li>
+              @endif
+              </ul>
+            </div>
+
             <div class="dropdown" style="float: right;">
               <button class="btn btn-primary dropdown-toggle btn-notify" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <i class="fa fa-bell-o"></i>
@@ -37,6 +56,7 @@
               @endif
               </ul>
             </div>
+
 
           </div>
 

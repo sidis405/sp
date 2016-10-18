@@ -18,6 +18,7 @@ return array(
     'CreatePaymentRequestsTable' => $baseDir . '/database/migrations/2016_07_05_142706_create_payment_requests_table.php',
     'CreatePaymentStatusesTable' => $baseDir . '/database/migrations/2016_07_05_142541_create_payment_statuses_table.php',
     'CreateTagsTable' => $baseDir . '/database/migrations/2016_10_03_102936_create_tags_table.php',
+    'CreateTopicsTable' => $baseDir . '/database/migrations/2016_10_18_101334_create_topics_table.php',
     'CreateUserNotificationsTable' => $baseDir . '/database/migrations/2016_10_04_122901_create_user_notifications_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'CreateVisitsTable' => $baseDir . '/database/migrations/2016_06_06_125156_create_visits_table.php',

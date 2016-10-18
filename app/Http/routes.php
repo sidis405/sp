@@ -69,6 +69,13 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
     Route::get('pagamenti', '\Sp\Http\Controllers\Admin\EarningsController@index');
     Route::get('impostazioni', '\Sp\Http\Controllers\Admin\SettingsController@index');
 
+    Route::get('argomenti', '\Sp\Http\Controllers\Admin\TopicsController@index');
+    Route::get('argomenti/crea', '\Sp\Http\Controllers\Admin\TopicsController@create');
+    Route::post('argomenti', '\Sp\Http\Controllers\Admin\TopicsController@store');
+    Route::get('argomenti/{id}/modifica', '\Sp\Http\Controllers\Admin\TopicsController@edit');
+    Route::post('argomenti/{id}', '\Sp\Http\Controllers\Admin\TopicsController@update');
+    Route::delete('argomenti/{id}', '\Sp\Http\Controllers\Admin\TopicsController@destroy');
+
 });
 
 Route::group(array('middleware' => 'auth.sp.user'), function () {
@@ -86,6 +93,8 @@ Route::group(array('middleware' => 'auth.sp.user'), function () {
     Route::post('dashboard/articoli/{id}/invia', '\Sp\Http\Controllers\DashboardController@submit');
     Route::delete('dashboard/articoli', '\Sp\Http\Controllers\DashboardController@destroy');
 
+
+     Route::get('dashboard/argomenti-del-giorno', '\Sp\Http\Controllers\TopicsController@index');
     
     Route::get('impostazioni', '\Sp\Http\Controllers\UsersController@settings_form');
     Route::post('profilo', '\Sp\Http\Controllers\UsersController@profile_form_save');
