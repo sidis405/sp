@@ -101,7 +101,7 @@
                       </div>
                       <div class="col-xs-6">
                         <h1 class="post-title"><a href="#">{{$related->title}}</a></h1>
-                        <div class="post-toolbar"><span class="author">{{$related->user->name}}</span></div>
+                        <div class="post-toolbar"><span class="author">{{$related->user->present()->user_name_short}}</span></div>
                       </div>
                     </div>
                   </div>
