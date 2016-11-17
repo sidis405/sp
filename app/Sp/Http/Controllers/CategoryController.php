@@ -53,9 +53,9 @@ class CategoryController extends Controller
         $section1 = [];
         //Main featured slider
         $section1['main_carousel'] =    $articles->slice(0, 3);
-        $section1['featured'] =         $articles->slice(4, 1);
-        $section1['medium'] =           $articles->slice(5, 2);
-        $section1['sidebar'] =          $articles->slice(8, 3);
+        $section1['featured'] =         $articles->slice(3, 1);
+        $section1['medium'] =           $articles->slice(4, 2);
+        $section1['sidebar'] =          $articles->slice(6, 3);
 
 
         $section2 = [];

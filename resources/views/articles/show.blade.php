@@ -96,7 +96,7 @@
                     <div class="row">
                       <div class="col-xs-6">
                         <div class="post-img">
-                          <div class="category"><a href="/categorie/{{$related->category->name}}">Cronaca</a></div><img class="img-responsive post-red" src="{{$related->image_path}}"/>
+                          <div class="category"><a href="/categorie/{{$related->category->name}}">Cronaca</a></div><img class="img-responsive post-red" src="/media/{{$related->image_path}}"/>
                         </div>
                       </div>
                       <div class="col-xs-6">

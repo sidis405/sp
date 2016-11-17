@@ -35,7 +35,7 @@
             <li><a href="/categorie/politica">Politica</a></li>
             <li><a href="/categorie/salute">Salute</a></li>
             <li><a href="/categorie/alimentazione">Alimentazione</a></li>
-            <li><a href="/categorie/expat">Expat</a></li>
+            <li><a href="/categorie/attualita">Attualità</a></li>
             <li><a href="/categorie/cronaca">Cronaca</a></li>
             <li><a href="/categorie/economia">Economia</a></li>
             <li><a href="/categorie/societa">Società</a></li>
