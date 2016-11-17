@@ -7,7 +7,10 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
-	config.extraPlugins= 'widget,dialog,oembed';
+
+	config.language = 'it';
+
+	config.extraPlugins= 'widget,dialog,oembed,wordcount';
 	config.toolbarLocation = 'top';
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
@@ -25,6 +28,20 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'styles', groups: [ 'styles' ] },
 	];
 
+	config.wordcount = {
+
+	    // Whether or not you want to show the Word Count
+	    showWordCount: true,
+
+	    // Whether or not you want to show the Char Count
+	    showCharCount: false,
+	    
+	    // Maximum allowed Word Count
+	    maxWordCount: 300,
+
+	    // Maximum allowed Char Count
+	    maxCharCount: 1000
+	};
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
 	// config.removeButtons = 'Underline,Subscript,Superscript';
