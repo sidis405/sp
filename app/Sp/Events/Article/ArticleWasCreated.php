@@ -11,6 +11,10 @@ class ArticleWasCreated extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 
+
+    public $article;
+    public $data;
+
     /**
      * Create a new event instance.
      *

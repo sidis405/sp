@@ -24,7 +24,11 @@
                 <h3 class="plus">Letti</h3>
               </div>
 
-              {!! $section['featured'][0]->present()->large() !!}
+				@if(count($section['featured']) > 0)
+
+              		{!! @$section['featured'][0]->present()->large() !!}
+				
+				@endif
               
               <div class="row">
               @foreach($section['medium'] as $medium_item)

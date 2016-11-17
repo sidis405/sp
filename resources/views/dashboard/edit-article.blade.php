@@ -133,8 +133,8 @@
                 'allowedFileExtensions': ["jpg", "png"],
                    // 'maxImageWidth': 250,
                    // 'maxImageHeight': 250,
-                'minImageWidth': 730,
-                'minImageHeight': 350,
+                'minImageWidth': 400,
+                'minImageHeight': 250,
               }
             );
 

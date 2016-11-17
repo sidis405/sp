@@ -251,7 +251,7 @@ label {
 }
 
 .post-single .post-body p {
-  display: inline;
+  /*display: inline;*/
 }
 
 .post-single .post-meta .category {
