@@ -8,10 +8,9 @@ class UserPresenter extends Presenter
 {
     public function user_url()
     {
-        if(strlen($this->username) > 0)
-        {
+        if (strlen($this->username) > 0) {
             $slug = '@' .$this->username;
-        }else{
+        } else {
             $slug = 'utente/' . $this->id;
         }
         return '/' . $slug;
@@ -29,21 +28,16 @@ class UserPresenter extends Presenter
 
     public function follow_button()
     {
+        if (\Auth::user()) {
+            if ($this->id == \Auth::user()->id) {
+                return '';
+            }
 
-        if($this->id == \Auth::user()->id)
-        {
-            return '';
+            if (in_array(\Auth::user()->id, array_pluck($this->followers, 'id'))) {
+                return '<a class="btn btn-primary follow-button" disabled>Segui</a>';
+            } else {
+                return '<a class="btn btn-primary follow-button" data-id="' . $this->id . '">Segui</a>';
+            }
         }
-
-        if(in_array(\Auth::user()->id, array_pluck($this->followers, 'id')))
-        {
-            return '<a class="btn btn-primary follow-button" disabled>Segui</a>';
-
-        }else{
-
-            return '<a class="btn btn-primary follow-button" data-id="' . $this->id . '">Segui</a>';
-
-        }
-
     }
 }
