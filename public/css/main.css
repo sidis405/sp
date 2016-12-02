@@ -217,6 +217,10 @@ label {
   margin-bottom: 15px;
 }
 
+.post-sidebar .img{
+  background-size: cover!important; 
+}
+
 .post-sidebar .post-title {
   font-size: 1.6em;
 }

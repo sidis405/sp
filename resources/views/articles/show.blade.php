@@ -91,21 +91,7 @@
                   <div class="module-title">
                     <h3 class="star">In evidenza</h3>
                   </div>
-                  @foreach($article->related as $related)
-                  <div class="post post-sidebar post-{{$related->category->color}}">
-                    <div class="row">
-                      <div class="col-xs-6">
-                        <div class="post-img">
-                          <div class="category"><a href="/categorie/{{$related->category->name}}">Cronaca</a></div><img class="img-responsive post-red" src="/media/{{$related->image_path}}"/>
-                        </div>
-                      </div>
-                      <div class="col-xs-6">
-                        <h1 class="post-title"><a href="#">{{$related->title}}</a></h1>
-                        <div class="post-toolbar"><span class="author">{{$related->user->present()->user_name_short}}</span></div>
-                      </div>
-                    </div>
-                  </div>
-                  @endforeach
+                  @include('layouts.related-sidebar')
                 </div>
               </aside>
             </div>

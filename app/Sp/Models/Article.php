@@ -74,7 +74,7 @@ class Article extends Model  implements HasMedia
 
     public function related()
     {
-        return $this->hasMany(\Sp\Models\Article::class, 'category_id', 'category_id')->take(3);
+        return $this->hasMany(\Sp\Models\Article::class, 'category_id', 'category_id')->where('status_id', 3)->take(3);
     }
 
     public function status()

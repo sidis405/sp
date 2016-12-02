@@ -97,7 +97,8 @@ class ArticlePresenter extends Presenter
                     <div class="col-xs-6">
                       <div class="post-img">
                         <div class="category">' . $this->category->present()->category_url(). '</div>
-                        <a href="' . $this->article_url() . '">'. $this->article_image() .'</a>
+                        <a href="' . $this->article_url() . '">
+                          <div class="img" style="height: 120px; background: url('. $this->article_image() .') no-repeat center center"></div></a>
                       </div>
                     </div>
                     <div class="col-xs-6">
