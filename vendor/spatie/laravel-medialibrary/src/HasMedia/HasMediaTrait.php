@@ -28,7 +28,7 @@ trait HasMediaTrait
     public static function bootHasMediaTrait()
     {
         static::deleted(function ($entity) {
-            if (!$entity->deletePreservingMedia) {
+            if (!$entity->shouldDeletePreservingMedia()) {
                 $entity->media()->get()->map(function (Media $media) {
                     $media->delete();
                 });
@@ -307,5 +307,19 @@ trait HasMediaTrait
         $this->deletePreservingMedia = true;
 
         return $this->delete();
+    }
+
+    /**
+     * Determines if the media files should be preserved when the media object gets deleted.
+     *
+     * @return \Spatie\MediaLibrary\Media
+     */
+    public function shouldDeletePreservingMedia()
+    {
+        if (isset($this->deletePreservingMedia)) {
+            return $this->deletePreservingMedia;
+        }
+
+        return false;
     }
 }

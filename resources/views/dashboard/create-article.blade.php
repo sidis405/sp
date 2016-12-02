@@ -40,7 +40,7 @@
 
             <select name="category_id" class="cat-select">
               @foreach($categories as $category)
-                <option value="{{$category->id}}" data-class="{{$category->color}}">{{$category->name}}</option>
+                <option value="{{$category->id}}" class="{{$category->color}}" data-class="{{$category->color}}">{{$category->name}}</option>
               @endforeach
             </select>
 
@@ -82,7 +82,12 @@
 
 
       <script>
-          $('textarea#body').ckeditor();
+           $('textarea#body').ckeditor({
+            // filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+            // filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            // filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+          });
           $("#article-featured-image").fileinput(
               {
                 'browseClass': "btn btn-primary btn-block",

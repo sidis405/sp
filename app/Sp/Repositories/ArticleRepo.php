@@ -11,6 +11,11 @@ use Sp\Utils\Help;
 class ArticleRepo
 {
 
+    public function search($query)
+    {
+        return Article::search($query)->with('user', 'category')->get();
+    }
+
     public function save(Article $article)
     {
         $article->save();

@@ -15,13 +15,10 @@
           @endif
         </div>
 
-      
-
-          
           <div class="search-container">
-            <form role="search" class="navbar-form">
+            <form role="search" class="navbar-form" action="/ricerca" method="GET">
               <div class="form-group">
-                <input type="text" placeholder="Cerca nel sito..." class="form-control">
+                <input type="text" name="q" placeholder="Cerca nel sito..." class="form-control">
               </div>
               <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
             </form>
@@ -31,7 +28,20 @@
           </div>
           <ul class="nav nav-pills nav-justified">
             <li><a href="/">Home</a></li>
-            <li><a href="/categorie/controinformazione">Controinformazione</a></li>
+            @foreach(array_slice($navCategories->toArray() , 0, 8)as $navCat)
+            <li><a href="/categorie/{{$navCat['slug']}}">{{$navCat['name']}}</a></li>
+            @endforeach
+            <li class="dropdown">
+            <button class="btn btn-transparent dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <span>>></span>
+            </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2"">
+                @foreach(array_slice($navCategories->toArray() , 8, count($navCategories)-1)as $navCat)
+                  <li><a href="/categorie/{{$navCat['slug']}}">{{$navCat['name']}}</a></li>
+                @endforeach
+                </ul>
+            </li>
+<!--             <li><a href="/categorie/controinformazione">Controinformazione</a></li>
             <li><a href="/categorie/politica">Politica</a></li>
             <li><a href="/categorie/salute">Salute</a></li>
             <li><a href="/categorie/alimentazione">Alimentazione</a></li>
@@ -39,7 +49,7 @@
             <li><a href="/categorie/cronaca">Cronaca</a></li>
             <li><a href="/categorie/economia">Economia</a></li>
             <li><a href="/categorie/societa">Società</a></li>
-            <li><a href="/categorie/altro">Altro</a></li>
+            <li><a href="/categorie/altro">Altro</a></li> -->
           </ul>
         </div>
       </div>

@@ -3,9 +3,9 @@
 namespace Spatie\String;
 
 use ArrayAccess;
+use Spatie\String\Exceptions\ErrorCreatingStringException;
 use Spatie\String\Exceptions\UnknownFunctionException;
 use Spatie\String\Exceptions\UnsetOffsetException;
-use Spatie\String\Exceptions\ErrorCreatingStringException;
 use Spatie\String\Integrations\Underscore;
 
 /**
@@ -186,6 +186,31 @@ class Str implements ArrayAccess
     }
 
     /**
+     * Replace the first occurrence of a string.
+     *
+     * @param $search
+     * @param $replace
+     *
+     * @return \Spatie\String\Str
+     */
+    public function replaceFirst($search, $replace)
+    {
+        if ($search == '') {
+            return $this;
+        }
+
+        $position = strpos($this->string, $search);
+
+        if ($position === false) {
+            return $this;
+        }
+
+        $resultString = substr_replace($this->string, $replace, $position, strlen($search));
+
+        return new static($resultString);
+    }
+
+    /**
      * Replace the last occurrence of a string.
      *
      * @param $search
@@ -253,6 +278,10 @@ class Str implements ArrayAccess
      */
     public function possessive()
     {
+        if ($this->string == '') {
+            return new static();
+        }
+
         return new static($this->string.'\''.($this->string[strlen($this->string) - 1] != 's' ? 's' : ''));
     }
 
@@ -329,11 +358,11 @@ class Str implements ArrayAccess
     }
 
     /**
-     * Alias for find
+     * Alias for find.
      *
      * @param array|string $needle
-     * @param bool $caseSensitive
-     * @param bool $absolute
+     * @param bool         $caseSensitive
+     * @param bool         $absolute
      *
      * @return bool
      */
@@ -348,9 +377,9 @@ class Str implements ArrayAccess
      * @param $method
      * @param $args
      *
-     * @return mixed|\Spatie\String\Str
-     *
      * @throws UnknownFunctionException
+     *
+     * @return mixed|\Spatie\String\Str
      */
     public function __call($method, $args)
     {

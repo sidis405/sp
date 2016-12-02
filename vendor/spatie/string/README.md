@@ -6,7 +6,8 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/spatie/string/master.svg?style=flat-square)](https://travis-ci.org/spatie/string)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/string.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/string)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/23a69b38-e4d1-4893-bd14-c45c8b6f07a7/mini.png)](https://insight.sensiolabs.com/projects/23a69b38-e4d1-4893-bd14-c45c8b6f07a7)
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/23a69b38-e4d1-4893-bd14-c45c8b6f07a7.svg?style=flat-square)](https://insight.sensiolabs.com/projects/23a69b38-e4d1-4893-bd14-c45c8b6f07a7)
+[![StyleCI](https://styleci.io/repos/36919962/shield?branch=master)](https://styleci.io/repos/36919962)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/string.svg?style=flat-square)](https://packagist.org/packages/spatie/string)
 
 This package provides a handy way to work with strings in php.
@@ -20,6 +21,14 @@ You can install this package via composer:
 ``` bash
 composer require spatie/string
 ```
+
+## Postcardware
+
+You're free to use this package (it's [MIT-licensed](LICENSE.md)), but if it makes it to your production environment you are required to send us a postcard from your hometown, mentioning which of our package(s) you are using.
+
+Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
+
+The best postcards will get published on the open source page on our website.
 
 ## Usage
 
@@ -119,6 +128,24 @@ Example:
 ```php
 $longText = 'Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime.'
 string($longText)->tease(10); // Now that...
+```
+
+### replaceFirst
+```php
+/**
+ * Replace the first occurrence of a string.
+ *
+ * @param $search
+ * @param $replace
+ * @return \Spatie\String\String
+ */
+public function replaceFirst($search, $replace)
+```
+
+Example:
+```php
+$sentence = 'A good thing is not a good thing.';
+string($sentence)->replaceFirst('good', 'bad'); // A bad thing is not a good thing.
 ```
 
 ### replaceLast
@@ -230,7 +257,6 @@ Example:
 ```php
 string('foo/bar/baz')->segment('/', 0); // foo
 string('foo/bar/baz')->segment('/', 1); // bar
-string('foo/bar/baz')->segment('/', 0, true); // baz
 string('foo/bar/baz')->firstSegment('/'); // foo
 string('foo/bar/baz')->lastSegment('/'); // baz
 ```

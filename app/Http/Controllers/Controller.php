@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Sp\Models\Category;
 use Sp\Repositories\TopicsRepo;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -25,6 +26,7 @@ abstract class Controller extends BaseController
         	
         }
 
+        view()->share('navCategories', Category::whereActive(1)->orderBy('id', 'ASC')->get());
         view()->share('currentUser', $user);
 
         

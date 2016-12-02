@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\User;
 use Auth;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
+use App\User;
 use Socialite;
 use Validator;
+use Sp\Models\Category;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
 
 class AuthController extends Controller
 {
@@ -33,6 +35,8 @@ class AuthController extends Controller
      */
     public function __construct()
     {
+        view()->share('navCategories', Category::whereActive(1)->orderBy('id', 'ASC')->get());
+
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 

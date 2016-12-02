@@ -25,7 +25,7 @@ return [
     'thumb_folder_name'     => 'thumbs',
 
     'images_dir'            => 'public/media/immagini/',
-    'images_url'            => '/media/immagini',
+    'images_url'            => '/media/immagini/',
 
     'files_dir'             => 'public/files/',
     'files_url'             => '/files/',

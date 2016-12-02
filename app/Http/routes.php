@@ -1,6 +1,6 @@
 <?php
 
-// \DB::listen(function($sql, $bindings, $time) {
+// \DB::xxisten(function($sql, $bindings, $time) {
 //     // logger($sql);
 //     // logger($bindings);
 //     // logger($time);
@@ -34,6 +34,8 @@ Route::get('categorie/{category_slug}/articolo/{article_id}/{article_slug}', '\S
 Route::get('@{slug}', '\Sp\Http\Controllers\UsersController@show');
 Route::get('utente/{id}', '\Sp\Http\Controllers\UsersController@showId');
 
+Route::get('ricerca', '\Sp\Http\Controllers\SearchController@search');
+
 Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
 
     Route::get('/', function(){
@@ -66,8 +68,8 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
     Route::get('utenti', '\Sp\Http\Controllers\Admin\UsersController@index');
     Route::get('utenti/{id}', '\Sp\Http\Controllers\Admin\UsersController@show');
 
-    Route::get('pagamenti', '\Sp\Http\Controllers\Admin\EarningsController@index');
-    Route::get('impostazioni', '\Sp\Http\Controllers\Admin\SettingsController@index');
+    // Route::get('pagamenti', '\Sp\Http\Controllers\Admin\EarningsController@index');
+    // Route::get('impostazioni', '\Sp\Http\Controllers\Admin\SettingsController@index');
 
     Route::get('argomenti', '\Sp\Http\Controllers\Admin\TopicsController@index');
     Route::get('argomenti/crea', '\Sp\Http\Controllers\Admin\TopicsController@create');

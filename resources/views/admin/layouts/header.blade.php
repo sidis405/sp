@@ -19,9 +19,9 @@
 
           
           <div class="search-container">
-            <form role="search" class="navbar-form">
+            <form role="search" class="navbar-form" action="/ricerca" method="GET">
               <div class="form-group">
-                <input type="text" placeholder="Cerca nel sito..." class="form-control">
+                <input type="text" name="q" placeholder="Cerca nel sito..." class="form-control">
               </div>
               <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
             </form>

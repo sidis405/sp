@@ -7,7 +7,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
-
+	config.entities=false;
 	config.language = 'it';
 
 	config.extraPlugins= 'widget,dialog,oembed,wordcount';
@@ -37,10 +37,10 @@ CKEDITOR.editorConfig = function( config ) {
 	    showCharCount: false,
 	    
 	    // Maximum allowed Word Count
-	    maxWordCount: 300,
+	    maxWordCount: 3000,
 
 	    // Maximum allowed Char Count
-	    maxCharCount: 1000
+	    maxCharCount: 10000
 	};
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.

@@ -6,15 +6,33 @@ use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
-
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Article extends Model  implements HasMedia
 {
-    use PresentableTrait, HasMediaTrait;
+    use PresentableTrait, HasMediaTrait, SearchableTrait;
 
     protected $presenter = 'Sp\Presenters\ArticlePresenter';
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    protected $searchable = [
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => [
+            'articles.title' => 10,
+            'articles.body' => 7,
+            'categories.name' => 4,
+        ],
+        'joins' => [
+            'categories' => ['categories.id','articles.category_id'],
+        ],
+    ];
 
     public static function make($title, $description, $body, $category_id)
     {

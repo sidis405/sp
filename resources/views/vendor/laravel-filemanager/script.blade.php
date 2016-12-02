@@ -336,7 +336,8 @@ function useFile(file) {
     }
 
     if (path != ds) {
-      item_url = item_url + path + ds;
+      // item_url = item_url + path + ds;
+      item_url = ds + item_url + ds + path + ds;
     }
 
     var url = item_url + file;
