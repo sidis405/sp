@@ -1,3 +1,8 @@
+function adBlockIsEnabled(){
+     var content = '<div class="container"><h2>AdBlock sembra attivo sul tuo browser!</h2><br><p>Disattivare per navigare il sito. <br><b>Grazie</p></div>';
+     $('body').html(content);
+}
+
 $(document).ready(function(){
     $('.post-img').find('img').hover(function() {
         $(this).addClass('transition');

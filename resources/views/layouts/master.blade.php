@@ -104,6 +104,19 @@
         });
       </script>
 
+      <script type="text/javascript">
+          var adblock = true;
+      </script>
+      <script type="text/javascript" src="/js/adframe.js"></script>
+      <script type="text/javascript">
+          if(adblock) {
+                //adblock is installed and enabled on this site :-D
+                console.log('block');
+                adBlockIsEnabled()
+          }else{
+            console.log('good');
+          }
+      </script>
 
 
   <!-- endbuild-->
