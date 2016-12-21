@@ -3,8 +3,8 @@
 namespace Spatie\PdfToImage;
 
 use Spatie\PdfToImage\Exceptions\InvalidFormat;
-use Spatie\PdfToImage\Exceptions\PageDoesNotExist;
 use Spatie\PdfToImage\Exceptions\PdfDoesNotExist;
+use Spatie\PdfToImage\Exceptions\PageDoesNotExist;
 
 class Pdf
 {
@@ -25,7 +25,7 @@ class Pdf
      */
     public function __construct($pdfFile)
     {
-        if (!file_exists($pdfFile)) {
+        if (! file_exists($pdfFile)) {
             throw new PdfDoesNotExist();
         }
 
@@ -57,7 +57,7 @@ class Pdf
      */
     public function setOutputFormat($outputFormat)
     {
-        if (!$this->isValidOutputFormat($outputFormat)) {
+        if (! $this->isValidOutputFormat($outputFormat)) {
             throw new InvalidFormat('Format '.$outputFormat.' is not supported');
         }
 
@@ -119,9 +119,7 @@ class Pdf
     {
         $imageData = $this->getImageData($pathToImage);
 
-        file_put_contents($pathToImage, $imageData);
-
-        return true;
+        return file_put_contents($pathToImage, $imageData) === false ? false : true;
     }
 
     /**
@@ -141,7 +139,6 @@ class Pdf
         }
 
         return array_map(function ($pageNumber) use ($directory, $prefix) {
-
             $this->setPage($pageNumber);
 
             $destination = "{$directory}/{$prefix}{$pageNumber}.{$this->outputFormat}";
@@ -149,7 +146,6 @@ class Pdf
             $this->saveImage($destination);
 
             return $destination;
-
         }, range(1, $numberOfPages));
     }
 
@@ -167,7 +163,7 @@ class Pdf
         $imagick->setResolution($this->resolution, $this->resolution);
 
         $imagick->readImage(sprintf('%s[%s]', $this->pdfFile, $this->page - 1));
-        
+
         $imagick->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
 
         $imagick->setFormat($this->determineOutputFormat($pathToImage));
@@ -192,7 +188,7 @@ class Pdf
 
         $outputFormat = strtolower($outputFormat);
 
-        if (!$this->isValidOutputFormat($outputFormat)) {
+        if (! $this->isValidOutputFormat($outputFormat)) {
             $outputFormat = 'jpg';
         }
 

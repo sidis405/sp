@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'phpbrowscap' => array($vendorDir . '/garetjax/phpbrowscap/src'),
     'Spatie\\Glide' => array($vendorDir . '/spatie/laravel-glide/src'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'PhpSpec' => array($vendorDir . '/phpspec/phpspec/src'),

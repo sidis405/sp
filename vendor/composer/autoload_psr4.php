@@ -7,8 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
-    'hisorange\\Traits\\' => array($vendorDir . '/hisorange/traits/src'),
-    'hisorange\\BrowserDetect\\' => array($vendorDir . '/hisorange/browser-detect/src'),
     'XdgBaseDir\\' => array($vendorDir . '/dnoegel/php-xdg-base-dir/src'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'Unisharp\\Laravelfilemanager\\' => array($vendorDir . '/unisharp/laravel-filemanager/src'),
@@ -49,6 +47,7 @@ return array(
     'League\\Glide\\' => array($vendorDir . '/league/glide/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'Laravel\\Socialite\\' => array($vendorDir . '/laravel/socialite/src'),
+    'Jenssegers\\Agent\\' => array($vendorDir . '/jenssegers/agent/src'),
     'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
