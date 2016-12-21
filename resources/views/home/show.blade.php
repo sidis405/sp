@@ -2,11 +2,19 @@
 
 @section('content')
 
-    <div class="page-bg news-bg holderjs"></div>
+
+
+    @if($ads['background_home']->active)
+    <div class="page-bg news-bg">{!!$ads['background_home']->content!!}</div>
+
+      @endif
+
     @include('layouts.header')
     <div class="container">
       <div class="l-news-page">
-        <div class="adv"><img data-src="holder.js/100px90?theme=social"></div>
+      @if($ads['top_banner_home']->active)
+        <div class="adv">{!!$ads['top_banner_home']->content!!}</div>
+        @endif
         <div class="row">
           @include('home.sections.section01', ['section' => $articles['section1']])
 
@@ -17,11 +25,17 @@
           @include('home.sections.section02', ['section' => $articles['section2']])
         </div>
       </div>
-      <div class="adv"><img data-src="holder.js/100px90?theme=social"></div>
+      
+      @if($ads['mid_banner_home']->active)
+        <div class="adv">{!!$ads['mid_banner_home']->content!!}</div>
+        @endif
+
       <div class="row">
         
           @include('home.sections.section03', ['section' => $articles['section3']])
       </div>
-      <div class="adv"><img data-src="holder.js/100px90?theme=social"></div>
+      @if($ads['end_banner_home']->active)
+        <div class="adv">{!!$ads['end_banner_home']->content!!}</div>
+        @endif
     </div>
 @stop

@@ -130,6 +130,27 @@ class ArticlePresenter extends Presenter
                       </div>';
     }
 
+    public function search_result()
+    {
+      return '<div class="post post-profile post-'.$this->category->color.'"">
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <div class="post-img">
+                              <div class="category">' . $this->category->present()->category_url(). '</div>
+                              <a href="' . $this->article_url() . '">'. $this->article_image() .'</a>
+                            </div>
+                          </div>
+                          <div class="col-xs-6">
+                            <h1 class="post-title"><a href="' . $this->article_url() . '">' . $this->title . '</a></h1>
+                            <p>' . $this->description . '</p>
+                            <div class="post-toolbar">
+                            <span class="author">' . $this->user->present()->user_name(). '</span>
+                            <span class="date"></span><span class="controls"><a href="#"><span>' . $this->view_counter. '</span> Visualizzazioni </a></span></div>
+                          </div>
+                        </div>
+                      </div>';
+    }
+
 
     public function article_url()
     {

@@ -2,22 +2,29 @@
 
 namespace Sp\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use Sp\Http\Requests\UpdateUserProfileRequest;
+use Sp\Repositories\AdsRepo;
 use Sp\Repositories\UsersRepo;
+use App\Http\Controllers\Controller;
+use Sp\Http\Requests\UpdateUserProfileRequest;
 
 class UsersController extends Controller
 {
+    protected $ads_repo;
 
+    function __construct(AdsRepo $ads_repo)
+    {
+        parent::__construct();
+        $this->ads_repo = $ads_repo;
+    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($user_slug, UsersRepo $users_repo)
+    public function show($user_slug, UsersRepo $users_repo, AdsRepo $ads_repo)
     {
         $user = $users_repo->getBySlug($user_slug);
 
@@ -26,12 +33,12 @@ class UsersController extends Controller
         $articles = $this->flattenByCategory($user->articles);
         $main = $users_repo->getFeaturedForProfile($user->id);
 
-        // return $articles;
+        $ads = $ads_repo->getForPage('profile');
 
-        return view('profile.show', compact('user', 'articles', 'main'));
+        return view('profile.show', compact('user', 'articles', 'main', 'ads'));
     }
 
-      public function showId($user_id, UsersRepo $users_repo)
+      public function showId($user_id, UsersRepo $users_repo,AdsRepo $ads_repo)
     {
         $user = $users_repo->getById($user_id);
 
@@ -42,8 +49,9 @@ class UsersController extends Controller
 
 
         // return $articles;
-
-        return view('profile.show', compact('user', 'articles', 'main'));
+        $ads = $ads_repo->getForPage('profile');
+        
+        return view('profile.show', compact('user', 'articles', 'main', 'ads'));
     }
 
     public function settings_form(UsersRepo $users_repo)
@@ -52,7 +60,9 @@ class UsersController extends Controller
 
         if(! $user) return abort(404);
 
-        return view('dashboard.settings', compact('user'));
+        $ads = $this->ads_repo->getForPage('dashboard');
+
+        return view('dashboard.settings', compact('user', 'ads'));
     }
 
 

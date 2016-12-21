@@ -1,7 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="page-bg news-bg holderjs"></div>
+    @if($ads['background_profile']->active)
+    <div class="page-bg news-bg">{!!$ads['background_profile']->content!!}</div>
+
+      @endif
     @include('layouts.header')
 
     <div class="container">
@@ -36,7 +39,9 @@
                       <div class="profile-desc">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, placeat dicta? Mollitia sint consectetur at repellendus obcaecati error unde dolores quod, inventore, deleniti rem temporibus optio nesciunt, quas eligendi tempore.</p>
                       </div>
-                      <div class="adv"><img data-src="holder.js/100px250?theme=social"></div>
+                      @if($ads['box_1_sidebar_profile']->active)
+                        <div class="adv">{!!$ads['box_1_sidebar_profile']->content!!}</div>
+                        @endif
                     </div>
                   </div>
                 </div>

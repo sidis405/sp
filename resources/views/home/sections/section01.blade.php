@@ -40,8 +40,12 @@
 
           <div class="col-sm-4">
             <div class="l-sidebar">
-              <div class="adv"><img data-src="holder.js/100px250?theme=social"></div>
-              <div class="adv"><img data-src="holder.js/100px250?theme=social"></div>
+              @if($ads['box_1_sidebar_home']->active)
+                <div class="adv">{!!$ads['box_1_sidebar_home']->content!!}</div>
+                @endif
+              @if($ads['box_2_sidebar_home']->active)
+                <div class="adv">{!!$ads['box_2_sidebar_home']->content!!}</div>
+                @endif
               <aside>
                 <div class="white-sidebar">
                   <div class="module-title">

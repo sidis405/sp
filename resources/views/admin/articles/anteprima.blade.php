@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="page-bg news-bg holderjs"></div>
+    <!-- <div class="page-bg news-bg holderjs"></div> -->
     @include('layouts.header')
     <div class="container">
       <div class="l-news-page">

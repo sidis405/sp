@@ -11,7 +11,7 @@
 
 @section('content')
 
-    <div class="page-bg news-bg"></div>
+    <!-- <div class="page-bg news-bg"></div> -->
     @include('layouts.header')
     <div class="container">
       <form  method="POST" role="form" action="/admin/articoli/{{$article->id}}" enctype="multipart/form-data">

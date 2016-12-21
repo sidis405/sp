@@ -64,6 +64,13 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
     
     Route::post('categorie/{id}/rimuovi', '\Sp\Http\Controllers\Admin\CategoriesController@destroy');
 
+    Route::get('ads', '\Sp\Http\Controllers\Admin\AdsController@index');
+    Route::get('ads/{id}/modifica', '\Sp\Http\Controllers\Admin\AdsController@edit');
+    Route::post('ads/{id}', '\Sp\Http\Controllers\Admin\AdsController@update');
+    
+
+
+
 
     Route::get('utenti', '\Sp\Http\Controllers\Admin\UsersController@index');
     Route::get('utenti/{id}', '\Sp\Http\Controllers\Admin\UsersController@show');

@@ -4,6 +4,7 @@ namespace Sp\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Sp\Repositories\AdsRepo;
 use App\Http\Controllers\Controller;
 use Sp\Repositories\CategoryRepo;
 
@@ -17,6 +18,7 @@ class CategoryController extends Controller
      */
     public function index(CategoryRepo $category_repo)
     {
+
         $category = $category_repo->getAll();
 
         return view('category.index', compact('category'));
@@ -31,7 +33,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug, CategoryRepo $category_repo)
+    public function show($slug, CategoryRepo $category_repo, AdsRepo $ads_repo)
     {
         $category = $category_repo->getBySlugFront($slug);
 
@@ -42,7 +44,10 @@ class CategoryController extends Controller
         $articles = $this->sliceSections($category->articles);
 
         // return $articles;
-        return view('categories.show', compact('category', 'featured', 'articles'));
+
+        $ads = $ads_repo->getForPage('category');
+
+        return view('categories.show', compact('category', 'featured', 'articles', 'ads'));
     }
 
     public function sliceSections($articles)

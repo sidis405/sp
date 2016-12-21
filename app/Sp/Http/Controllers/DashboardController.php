@@ -2,19 +2,28 @@
 
 namespace Sp\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Illuminate\Http\Request;
 use Sp\Models\Article;
-use Sp\Repositories\ArticleRepo;
-use Sp\Repositories\CategoryRepo;
+use Illuminate\Http\Request;
+use Sp\Repositories\AdsRepo;
 use Sp\Repositories\TagsRepo;
 use Sp\Repositories\UsersRepo;
+use Sp\Repositories\ArticleRepo;
+use Sp\Repositories\CategoryRepo;
+use App\Http\Controllers\Controller;
 
 
 
 class DashboardController extends Controller
 {
+    protected $ads_repo;
+
+    function __construct(AdsRepo $ads_repo)
+    {
+        parent::__construct();
+        $this->ads_repo = $ads_repo;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,19 +37,20 @@ class DashboardController extends Controller
 
         $categories = array_values(array_unique(array_pluck(array_pluck($user->all_articles, 'category'), 'name')));
 
-        // return $categories;
+        $ads = $this->ads_repo->getForPage('dashboard');
 
-        return view('dashboard.article-list', compact('user', 'categories'));
+        return view('dashboard.article-list', compact('user', 'categories', 'ads'));
 
     }
 
 
     public function create(CategoryRepo $category_repo)
     {
- 
+        
+        $ads = $this->ads_repo->getForPage('dashboard');
         $categories = $category_repo->getAllList();
 
-        return view('dashboard.create-article', compact('categories'));
+        return view('dashboard.create-article', compact('categories', 'ads'));
     }
 
     public function store(Request $request)
@@ -60,13 +70,15 @@ class DashboardController extends Controller
         $article = $article_repo->getById($id);
 
         // return $article;
-
+    
         if(! $article ) return abort(404);
 
         $categories = $category_repo->getAllList();
         $tags = $tags_repo->getAll();
 
-        return view('dashboard.edit-article', compact('article', 'categories', 'tags'));
+        $ads = $this->ads_repo->getForPage('dashboard');
+
+        return view('dashboard.edit-article', compact('article', 'categories', 'tags', 'ads'));
     }
 
     /**
@@ -97,7 +109,9 @@ class DashboardController extends Controller
 
         if(! $article || $article->user_id !== \Auth::user()->id) return abort(404);
 
-        return view('dashboard.anteprima', compact('article'));
+        $ads = $this->ads_repo->getForPage('dashboard');
+
+        return view('dashboard.anteprima', compact('article', 'ads'));
 
     }
 

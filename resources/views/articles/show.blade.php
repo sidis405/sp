@@ -24,11 +24,16 @@
          }(document, 'script', 'facebook-jssdk'));
        </script>
 
-    <div class="page-bg news-bg holderjs"></div>
+    @if($ads['background_article']->active)
+    <div class="page-bg news-bg">{!!$ads['background_article']->content!!}</div>
+
+      @endif
     @include('layouts.header')
     <div class="container">
       <div class="l-news-page">
-        <div class="adv"><img data-src="holder.js/100px90?theme=social"></div>
+         @if($ads['top_banner_article']->active)
+        <div class="adv">{!!$ads['top_banner_article']->content!!}</div>
+        @endif
         <div class="row">
           <div class="col-sm-8">
             <div class="l-main">
@@ -51,12 +56,16 @@
                 </div>
                 <div class="post-body">
                   <div class="row">
-                    <div class="col-sm-6">
-                      <div class="adv body-adv"><img data-src="holder.js/100px150?theme=social"></div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="adv body-adv"><img data-src="holder.js/100px150?theme=social"></div>
-                    </div>
+                    @if($ads['mid_banner_1_article']->active)
+                    <div class="col-md-6">
+                      <div class="adv adv-body">{!!$ads['mid_banner_1_article']->content!!}</div>
+                      </div>
+                      @endif
+                      @if($ads['mid_banner_2_article']->active)
+                    <div class="col-md-6">
+                        <div class="adv adv-body">{!!$ads['mid_banner_2_article']->content!!}</div>
+                        </div>
+                        @endif
                   </div>
                   <p>{!!$article->body!!}</p>
                 </div>
@@ -72,20 +81,28 @@
                   @endforeach
                 </div>
                 <div class="row">
-                  <div class="col-sm-6">
-                    <div class="adv body-adv"><img data-src="holder.js/100px150?theme=social"></div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="adv body-adv"><img data-src="holder.js/100px150?theme=social"></div>
-                  </div>
+                  @if($ads['end_banner_1_article']->active)
+                  <div class="col-md-6">
+                    <div class="adv adv-body">{!!$ads['end_banner_1_article']->content!!}</div>
+                    </div>
+                    @endif
+                    @if($ads['end_banner_2_article']->active)
+                  <div class="col-md-6">
+                      <div class="adv adv-body">{!!$ads['end_banner_2_article']->content!!}</div>
+                      </div>
+                      @endif
                 </div>
               </div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="l-sidebar">
-              <div class="adv"><img data-src="holder.js/100px250?theme=social"></div>
-              <div class="adv"><img data-src="holder.js/100px250?theme=social"></div>
+              @if($ads['box_1_sidebar_article']->active)
+                <div class="adv">{!!$ads['box_1_sidebar_article']->content!!}</div>
+                @endif
+              @if($ads['box_2_sidebar_article']->active)
+                <div class="adv">{!!$ads['box_2_sidebar_article']->content!!}</div>
+                @endif
               <aside>
                 <div class="white-sidebar">
                   <div class="module-title">

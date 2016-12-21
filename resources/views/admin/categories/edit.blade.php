@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/bower_components/bootstrap-fileinput/css/fileinput.css">
 @stop
 @section('content')
-<div class="page-bg news-bg"></div>
+<!-- <div class="page-bg news-bg"></div> -->
 @include('layouts.header')
 <div class="container">
   <form  method="POST" role="form" action="/admin/categorie/{{$category->id}}" enctype="multipart/form-data">

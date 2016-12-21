@@ -2,11 +2,12 @@
 
 namespace Sp\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Sp\Repositories\CategoryRepo;
+use Illuminate\Http\Request;
+use Sp\Repositories\AdsRepo;
 use Sp\Repositories\ArticleRepo;
+use Sp\Repositories\CategoryRepo;
+use App\Http\Controllers\Controller;
 
 
 class HomeController extends Controller
@@ -61,7 +62,7 @@ class HomeController extends Controller
 
     }
 
-    public function news(ArticleRepo $article_repo,  CategoryRepo $category_repo)
+    public function news(ArticleRepo $article_repo,  CategoryRepo $category_repo, AdsRepo $ads_repo)
     {
         $articles = $article_repo->getAllFront();
 
@@ -72,7 +73,12 @@ class HomeController extends Controller
         $articles = $this->sliceSections($articles);
 
         // return $articles;
-        return view('home.show', compact('featured', 'articles'));
+        
+        $ads = $ads_repo->getForPage('home');
+
+        // return $ads;
+
+        return view('home.show', compact('featured', 'articles', 'ads'));
     }
 
     public function sliceSections($articles)

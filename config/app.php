@@ -153,6 +153,8 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        'hisorange\BrowserDetect\Provider\BrowserDetectService',
+
     ],
 
     /*
@@ -205,7 +207,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Flash' => Laracasts\Flash\Flash::class,
         'Image' => Intervention\Image\Facades\Image::class,
-
+        'BrowserDetect' => 'hisorange\BrowserDetect\Facade\Parser',
 
     ],
 

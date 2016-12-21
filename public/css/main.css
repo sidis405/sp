@@ -624,8 +624,10 @@ footer .logo-container h1.logo {
 }
 
 .adv {
-  padding: 0 0 30px;
+  padding: 30px 30px;
+  margin: 30px 0px;
   text-align: center;
+  background-color: #434a52;
 }
 
 .adv.body-adv {

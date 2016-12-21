@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div class="page-bg news-bg holderjs"></div>
+    <!-- <div class="page-bg news-bg holderjs"></div> -->
     @include('admin.layouts.header')
     <div class="container">
       <div class="l-post-list-page">

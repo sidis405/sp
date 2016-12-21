@@ -3,7 +3,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.min.css">
 @stop
 @section('content')
-<div class="page-bg news-bg holderjs"></div>
+@if($ads['background_dashboard']->active)
+    <div class="page-bg news-bg">{!!$ads['background_dashboard']->content!!}</div>
+
+      @endif
 @include('layouts.header')
 <div class="container">
   <div class="l-post-list-page">

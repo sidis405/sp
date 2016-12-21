@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Event;
 use Illuminate\Http\Request;
 use Sp\Events\Article\ArticleWasVisited;
+use Sp\Repositories\AdsRepo;
 use Sp\Repositories\ArticleRepo;
 
 class ArticleController extends Controller
@@ -31,7 +32,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($category_slug, $article_id, $article_slug, ArticleRepo $article_repo, Request $request)
+    public function show($category_slug, $article_id, $article_slug, ArticleRepo $article_repo, Request $request, AdsRepo $ads_repo)
     {
 
         $referrer = $request->headers->get('referer');
@@ -50,10 +51,11 @@ class ArticleController extends Controller
         $article_visit->sharecode = $request->input('ref');
         $article_visit->ip = request()->ip();
 
+        $ads = $ads_repo->getForPage('article');
 
         Event::fire(ArticleWasVisited::class, $article_visit);
 
-        return view('articles.show', compact('article'));
+        return view('articles.show', compact('article', 'ads'));
     }
 
 }

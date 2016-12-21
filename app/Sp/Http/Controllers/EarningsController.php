@@ -2,17 +2,26 @@
 
 namespace Sp\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use Carbon\Carbon;
+use App\Http\Requests;
 use Illuminate\Http\Request;
+use Sp\Repositories\AdsRepo;
+use Sp\Repositories\UsersRepo;
 use Sp\Repositories\ArticleRepo;
 use Sp\Repositories\CategoryRepo;
 use Sp\Repositories\PaymentsRepo;
-use Sp\Repositories\UsersRepo;
+use App\Http\Controllers\Controller;
 
 class EarningsController extends Controller
 {
+    protected $ads_repo;
+
+    function __construct(AdsRepo $ads_repo)
+    {
+        parent::__construct();
+        $this->ads_repo = $ads_repo;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +57,8 @@ class EarningsController extends Controller
 
         // return $visits;
 
-        return view('dashboard.earnings-list', compact('articles', 'visits', 'start_for_picker'));
+        $ads = $this->ads_repo->getForPage('dashboard');
+        return view('dashboard.earnings-list', compact('articles', 'visits', 'start_for_picker', 'ads'));
 
     }
 
@@ -70,7 +80,10 @@ class EarningsController extends Controller
 
         $visits = $this->normalizeListing($visits, $requests);
 
-        return view('dashboard.earnings-request-list', compact('visits', 'requests'));
+        $ads = $this->ads_repo->getForPage('dashboard');
+
+
+        return view('dashboard.earnings-request-list', compact('visits', 'requests', 'ads'));
 
     }
 

@@ -14,7 +14,10 @@
 
 @section('content')
 
-    <div class="page-bg news-bg holderjs"></div>
+    @if($ads['background_dashboard']->active)
+    <div class="page-bg news-bg">{!!$ads['background_dashboard']->content!!}</div>
+
+      @endif
     @include('layouts.header')
     <div class="container">
       <form  method="POST" role="form" action="/dashboard/articoli/{{$article->id}}" enctype="multipart/form-data">

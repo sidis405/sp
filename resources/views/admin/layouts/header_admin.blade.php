@@ -57,6 +57,8 @@
               <li role="separator" class="divider"></li>
               <li><a href="/admin/pagamenti">Gestione Pagamenti</a></li>
               <li role="separator" class="divider"></li>
+              <li><a href="/admin/ads">Gestione AdSense</a></li>
+              <li role="separator" class="divider"></li>
               <li><a href="/admin/impostazioni">Impostazioni</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="/logout">Esci</a></li>
