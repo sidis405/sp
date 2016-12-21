@@ -2,7 +2,7 @@
 
 namespace Sp\Repositories;
 
-use BrowserDetect;
+use hisorange\BrowserDetect\Facade\Parser as BrowserDetect;
 use Sp\Models\Ads;
 
 
