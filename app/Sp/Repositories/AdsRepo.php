@@ -2,7 +2,7 @@
 
 namespace Sp\Repositories;
 
-use hisorange\BrowserDetect\Facade\Parser as BrowserDetect;
+// use hisorange\BrowserDetect\Facade\Parser as BrowserDetect;
 use Sp\Models\Ads;
 
 
@@ -18,9 +18,10 @@ class AdsRepo
 
     public function getForPage($page)
     {
-        $result = BrowserDetect::detect();
+        // $result = BrowserDetect::detect();
 
-        $is_mobile = ($result['isMobile']) ? 1 : 0;
+        $is_mobile =  0;
+        // $is_mobile = ($result['isMobile']) ? 1 : 0;
         
         return Ads::wherePage($page)->where('is_mobile', $is_mobile)->get()->keyBy('name');
 
