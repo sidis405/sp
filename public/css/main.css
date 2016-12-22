@@ -114,6 +114,10 @@ label {
    Modules
    ======================= */
 
+.post {
+
+}
+
 .post-img {
   position: relative;
 }
@@ -122,6 +126,7 @@ label {
   font-size: 2em;
   color: #333333;
   margin: 5px 0;
+  // min-height: 50px;
 }
 
 .post-title a {
@@ -624,14 +629,15 @@ footer .logo-container h1.logo {
 }
 
 .adv {
-  padding: 30px 30px;
-  margin: 30px 0px;
+  padding: 0;
+  margin: 0;
   text-align: center;
-  background-color: #434a52;
+  margin-bottom: 10px;
+  // background-color: #434a52;
 }
 
 .adv.body-adv {
-  margin: 15px 0 15px;
+  margin: 0;
   padding: 0;
 }
 
@@ -1053,4 +1059,12 @@ aside .module-title h3 {
 
 .no-margin h3 {
   margin-top: 0;
+}
+
+#dropdownMenu2 {
+  background: transparent;
+}
+
+#dropdownMenu2:hover {
+  color: #991722;
 }
