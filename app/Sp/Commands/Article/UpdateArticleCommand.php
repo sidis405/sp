@@ -22,7 +22,7 @@ class UpdateArticleCommand extends Command
      *
      * @return void
      */
-    public function __construct($article_id, $title, $description, $body, $category_id, $tags = [], $file,  $active = null)
+    public function __construct($article_id, $title, $description, $body, $category_id, $tags = [], $file,  $active = null, $ads = null)
     {
         $this->article_id = $article_id;
         $this->title = $title;
@@ -32,5 +32,6 @@ class UpdateArticleCommand extends Command
         $this->tags = $tags;
         $this->file = $file;
         $this->active = $active;
+        $this->ads = $ads;
     }
 }

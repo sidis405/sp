@@ -27,6 +27,7 @@ class CreateArticlesTable extends Migration
             $table->integer('view_counter')->default(0);
             $table->double('payoff_counter')->default(0);
             $table->integer('active')->default(1);
+            $table->integer('ads')->default(1);
             $table->timestamps();
         });
     }

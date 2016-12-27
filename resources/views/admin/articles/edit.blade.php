@@ -33,6 +33,13 @@
                 <textarea name="body" id="body" placeholder="Scrivi Il tuo articolo" cols="30" rows="15" class="form-control" required>{!!old('body', $article->body)!!}</textarea>
               </div>
               <div class="form-group">
+                <label for="active">Ads</label>
+                <select name="ads" class="form-control">
+                    <option value="1" @if($article->ads == "1") selected @endif>Si</option>
+                    <option value="0" @if($article->ads == "0") selected @endif>No</option>
+                </select>
+              </div>
+              <div class="form-group">
                             <div class="row">
                               <div class="col-xs-12"><button type="submit" class="btn btn-default btn-lg btn-block"><i class="fa fa-save"></i> Salva</button></div>
                              

@@ -43,7 +43,8 @@ class UpdateArticleCommandHandler
             $command->title,
             $command->description,
             $command->body,
-            $command->category_id
+            $command->category_id,
+            $command->ads
             );
 
         $article = $this->repo->save($article_object);

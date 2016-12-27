@@ -94,8 +94,6 @@ class ArticlesController extends Controller
     {
         $data = $this->manageFields($request);
 
-        // return $request->input();
-
         $article = $this->dispatchFrom('Sp\Commands\Article\UpdateArticleCommand', $request, $data);
         flash()->success('Articolo aggiornato con successo.');
 

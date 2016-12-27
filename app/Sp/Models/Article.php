@@ -45,7 +45,7 @@ class Article extends Model  implements HasMedia
         return $item;
     }
 
-    public static function edit($article_id, $title, $description, $body, $category_id)
+    public static function edit($article_id, $title, $description, $body, $category_id, $ads)
     {
         $item = static::find($article_id);
 
@@ -54,6 +54,7 @@ class Article extends Model  implements HasMedia
         $item->description = $description;
         $item->body = $body;
         $item->category_id = $category_id;
+        $item->ads = $ads;
         // $item->featured_photo_id = $featured_photo_id;
         // $item->active = $active;
 

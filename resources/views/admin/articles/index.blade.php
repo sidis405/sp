@@ -29,6 +29,7 @@
                 <th data-search-type="multiple">Utente</th>
                 <th data-search-type="multiple">Stato</th>
                 <th data-search-type="text">Visite</th>
+                <th data-search-type="text">Ads</th>
                 <th data-search-type="none">Azioni</th>
               </tr>
             </thead>
@@ -48,6 +49,7 @@
 
                 </td>
                 <td class="article-list-category"><i class="fa fa-user fa-fw"></i>{{$article->view_counter}}</a></td>
+                <td class="article-list-category">{{ ($article->ads) ? 'si' : 'no'}}</a></td>
                 <td class="actions">
                   <a href="/admin/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a><a href="/dashboard/articoli/{{$article->id}}/rimuovi" class="action"><i class="fa fa-trash-o fa-fw"></i></a>
                     <a href="/admin/articoli/{{$article->id}}/anteprima" class="action"><i class="fa fa-eye fa-fw"></i></a>

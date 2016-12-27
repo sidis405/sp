@@ -24,14 +24,14 @@
          }(document, 'script', 'facebook-jssdk'));
        </script>
 
-    @if($ads['background_article']->active)
+    @if($ads['background_article']->active && $article->ads == 1)
     <div class="page-bg news-bg">{!!$ads['background_article']->content!!}</div>
 
       @endif
     @include('layouts.header')
     <div class="container">
       <div class="l-news-page">
-         @if($ads['top_banner_article']->active)
+         @if($ads['top_banner_article']->active && $article->ads == 1)
         <div class="adv">{!!$ads['top_banner_article']->content!!}</div>
         @endif
         <div class="row">
@@ -56,12 +56,12 @@
                 </div>
                 <div class="post-body">
                   <div class="row">
-                    @if($ads['mid_banner_1_article']->active)
+                    @if($ads['mid_banner_1_article']->active && $article->ads == 1)
                     <div class="col-md-6">
                       <div class="adv adv-body">{!!$ads['mid_banner_1_article']->content!!}</div>
                       </div>
                       @endif
-                      @if($ads['mid_banner_2_article']->active)
+                      @if($ads['mid_banner_2_article']->active && $article->ads == 1)
                     <div class="col-md-6">
                         <div class="adv adv-body">{!!$ads['mid_banner_2_article']->content!!}</div>
                         </div>
@@ -81,12 +81,12 @@
                   @endforeach
                 </div>
                 <div class="row">
-                  @if($ads['end_banner_1_article']->active)
+                  @if($ads['end_banner_1_article']->active && $article->ads == 1)
                   <div class="col-md-6">
                     <div class="adv adv-body">{!!$ads['end_banner_1_article']->content!!}</div>
                     </div>
                     @endif
-                    @if($ads['end_banner_2_article']->active)
+                    @if($ads['end_banner_2_article']->active && $article->ads == 1)
                   <div class="col-md-6">
                       <div class="adv adv-body">{!!$ads['end_banner_2_article']->content!!}</div>
                       </div>
@@ -97,10 +97,10 @@
           </div>
           <div class="col-sm-4">
             <div class="l-sidebar">
-              @if($ads['box_1_sidebar_article']->active)
+              @if($ads['box_1_sidebar_article']->active && $article->ads == 1)
                 <div class="adv">{!!$ads['box_1_sidebar_article']->content!!}</div>
                 @endif
-              @if($ads['box_2_sidebar_article']->active)
+              @if($ads['box_2_sidebar_article']->active && $article->ads == 1)
                 <div class="adv">{!!$ads['box_2_sidebar_article']->content!!}</div>
                 @endif
               <aside>
