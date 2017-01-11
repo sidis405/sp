@@ -15,6 +15,11 @@ class PaymentsRepo
         return PaymentRequests::where('user_id', $user_id)->with('status')->orderBy('timestamp', 'ASC')->get();
     }
 
+    public function getRequests()
+    {
+        return PaymentRequests::with('status', 'user')->orderBy('created_at', 'DESC')->get();
+    }
+
     public function make_request($user_id, $timestamp)
     {
         if(!$this->getByUserAndTimestamp($user_id, $timestamp))

@@ -1,24 +1,5 @@
 <?php
 
-// \DB::xxisten(function($sql, $bindings, $time) {
-//     // logger($sql);
-//     // logger($bindings);
-//     // logger($time);
-// });
-
-// Route::get('payoff', function(){
-
-//     $articles = Sp\Models\Article::where('status_id', 3)->with('visits')->get();
-
-//     foreach($articles as $article)
-//     {
-//         $payoff = array_sum(array_pluck($article->visits, 'payoff'));
-//         $article->payoff_counter = $payoff;
-//         $article->save();
-//     }
-
-// });
-
 Route::get('/', '\Sp\Http\Controllers\HomeController@news');
 Route::get('/home', '\Sp\Http\Controllers\HomeController@home');
 
@@ -79,8 +60,7 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
     Route::get('utenti', '\Sp\Http\Controllers\Admin\UsersController@index');
     Route::get('utenti/{id}', '\Sp\Http\Controllers\Admin\UsersController@show');
 
-    // Route::get('pagamenti', '\Sp\Http\Controllers\Admin\EarningsController@index');
-    // Route::get('impostazioni', '\Sp\Http\Controllers\Admin\SettingsController@index');
+    Route::get('pagamenti', '\Sp\Http\Controllers\Admin\EarningsController@index');
 
     Route::get('argomenti', '\Sp\Http\Controllers\Admin\TopicsController@index');
     Route::get('argomenti/crea', '\Sp\Http\Controllers\Admin\TopicsController@create');

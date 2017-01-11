@@ -33,7 +33,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'surname', 'email', 'password', 'facebook_id', 'avatar', 'social_facebook', 'social_twitter', 'social_google', 'social_website'];
+    protected $guarded = ['id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -83,7 +83,7 @@ class User extends Model implements AuthenticatableContract,
 
     }
 
-    public static function edit($user_id, $name, $surname, $username, $email)
+    public static function edit($user_id, $name, $surname, $username, $email, $social_facebook,$social_google,$social_twitter,$social_website,$description)
     {
         $user = static::find($user_id);
 
@@ -91,6 +91,11 @@ class User extends Model implements AuthenticatableContract,
         $user->surname = $surname;
         $user->username = $username;
         $user->email = $email;
+        $user->social_facebook = $social_facebook;
+        $user->social_google = $social_google;
+        $user->social_twitter = $social_twitter;
+        $user->social_website = $social_website;
+        $user->description = $description;
 
         return $user;
     }

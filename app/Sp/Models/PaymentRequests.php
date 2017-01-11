@@ -13,5 +13,10 @@ class PaymentRequests extends Model
     public function status()
     {
         return $this->belongsTo(PaymentStatus::class, 'payment_status_id');
-    }       
+    } 
+
+    public function user()
+    {
+        return $this->belongsTo(\App\User::class, 'user_id');
+    }      
 }

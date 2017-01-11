@@ -37,7 +37,12 @@ class UpdateUserProfileCommandHandler
             $command->name,
             $command->surname,
             $command->username,
-            $command->email
+            $command->email,
+            $command->social_facebook,
+            $command->social_google,
+            $command->social_twitter,
+            $command->social_website,
+            $command->description
             );
 
         $user = $this->repo->save($user_object);

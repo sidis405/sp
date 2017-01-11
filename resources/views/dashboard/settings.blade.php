@@ -18,31 +18,31 @@
         <h1 class="page-title">Impostazioni</h1>
         <div role="tab-panel" class="profile-settings-panel">
           <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Profilo</a></li>
+            <li role="presentation" class="active"><a href="#profilo" aria-controls="profilo" role="tab" data-toggle="tab">Profilo</a></li>
             @if(strlen($user->facebook_id) < 1)
-              <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">Password</a></li>
+              <li role="presentation"><a href="#password" aria-controls="password" role="tab" data-toggle="tab">Password</a></li>
             @endif
-            <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Metodi Di Pagamento</a></li>
-            <li role="presentation"><a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">Utenti che seguo</a></li>
+            <li role="presentation"><a href="#metodi" aria-controls="metodi" role="tab" data-toggle="tab">Metodi Di Pagamento</a></li>
+            <li role="presentation"><a href="#seguo" aria-controls="seguo" role="tab" data-toggle="tab">Utenti che seguo</a></li>
           </ul>
           <div class="tab-content">
-            <div id="tab1" role="tabpanel" class="tab-pane active">
+            <div id="profilo" role="tabpanel" class="tab-pane active">
               @include('dashboard.partials.profile_form')
             </div>
 
             @if(strlen($user->facebook_id) < 1)
 
-            <div id="tab2" role="tabpanel" class="tab-pane">
+            <div id="password" role="tabpanel" class="tab-pane">
             
               @include('dashboard.partials.password_form')
             </div>
 
             @endif
-            <div id="tab3" role="tabpanel" class="tab-pane">
+            <div id="metodi" role="tabpanel" class="tab-pane">
               
               @include('dashboard.partials.paymethod_form')
             </div>
-            <div id="tab4" role="tabpanel" class="tab-pane">
+            <div id="seguo" role="tabpanel" class="tab-pane">
               
               @include('dashboard.partials.people_i_follow')
             </div>
@@ -55,6 +55,44 @@
 
    
   @section('footer_scripts')
+
+  <script>
+    var hash = document.location.hash;
+    var prefix = "tab_";
+    if (hash) {
+        $('.nav-tabs a[href="'+hash.replace(prefix,"")+'"]').tab('show');
+    } 
+
+    // Change hash for page-reload
+    $('.nav-tabs a').on('shown', function (e) {
+        window.location.hash = e.target.hash.replace("#", "#" + prefix);
+    });
+  </script>
+
+  <script>
+    $('.payment_option').change(function(){
+      let option = $(this).attr('id');
+      
+      if(option == 'payment_paypal')
+      {
+        $('.paypal_section').show();
+        $('.iban_section').hide();
+
+        $('.paypal_field').attr('required', 'required');
+        $('.iban_field').removeAttr('required');
+
+      }else if(option == 'payment_iban')
+      {
+        $('.iban_section').show();
+        $('.paypal_section').hide();
+
+        $('.iban_field').attr('required', 'required');
+        $('.paypal_field').removeAttr('required');
+      }
+
+    });
+  </script>
+
 
   <script src="https://cdn.datatables.net/u/bs-3.3.6/jqc-1.12.3,dt-1.10.12,af-2.1.2,fh-3.1.2/datatables.min.js"></script>
 

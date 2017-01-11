@@ -64,10 +64,51 @@ class UsersController extends Controller
 
         return view('dashboard.settings', compact('user', 'ads'));
     }
+    
+    public function paymethods_form_save(Request $request)
+    {
+        // return $request->all();
 
+        $this->validate($request, ['pay-method' => 'required']);
+
+        $input = $request->all();
+
+        if($input['pay-method'] == 'payment_iban')
+        {
+            $data = [
+                'payment_iban' => 1,
+                'payment_paypal' => 0,
+                // 'payment_detail_paypal_email' => null,
+                'payment_detail_iban_name'=> $input['payment_detail_iban_name'],
+                'payment_detail_iban_surname'=> $input['payment_detail_iban_surname'],
+                'payment_detail_iban_number'=> $input['payment_detail_iban_number'],
+            ];
+        }else{
+                $data = [
+                    'payment_paypal' => 1,
+                    'payment_iban' => 0,
+                    'payment_detail_paypal_email' => $input['payment_detail_paypal_email'],
+                    // 'payment_detail_iban_name'=> null,
+                    // 'payment_detail_iban_surname'=> null,
+                    // 'payment_detail_iban_number'=> null,
+                ];
+        }
+
+        $user = \Auth::user();
+
+        $user->update($data);
+
+        flash()->success('Metodo aggiornato con successo.');
+
+
+        return redirect()->to('/impostazioni#metodi');
+    }
 
     public function profile_form_save(UpdateUserProfileRequest $request)
     {
+
+        return $request->all();
+
         $user = $this->dispatchFrom('Sp\Commands\Users\UpdateUserProfileCommand', $request);
         
 
