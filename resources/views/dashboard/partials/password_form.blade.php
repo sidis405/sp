@@ -1,6 +1,7 @@
 <form action="/password" method="POST">
   {{csrf_field()}}
   <div class="row">
+  @include('errors.errors')
     <div class="col-sm-8">
       <div class="input-block">
         <h4>Dati Personali</h4>

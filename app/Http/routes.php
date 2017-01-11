@@ -61,6 +61,8 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
     Route::get('utenti/{id}', '\Sp\Http\Controllers\Admin\UsersController@show');
 
     Route::get('pagamenti', '\Sp\Http\Controllers\Admin\EarningsController@index');
+    Route::get('pagamenti/{id}', '\Sp\Http\Controllers\Admin\EarningsController@show');
+    Route::post('pagamenti/{id}', '\Sp\Http\Controllers\Admin\EarningsController@update');
 
     Route::get('argomenti', '\Sp\Http\Controllers\Admin\TopicsController@index');
     Route::get('argomenti/crea', '\Sp\Http\Controllers\Admin\TopicsController@create');

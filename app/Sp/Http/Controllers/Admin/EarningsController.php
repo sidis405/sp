@@ -31,99 +31,29 @@ class EarningsController extends Controller
 
     }
 
-    protected function formatStartDate($input)
-    {
-        return join('-', array_reverse(explode("/", $input))).'-01';
-    }
+    public function show($id, PaymentsRepo $payments_repo)
+     {
+        $payment_request = $payments_repo->getById($id);
 
-    protected function getMonthEnd($input)
-    {
-        return date('Y-m-t', strtotime($input));
-    }
+        $user_requests = $payments_repo->getRequestsForUser($payment_request->user_id);
 
-    public function listingPerMonth(ArticleRepo $article_repo, PaymentsRepo $payments_repo)
-    {
-        $visits = $article_repo->getForUserByMonthEarnings(\Auth::user()->id);
+        return view('admin.payment-requests.show', compact('payment_request', 'user_requests'));
 
-        $requests = $payments_repo->getRequestsForUser(\Auth::user()->id);
+     } 
 
-        $visits = $this->normalizeListing($visits, $requests);
+     public function update($id, PaymentsRepo $payments_repo, Request $request)
+     {
+        $payment_request = $payments_repo->getById($id);
 
-        $ads = $this->ads_repo->getForPage('dashboard');
+        $data = ['paid_on' => Carbon::now(), 'payment_status_id' => 1];
 
+        $payment_request->update($data);
 
-        return view('dashboard.earnings-request-list', compact('visits', 'requests', 'ads'));
-
-    }
-
-    public function normalizeListing($visits, $requests)
-    {
-        $out = [];
-
-        $requests = $this->flattenByTimeStamp($requests);
+        flash()->success('Metodo aggiornato con successo.');
 
 
+        return redirect()->to('/admin/pagamenti/' . $id);
 
-        foreach ($visits as $timestamp => $month) {
-           if($this->checkCurrentMonth($timestamp))
-           {
-            $current = $month;
-
-            if(isset($requests[$timestamp]))
-            {
-                $current['id'] = $requests[$timestamp]->id;
-                $current['status'] = $requests[$timestamp]->status->name;
-                $current['status-slug'] = $requests[$timestamp]->status->slug;
-            }else{
-                $current['id'] = null;
-                $current['status'] = null;
-                $current['status-slug'] = null;
-            }
-
-            $out[$timestamp] = $current;
-
-           }
-        }
-        return $out;
-    }
-
-    public function flattenByTimeStamp($requests)
-    {
-        $out = [];
-
-        foreach ($requests as $request) {
-            $out[$request->timestamp] = $request;
-        }
-
-        return $out;
-    }
-
-    public function checkCurrentMonth($month)
-    {
-        $now = new Carbon('first day of this month');
-        $current = $now->format('Y-m-d');
-
-
-        if(strtotime($current) > strtotime($month))
-        {
-            return true;
-        }
-
-        return false;
-
-    }
-
-    public function makePaymentRequest(Request $request,PaymentsRepo $payments_repo)
-    {
-        $user_id = \Auth::user()->id;
-        $timestamp = base64_decode($request->input('payload'));
-
-        $payments_repo->make_request($user_id, $timestamp);
-
-        return 'true';
-    }
-
-
-   
+     }
 
 }
