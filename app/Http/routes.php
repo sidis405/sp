@@ -41,6 +41,10 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
     Route::get('/', function(){
         return redirect()->to('/admin/dashboard');
     });
+
+    Route::get('impostazioni', '\Sp\Http\Controllers\Admin\SettingsController@edit');
+    Route::post('impostazioni', '\Sp\Http\Controllers\Admin\SettingsController@update');
+
     Route::get('dashboard', '\Sp\Http\Controllers\Admin\DashboardController@index');
     Route::get('nuovi-articoli', '\Sp\Http\Controllers\Admin\ArticlesController@index_new');
     Route::get('articoli', '\Sp\Http\Controllers\Admin\ArticlesController@index');

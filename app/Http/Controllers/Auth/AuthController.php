@@ -7,6 +7,7 @@ use App\User;
 use Socialite;
 use Validator;
 use Sp\Models\Category;
+use Sp\Models\Settings;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -127,7 +128,21 @@ class AuthController extends Controller
             }else{
                 return false;
             }
+        }else{
+
+            $settings = Settings::first();
+
+            if($settings->allow_registration == 0)
+            {
+
+                return false;
+                
+            }
+        
+            
         }
+
+        
 
         $name = $facebookUser->name;
         list($first_name, $last_name) = explode(' ', $name, 2);

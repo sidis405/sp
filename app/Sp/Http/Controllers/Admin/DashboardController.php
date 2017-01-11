@@ -20,6 +20,8 @@ class DashboardController extends Controller
     public function index(UsersRepo $users_repo)
     {
 
+        return redirect()->to('admin/nuovi-articoli');
+
         $user = $users_repo->getById(\Auth::user()->id);
 
         // return $user->articles;

@@ -11,7 +11,10 @@
             @include('admin.layouts.header_admin')
           
           @else
-          <a class="btn btn-primary" href="/auth/login">Accedi</a><a class="btn btn-primary" href="/auth/register">Registrati</a>
+          <a class="btn btn-primary" href="/auth/login">Accedi</a>
+            @if($siteSettings->allow_registration == 1)
+              <a class="btn btn-primary" href="/auth/register">Registrati</a>
+            @endif  
           @endif
         </div>
 
