@@ -37,6 +37,7 @@ class AuthController extends Controller
     public function __construct()
     {
         view()->share('navCategories', Category::whereActive(1)->orderBy('id', 'ASC')->get());
+        view()->share('siteSettings', Settings::first());
 
         $this->middleware('guest', ['except' => 'getLogout']);
     }
