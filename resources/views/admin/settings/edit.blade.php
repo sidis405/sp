@@ -21,6 +21,10 @@
                 <option value="0" @if($settings->allow_registration == "0") selected @endif>No</option>
             </select>
           </div>
+          <div class="form-group">
+            <label for="active">Lunghezza massima caratteri articolo</label>
+            <input type="text" class="form-control" name="article_maxlength" value="{{$settings->article_maxlength}}">
+          </div>
 
           <div class="form-group">
             <div class="row">

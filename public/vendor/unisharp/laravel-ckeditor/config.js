@@ -28,20 +28,6 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'styles', groups: [ 'styles' ] },
 	];
 
-	config.wordcount = {
-
-	    // Whether or not you want to show the Word Count
-	    showWordCount: true,
-
-	    // Whether or not you want to show the Char Count
-	    showCharCount: false,
-	    
-	    // Maximum allowed Word Count
-	    maxWordCount: 3000,
-
-	    // Maximum allowed Char Count
-	    maxCharCount: 10000
-	};
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
 	// config.removeButtons = 'Underline,Subscript,Superscript';
@@ -58,3 +44,14 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.toolbar= [['oembed']];
 
 };	
+
+CKEDITOR.on('dialogDefinition', function (ev) {
+              var dialogName = ev.data.name;
+              var dialog = ev.data.definition.dialog;
+
+              if (dialogName == 'image') {
+                  dialog.on('show', function () {
+                      this.selectPage('Upload');
+                  });
+              }
+          });

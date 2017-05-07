@@ -36,6 +36,7 @@ class CreateUsersTable extends Migration
             $table->string('payment_detail_iban_name')->nullable();
             $table->string('payment_detail_iban_surname')->nullable();
             $table->string('payment_detail_iban_number')->nullable();
+            $table->string('email_verification_token')->nullable();
             $table->datetime('last_login')->nullable();
             $table->string('ip')->nullable();
             $table->rememberToken();

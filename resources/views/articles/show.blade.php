@@ -68,6 +68,7 @@
                         @endif
                   </div>
                   <p>{!!$article->body!!}</p>
+                  <p>{!!$article->notes!!}</p>
                 </div>
                 <div class="post-toolbar social">
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{\Request::fullUrl()}}" class="btn btn-facebook"><i class="fa fa-facebook"></i></a>

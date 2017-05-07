@@ -11,6 +11,7 @@ use Sp\Repositories\UsersRepo;
 use Sp\Repositories\ArticleRepo;
 use Sp\Repositories\CategoryRepo;
 use App\Http\Controllers\Controller;
+use Sp\Http\Requests\WriteArticleRequest;
 
 
 
@@ -53,7 +54,7 @@ class DashboardController extends Controller
         return view('dashboard.create-article', compact('categories', 'ads'));
     }
 
-    public function store(Request $request)
+    public function store(WriteArticleRequest $request)
     {
         $data = $this->manageFields($request);
 
@@ -88,7 +89,7 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(WriteArticleRequest $request, $id)
     {
 
         // return $request->input();

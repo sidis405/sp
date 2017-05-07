@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use Auth;
+use Event;
 use App\User;
 use Socialite;
 use Validator;
 use Sp\Models\Category;
 use Sp\Models\Settings;
 use Illuminate\Http\Request;
+use Sp\Events\Users\UserRegistered;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -72,6 +74,8 @@ class AuthController extends Controller
             'surname' => $data['name'],
             'email' => $data['email'],
             'username' => $data['username'],
+            'email_verification_token' => $data['email_verification_token'],
+            'active' => $data['active'],
             'password' => bcrypt($data['password']),
         ]);
     }
@@ -154,7 +158,9 @@ class AuthController extends Controller
             'surname' => $last_name,
             'email' => $facebookUser->email,
             'facebook_id' => $facebookUser->id,
-            'avatar' => str_replace('1920', '320', $facebookUser->avatar_original)
+            'avatar' => str_replace('1920', '320', $facebookUser->avatar_original),
+            'email_verification_token' => str_random(60),
+            'active' => 1
         ]);
     }
 
@@ -194,5 +200,30 @@ class AuthController extends Controller
             ->withErrors([
                 $this->loginUsername() => $this->getFailedLoginMessage(),
             ]);
+    }
+
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $input = $request->all();
+        $input['email_verification_token'] = str_random(60);
+        $input['active'] = 0;
+
+        $user = $this->create($input);
+
+        // Auth::login($user);
+
+        Event::fire(new UserRegistered($user));
+
+        flash()->success('Ti abbiamo inviato una mail per verificare i tuoi dati.');
+
+        return redirect($this->redirectPath());
     }
 }

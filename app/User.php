@@ -83,6 +83,10 @@ class User extends Model implements AuthenticatableContract,
 
     }
 
+    public function findForPassport($email) {
+            return $this->where('email', $email)->where('active', '>=', 1)->first();
+    }
+
     public static function edit($user_id, $name, $surname, $username, $email, $social_facebook,$social_google,$social_twitter,$social_website,$description)
     {
         $user = static::find($user_id);

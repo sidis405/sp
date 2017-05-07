@@ -240,17 +240,7 @@
                             <tr>
                                 <td align="center" valign="top">
                                     <!-- // Begin Template Header \\ -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader">
-                                        <tr>
-                                            <td class="headerContent">
-                                            
-                                                <!-- // Begin Module: Standard Header Image \\ -->
-                                                <img src="http://gallery.mailchimp.com/653153ae841fd11de66ad181a/images/placeholder_600.gif" style="max-width:600px;" id="headerImage campaign-icon" mc:label="header_image" mc:allowdesigner mc:allowtext>
-                                                <!-- // End Module: Standard Header Image \\ -->
-                                            
-                                            </td>
-                                        </tr>
-                                    </table>
+                                   
                                     <!-- // End Template Header \\ -->
                                 </td>
                             </tr>
@@ -262,19 +252,7 @@
                                             <td valign="top" class="bodyContent">
                                 
                                                 <!-- // Begin Module: Standard Content \\ -->
-                                                <table border="0" cellpadding="10" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td valign="top">
-                                                            <div>
-                                                                <span class="h2">Il tuo Articolo è stato pubblicato</span>
-                                                                <strong>Getting started:</strong> Customize your template by clicking on the style editor tabs up above. Set your fonts, colors, and styles. After setting your styling is all done you can click here in this area, delete the text, and start adding your own awesome content!
-                                                                <br>
-                                                                <br>
-                                                                After you enter your content, highlight the text you want to style and select the options you set in the style editor in the "styles" drop down box. Want to <a href="http://www.mailchimp.com/kb/article/im-using-the-style-designer-and-i-cant-get-my-formatting-to-change" target="_blank">get rid of styling on a bit of text</a>, but having trouble doing it? Just use the "clear styles" button to strip the text of any formatting and reset your style.
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                               
                                                 <!-- // End Module: Standard Content \\ -->
                                                 
                                             </td>

@@ -39,6 +39,9 @@
                 <textarea name="body" id="body" placeholder="Scrivi Il tuo articolo" cols="30" rows="15" class="form-control" required>{!!old('body', $article->body)!!}</textarea>
               </div>
               <div class="form-group">
+                <textarea name="notes" placeholder="(non obligatorio) Note aggiuntive" maxlength="80" cols="30" rows="5" class="form-control" required>{{old('description', $article->notes)}}</textarea>
+              </div>
+              <div class="form-group">
                             <div class="row">
                               <div class="col-xs-6"><button type="submit" class="btn btn-default btn-lg btn-block"><i class="fa fa-save"></i> Salva bozza</button></div>
                               <div class="col-xs-6"><a href="/dashboard/articoli/{{$article->id}}/anteprima" target="_blank" class="btn btn-default btn-lg btn-block"><i class="fa fa-eye"></i> Anteprima</a></div>
@@ -113,7 +116,21 @@
             // filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
             filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
             // filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-            // filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+            // filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}',
+            wordcount : {
+
+                // Whether or not you want to show the Word Count
+                showWordCount: false,
+
+                // Whether or not you want to show the Char Count
+                showCharCount: true,
+                
+                // Maximum allowed Word Count
+                maxWordCount: 20000,
+
+                // Maximum allowed Char Count
+                maxCharCount: {{$siteSettings->article_maxlength}}
+            }
           });
           $("#article-featured-image").fileinput(
               {
