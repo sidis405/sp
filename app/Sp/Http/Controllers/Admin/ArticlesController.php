@@ -81,6 +81,16 @@ class ArticlesController extends Controller
         return redirect()->to('/dashboard/articoli/' . $article->id .'/modifica');
     }
 
+    public function destroy($article_id, Request $request)
+    {
+
+        $article = Article::whereId($article_id)->first();
+
+        $article->delete();
+
+        return redirect()->to('/admin/articoli');
+    }
+
 
 
     /**

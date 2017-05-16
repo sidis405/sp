@@ -75,7 +75,7 @@
                 </div>
                 <div class="col-xs-12">
                   <div class="btn-upload-image-container">
-                    <input type="file" name="article-featured-image" class="file-loading" id="article-featured-image">
+                    <input type="file" name="article-featured-image" class="file-loading" id="article-featured-image" required="">
                   </div>
                 </div>
               </div>
@@ -151,8 +151,8 @@
                 'overwriteInitial': true,
                 'maxFileSize': 500,
                 'allowedFileExtensions': ["jpg", "png"],
-                   // 'maxImageWidth': 250,
-                   // 'maxImageHeight': 250,
+                   'maxImageWidth': 400,
+                   'maxImageHeight': 250,
                 'minImageWidth': 400,
                 'minImageHeight': 250,
               }

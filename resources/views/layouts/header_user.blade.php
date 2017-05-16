@@ -9,7 +9,9 @@
             <ul id="user-dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1"">
               <li><a href="{{\Auth::user()->present()->user_url()}}"><i class="fa fa-fw fa-user"></i> Il Mio Profilo</a></li>
               <li><a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
-              <li><a href="/dashboard/articoli/scrivi"><i class="fa fa-fw fa-edit"></i> Scrivi Un Articolo</a></li>
+              @if(\Auth::user()->blocked == 0)
+                <li><a href="/dashboard/articoli/scrivi"><i class="fa fa-fw fa-edit"></i> Scrivi Un Articolo</a></li>
+              @endif
               <li class="dropdown-submenu">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-euro"></i> Visualizzazioni e Guadagni</a>
                   <ul class="dropdown-menu">

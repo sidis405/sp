@@ -13,11 +13,12 @@
     <div class="container">
       <div class="l-post-list-page">
           
-        <h1 class="page-title">Articoli ({{count($articles)}})
+        <h1 class="page-title">Utente: {{$user->present()->user_name()}}
             <!-- <span class="pull-right"><a href="/dashboard/articoli/scrivi"><i class="fa fa-plus-circle fw">Scrivi nuovo</i></a></span> -->
         </h1>
+
         <div class="row">
-        </div>
+        
         <div class="post-list">
   
           <table class="table table-bordered article-list-table" id="datatable">
@@ -29,14 +30,13 @@
                 <th data-search-type="multiple">Utente</th>
                 <th data-search-type="multiple">Stato</th>
                 <th data-search-type="text">Visite</th>
-                <th data-search-type="noen">Guadagni</th>
-                <th data-search-type="text">Ads</th>
+                <th data-search-type="text">Payoff</th>
                 <th data-search-type="none">Azioni</th>
               </tr>
             </thead>
 
             <tbody>
-              @foreach($articles as $article)
+              @foreach($user->articles as $article)
               <tr class="article-list-row">
                 <td>{{$article->updated_at->format('d/m/Y')}}</td>
                 <td><a href="/admin/articoli/{{$article->id}}">{{$article->title}}</a></td>
@@ -50,18 +50,19 @@
 
                 </td>
                 <td class="article-list-category"><i class="fa fa-user fa-fw"></i>{{$article->view_counter}}</a></td>
-                <td class="article-list-category">&euro; {{$article->payoff_counter}}</a></td>
-                <td class="article-list-category">{{ ($article->ads) ? 'si' : 'no'}}</a></td>
+                <td class="article-list-category">€{{number_format($article->payoff_counter, 2, ',', '.')}}</td>
+
                 <td class="actions">
-                  <a href="/admin/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a>
+                  <a href="/admin/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a><a href="/dashboard/articoli/{{$article->id}}/rimuovi" class="action"><i class="fa fa-trash-o fa-fw"></i></a>
                     <a href="/admin/articoli/{{$article->id}}/anteprima" class="action"><i class="fa fa-eye fa-fw"></i></a>
-                    <a onClick="return confirm('Sei sicuro di volere cancellare PERMANENTEMENTE questo articoli? TUTTI i dati andranno PERSI.')" href="/admin/articoli/{{$article->id}}/rimuovi" class="action ban"><i class="fa fa-trash"></i></a>
+                    <!-- <a href="{{$article->present()->article_url()}}" target="_blank" class="action"><i class="fa fa-check fa-fw"></i></a> -->
                 </td>
               </tr>
               @endforeach
             </tbody>
           
           </table>
+        </div>
         </div>
       </div>
     </div>
@@ -112,8 +113,33 @@
                                    }
             } );
         } );
+      
+      // $(document).ready(function() {
+      //    $('#datatable thead th').each( function () {
+      //            var title = $('#datatable tfoot th').eq( $(this).index() ).text();
+      //            $(this).html( '<input type="text" placeholder="Cerca '+title+'"/>' );
+      //        } );
+          
+      //        // DataTable
+      //        var table = $('#datatable').DataTable({
+      //         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tutti"]],
+      //         "iDisplayLength": 25,
+      //         "language": {
+      //                        "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Italian.json"
+      //                    }
+      //        });
+          
+      //        // Apply the search
+      //        table.columns().eq( 0 ).each( function ( colIdx ) {
+      //            $( 'input', table.column( colIdx ).header() ).on( 'keyup change', function () {
+      //                table
+      //                    .column( colIdx )
+      //                    .search( this.value )
+      //                    .draw();
+      //            } );
+      //        } );
+      //    } );
 
 
-  
   </script>
   @stop

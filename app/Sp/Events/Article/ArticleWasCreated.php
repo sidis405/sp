@@ -9,7 +9,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class ArticleWasCreated extends Event implements ShouldBroadcast
 {
-    use SerializesModels;
+    // use SerializesModels;
 
 
     public $article;

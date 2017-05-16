@@ -51,7 +51,12 @@
                 <td class="article-list-category">€{{number_format(array_sum(array_pluck($user->articles, 'payoff_counter')), 2, ',', '.')}}</td>
                 <td class="actions">
                   <a href="/admin/utenti/{{$user->id}}" class="action"><i class="fa fa-bar-chart fa-fw"></i></a>
-                  <a href="#" class="action ban"><i class="fa fa-ban fa-fw"></i></a>
+                  @if($user->blocked == 0)
+                    <a onClick="return confirm('Sei sicuro di volere bloccare questo utente?')" href="/admin/utenti/{{$user->id}}/1" class="action ban"><i class="fa fa-ban fa-fw"></i></a>
+                  @elseif($user->blocked == 1)
+                    <a onClick="return confirm('Sei sicuro di volere sbloccare questo utente?')" href="/admin/utenti/{{$user->id}}/0" class="action ban"><i class="fa fa-check"></i></a>
+                  @endif
+                  <a onClick="return confirm('Sei sicuro di volere cancellare PERMANENTEMENTE questo utente?')" href="/admin/utenti/cancella/{{$user->id}}" class="action ban"><i class="fa fa-trash"></i></a>
                 </td>
               </tr>
               @endforeach
@@ -109,31 +114,6 @@
             } );
         } );
       
-      // $(document).ready(function() {
-      //    $('#datatable thead th').each( function () {
-      //            var title = $('#datatable tfoot th').eq( $(this).index() ).text();
-      //            $(this).html( '<input type="text" placeholder="Cerca '+title+'"/>' );
-      //        } );
-          
-      //        // DataTable
-      //        var table = $('#datatable').DataTable({
-      //         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tutti"]],
-      //         "iDisplayLength": 25,
-      //         "language": {
-      //                        "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Italian.json"
-      //                    }
-      //        });
-          
-      //        // Apply the search
-      //        table.columns().eq( 0 ).each( function ( colIdx ) {
-      //            $( 'input', table.column( colIdx ).header() ).on( 'keyup change', function () {
-      //                table
-      //                    .column( colIdx )
-      //                    .search( this.value )
-      //                    .draw();
-      //            } );
-      //        } );
-      //    } );
 
 
   </script>

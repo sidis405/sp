@@ -13,7 +13,7 @@
     <div class="container">
       <div class="l-post-list-page">
           
-        <h1 class="page-title">Articoli ({{count($articles)}})
+        <h1 class="page-title">Amministratori ({{count($users)}})
             <!-- <span class="pull-right"><a href="/dashboard/articoli/scrivi"><i class="fa fa-plus-circle fw">Scrivi nuovo</i></a></span> -->
         </h1>
         <div class="row">
@@ -23,39 +23,40 @@
           <table class="table table-bordered article-list-table" id="datatable">
             <thead>
               <tr>
-                <th data-search-type="text">Data</th>
-                <th data-search-type="text">Titolo</th>
-                <th data-search-type="multiple">Categoria</th>
-                <th data-search-type="multiple">Utente</th>
+                <th data-search-type="text">&nbsp;</th>
+                <th data-search-type="text">Nome</th>
+                <th data-search-type="text">Cognome</th>
+                <th data-search-type="text">Nickname</th>
+                <th data-search-type="text">Email</th>
                 <th data-search-type="multiple">Stato</th>
-                <th data-search-type="text">Visite</th>
-                <th data-search-type="noen">Guadagni</th>
-                <th data-search-type="text">Ads</th>
+                <th data-search-type="text">Articoli</th>
+                <th data-search-type="text">Payoff</th>
                 <th data-search-type="none">Azioni</th>
               </tr>
             </thead>
 
             <tbody>
-              @foreach($articles as $article)
+              @foreach($users as $user)
               <tr class="article-list-row">
-                <td>{{$article->updated_at->format('d/m/Y')}}</td>
-                <td><a href="/admin/articoli/{{$article->id}}">{{$article->title}}</a></td>
-                <td class="article-list-category">{{$article->category->name}}</td>
+                <td class="article-list-category"><a href="/admin/amministratori/{{$user->id}}" class="action"><img src="{{$user->avatar}}" class="img-responsive"/></a></td>
+                <td class="article-list-category">{{$user->name}}</td>
+                <td class="article-list-category">{{$user->surname}}</td>
+                <td class="article-list-category">{{$user->username}}</td>
+                <td class="article-list-category">{{$user->email}}</td>
                 <td class="article-list-category">
-                  {{$article->user->present()->user_name()}}
-
-                </td>
-                <td class="article-list-category">
-                  {{$article->status->name}}
-
-                </td>
-                <td class="article-list-category"><i class="fa fa-user fa-fw"></i>{{$article->view_counter}}</a></td>
-                <td class="article-list-category">&euro; {{$article->payoff_counter}}</a></td>
-                <td class="article-list-category">{{ ($article->ads) ? 'si' : 'no'}}</a></td>
+                  @if($user->active == 1)
+                  Attivo
+                  @else Non Attivo @endif</td>
+                <td class="article-list-category">{{count($user->articles)}}</td>
+                <td class="article-list-category">€{{number_format(array_sum(array_pluck($user->articles, 'payoff_counter')), 2, ',', '.')}}</td>
                 <td class="actions">
-                  <a href="/admin/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a>
-                    <a href="/admin/articoli/{{$article->id}}/anteprima" class="action"><i class="fa fa-eye fa-fw"></i></a>
-                    <a onClick="return confirm('Sei sicuro di volere cancellare PERMANENTEMENTE questo articoli? TUTTI i dati andranno PERSI.')" href="/admin/articoli/{{$article->id}}/rimuovi" class="action ban"><i class="fa fa-trash"></i></a>
+                  <a href="/admin/amministratori/{{$user->id}}" class="action"><i class="fa fa-bar-chart fa-fw"></i></a>
+                  @if($user->blocked == 0)
+                    <a onClick="return confirm('Sei sicuro di volere bloccare questo utente?')" href="/admin/amministratori/{{$user->id}}/1" class="action ban"><i class="fa fa-ban fa-fw"></i></a>
+                  @elseif($user->blocked == 1)
+                    <a onClick="return confirm('Sei sicuro di volere sbloccare questo utente?')" href="/admin/amministratori/{{$user->id}}/0" class="action ban"><i class="fa fa-check"></i></a>
+                  @endif
+                  <a onClick="return confirm('Sei sicuro di volere cancellare PERMANENTEMENTE questo utente?')" href="/admin/amministratori/cancella/{{$user->id}}" class="action ban"><i class="fa fa-trash"></i></a>
                 </td>
               </tr>
               @endforeach
@@ -112,8 +113,8 @@
                                    }
             } );
         } );
+      
 
 
-  
   </script>
   @stop

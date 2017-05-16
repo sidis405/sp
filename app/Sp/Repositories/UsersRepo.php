@@ -19,7 +19,7 @@ class UsersRepo
 
     public function getBySlug($slug)
     {
-        return User::with('articles.category', 'followers')->where('username', $slug)->first();
+        return User::with('articles.category', 'followers')->where('active', '>', 0)->where('username', $slug)->first();
     } 
 
     public function getAll()
@@ -29,7 +29,12 @@ class UsersRepo
 
     public function getAllForListing()
     {
-        return User::where('role', 'user')->with('articles')->orderBy('name', 'ASC')->get();
+        return User::where('role', 'user')->where('active', '>', 0)->with('articles')->orderBy('name', 'ASC')->get();
+    } 
+
+    public function getAdminAllForListing()
+    {
+        return User::where('role', 'admin')->where('active', '>', 0)->orderBy('name', 'ASC')->get();
     } 
 
     public function getById($id)

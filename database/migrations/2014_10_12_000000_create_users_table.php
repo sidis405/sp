@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->text('description');
             $table->string('facebook_id')->unique();
             $table->string('avatar');
+            $table->string('active')->default(0);
+            $table->string('blocked')->default(0);
             $table->string('country_id')->nullable();
             $table->string('city_id')->nullable();
             $table->string('role')->default('user');

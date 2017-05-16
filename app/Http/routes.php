@@ -32,6 +32,7 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
     Route::get('articoli/{id}', '\Sp\Http\Controllers\Admin\ArticlesController@show');
     Route::get('articoli/{id}/modifica', '\Sp\Http\Controllers\Admin\ArticlesController@edit');
     Route::post('articoli/{id}', '\Sp\Http\Controllers\Admin\ArticlesController@update');
+    Route::get('articoli/{id}/rimuovi', '\Sp\Http\Controllers\Admin\ArticlesController@destroy');
 
 
     Route::get('articoli/{id}/anteprima', '\Sp\Http\Controllers\Admin\ArticlesController@preview');
@@ -59,6 +60,15 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
 
     Route::get('utenti', '\Sp\Http\Controllers\Admin\UsersController@index');
     Route::get('utenti/{id}', '\Sp\Http\Controllers\Admin\UsersController@show');
+    Route::get('utenti/cancella/{id}', '\Sp\Http\Controllers\Admin\UsersController@destroy');
+    Route::get('utenti/{id}/{status}', '\Sp\Http\Controllers\Admin\UsersController@update');
+
+    Route::get('amministratori/crea', '\Sp\Http\Controllers\Admin\AdminsController@create');
+    Route::get('amministratori/{id}', '\Sp\Http\Controllers\Admin\AdminsController@show');
+    Route::post('amministratori', '\Sp\Http\Controllers\Admin\AdminsController@store');
+    Route::get('amministratori', '\Sp\Http\Controllers\Admin\AdminsController@index');
+    Route::get('amministratori/cancella/{id}', '\Sp\Http\Controllers\Admin\AdminsController@destroy');
+    Route::get('amministratori/{id}/{status}', '\Sp\Http\Controllers\Admin\AdminsController@update');
 
     Route::get('pagamenti', '\Sp\Http\Controllers\Admin\EarningsController@index');
     Route::get('pagamenti/{id}', '\Sp\Http\Controllers\Admin\EarningsController@show');

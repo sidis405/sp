@@ -11,7 +11,7 @@ use Sp\Repositories\CategoryRepo;
 use App\Http\Controllers\Controller;
 
 
-class UsersController extends Controller
+class AdminsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +20,9 @@ class UsersController extends Controller
      */
     public function index(UsersRepo $users_repo)
     {
-        $users = $users_repo->getAllForListing();
+        $users = $users_repo->getAdminAllForListing();
 
-        return view('admin.users.index', compact('users'));
+        return view('admin.admins.index', compact('users'));
 
     }
 
@@ -30,8 +30,35 @@ class UsersController extends Controller
     {
         $user = $users_repo->getById($user_id);
 
-        return view('admin.users.show', compact('user'));
+        return view('admin.admins.show', compact('user'));
 
+    }
+
+    public function create(Request $request)
+    {
+        return view('admin.admins.create');
+    }
+
+    public function store(Request $request)
+    {
+        $rules = [
+            'name' => 'required|min:3',
+            'surname' => 'required|min:3',
+            'username' => 'required|min:3|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+        ];
+
+        $this->validate($request, $rules);
+
+        $input = $request->only('name', 'surname', 'username', 'email', 'password');
+        $input['active'] = 1;
+        $input['role'] = 'admin';
+        $input['password'] = bcrypt($input['password']);
+
+        User::create($input);
+
+        return redirect()->to('/admin/amministratori');
     }
 
     public function update($user_id, $status, Request $request)

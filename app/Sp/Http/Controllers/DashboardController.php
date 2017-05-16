@@ -47,6 +47,7 @@ class DashboardController extends Controller
 
     public function create(CategoryRepo $category_repo)
     {
+        if(\Auth::user()->blocked == 1) return redirect()->to("/");
         
         $ads = $this->ads_repo->getForPage('dashboard');
         $categories = $category_repo->getAllList();
@@ -58,7 +59,7 @@ class DashboardController extends Controller
     {
         $data = $this->manageFields($request);
 
-        // return $request->input();
+        // return $data;
 
         $article = $this->dispatchFrom('Sp\Commands\Article\CreateArticleCommand', $request, $data);
         flash()->success('Articolo creato con successo.');
