@@ -1061,10 +1061,6 @@ aside .module-title h3 {
   margin-top: 0;
 }
 
-#dropdownMenu2 {
-  background: transparent;
-}
+.nav #dropdownMenu2 {background: transparent;}
+.nav #dropdownMenu2:hover {color: #991722;}
 
-#dropdownMenu2:hover {
-  color: #991722;
-}
