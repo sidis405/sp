@@ -42,9 +42,10 @@ class PasswordController extends Controller
         $this->validate($request, ['email' => 'required|email']);
 
         $response = Password::sendResetLink($request->only('email'), function (Message $message) {
-            // $message->subject($this->getEmailSubject());
             $message->subject('Reimposta la tua password');
         });
+
+        flash('Ti abbiamo inviato una mail con il link per reimpostare la passowrd.');
 
         switch ($response) {
             case Password::RESET_LINK_SENT:

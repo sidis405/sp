@@ -17,6 +17,8 @@
                  <h2>Reimposta password</h2>
                 
                 <div>
+
+                @include('errors.errors')
                   
                   <!-- resources/views/auth/password.blade.php -->
 

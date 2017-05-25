@@ -30,11 +30,7 @@
                       <input type="password" class="form-control" id="" name="password" placeholder="Password">
                     </div>
                     <div class="checkbox">
-                      <label>
-                        <input type="checkbox" value="">
-                        <i class="input-helper"></i>
-                        Ricorda la mia password
-                      </label>
+                        <a href="/password/email">Recupera la mia password</a>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Accedi</button>
                     <span style="display: block; text-align: center;">oppure</span>

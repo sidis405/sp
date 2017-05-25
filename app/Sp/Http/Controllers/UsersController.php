@@ -107,7 +107,7 @@ class UsersController extends Controller
     public function profile_form_save(UpdateUserProfileRequest $request)
     {
 
-        return $request->all();
+        // return $request->all();
 
         $user = $this->dispatchFrom('Sp\Commands\Users\UpdateUserProfileCommand', $request);
         

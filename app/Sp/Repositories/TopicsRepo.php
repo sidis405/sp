@@ -24,6 +24,11 @@ class TopicsRepo
         return Topics::orderBy('ondate', 'ASC')->whereActive('1')->get();
     }
 
+    public static function getAllFrontForday()
+    {
+        return Topics::orderBy('ondate', 'ASC')->whereActive('1')->where('ondate', 'like', '%' . date('Y-m-d') . '%')->get();
+    }
+
     public function getById($id)
     {
         return Topics::where('id', $id)->first();

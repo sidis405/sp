@@ -22,6 +22,10 @@
             </select>
           </div>
           <div class="form-group">
+            <label for="active">Lunghezza minima caratteri articolo</label>
+            <input type="text" class="form-control" name="article_maxlength" value="{{$settings->article_minlength}}">
+          </div>
+          <div class="form-group">
             <label for="active">Lunghezza massima caratteri articolo</label>
             <input type="text" class="form-control" name="article_maxlength" value="{{$settings->article_maxlength}}">
           </div>

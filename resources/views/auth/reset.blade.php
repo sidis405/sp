@@ -20,6 +20,8 @@
                   
                   <!-- resources/views/auth/reset.blade.php -->
 
+                  @include('errors.errors')
+
                   <form method="POST" action="/password/reset">
                       {!! csrf_field() !!}
                       <input class="form-control" type="hidden" name="token" value="{{ $token }}">

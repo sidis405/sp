@@ -29,7 +29,7 @@
           <div class="logo-container">
             <a href="/"><h1 class="logo">Sito Pubblico</h1></a>
           </div>
-          <ul class="nav nav-pills nav-justified">
+          <ul class="nav nav-pills nav-justified hidden-xs">
             <li><a href="/">Home</a></li>
             @foreach(array_slice($navCategories->toArray() , 0, 8)as $navCat)
             <li><a href="/categorie/{{$navCat['slug']}}">{{$navCat['name']}}</a></li>

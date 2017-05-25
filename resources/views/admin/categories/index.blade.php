@@ -46,7 +46,6 @@
                 <td class="article-list-category">€{{number_format(array_sum(array_pluck($category->articles, 'payoff_counter')), 2, ',', '.')}}</td>
                 <td class="actions">
                   <a href="/admin/categorie/{{$category->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a>
-                  <a href="#" class="action"><i class="fa fa-bar-chart fa-fw"></i></a>
                   @if(count($category->articles) == 0)
                     <a href="#" class="action category-delete-trigger" data-category-id="{{$category->id}}"><i class="fa fa-trash-o fa-fw"></i></a>
                   @endif

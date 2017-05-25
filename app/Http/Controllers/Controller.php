@@ -23,7 +23,7 @@ abstract class Controller extends BaseController
 
         if($user){
 
-        	view()->share('day_topics', TopicsRepo::getAllFront());
+        	view()->share('day_topics', TopicsRepo::getAllFrontForday());
         	
         }
 

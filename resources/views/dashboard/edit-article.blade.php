@@ -30,16 +30,16 @@
                {{csrf_field()}}
                <input type="hidden" name="article_id" value="{{$article->id}}">
               <div class="form-group">
-                <input type="text" placeholder="Titolo" name="title"  value="{{old('title', $article->title)}}" required="required" class="form-control">
+                <input type="text" placeholder="Titolo: Minimo 25, massimo 75 caratteri" maxlength="75" name="title"  value="{{old('title', $article->title)}}" required="required" class="form-control">
               </div>
               <div class="form-group">
-                <textarea name="description" placeholder="Breve descrizione" cols="30" rows="5" class="form-control" required>{{old('description', $article->description)}}</textarea>
+                <textarea name="description" placeholder="Breve descrizione: Minimo 80, massimo 130 caratteri" maxlength="130" cols="30" rows="5" class="form-control" required>{{old('description', $article->description)}}</textarea>
               </div>
               <div class="form-group">
                 <textarea name="body" id="body" placeholder="Scrivi Il tuo articolo" cols="30" rows="15" class="form-control" required>{!!old('body', $article->body)!!}</textarea>
               </div>
               <div class="form-group">
-                <textarea name="notes" placeholder="(non obligatorio) Note aggiuntive" maxlength="80" cols="30" rows="5" class="form-control" required>{{old('description', $article->notes)}}</textarea>
+                <textarea name="notes" placeholder="(non obligatorio) Riferimenti e note" maxlength="80" cols="30" rows="5" class="form-control">{{old('description', $article->notes)}}</textarea>
               </div>
               <div class="form-group">
                             <div class="row">
@@ -129,7 +129,9 @@
                 maxWordCount: 20000,
 
                 // Maximum allowed Char Count
-                maxCharCount: {{$siteSettings->article_maxlength}}
+                 // Maximum allowed Char Count
+                maxCharCount: {{$siteSettings->article_maxlength}},
+                minCharCount: {{$siteSettings->article_minlength}}
             }
           });
           $("#article-featured-image").fileinput(
@@ -137,6 +139,7 @@
                 'browseClass': "btn btn-primary btn-block",
                 'language': "it",
                 'showCaption': false,
+                'browseLabel': 'Scegli immagine',
                 'maxFileCount': 1,
                 'showRemove': false,
                 'showUpload': false,
@@ -172,7 +175,7 @@
               }, 
                 function(isConfirm){   
                   if (isConfirm) {     
-                    swal("Approvato!", "Questo Articolo è stato inviato.", "success");   
+                    swal("Inviato!", "Questo Articolo è stato inviato.", "success");   
                     ajaxCallFront(2, '/dashboard/articoli/{{$article->id}}/invia', 'POST', false, goto('/dashboard'));
                   } else {     
                     swal("Cancelled", "Your imaginary file is safe :)", "error");   

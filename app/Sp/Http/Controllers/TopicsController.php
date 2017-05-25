@@ -17,7 +17,7 @@ class TopicsController extends Controller
      */
     public function index(TopicsRepo $topics_repo)
     {
-        $topics = $topics_repo->getAll();
+        $topics = $topics_repo->getAllFrontForday();
 
         return view('topics.index', compact('topics'));
 
