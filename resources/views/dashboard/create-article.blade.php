@@ -24,7 +24,7 @@
           <div class="col-sm-8">
                {{csrf_field()}}
               <div class="form-group">
-                <input type="text" placeholder="Titolo: Minimo 25, massimo 75 caratteri" maxlength="75" name="title"  value="{{old('title')}}" required="required" class="form-control">
+                <input type="text" placeholder="Titolo: Minimo 25, massimo 150 caratteri" maxlength="150" name="title"  value="{{old('title')}}" required="required" class="form-control">
               </div>
               <div class="form-group">
                 <textarea name="description" placeholder="Breve descrizione: Minimo 80, massimo 130 caratteri" maxlength="130" cols="30" rows="5" class="form-control" required>{{old('description')}}</textarea>
@@ -33,7 +33,7 @@
                 <textarea name="body" id="body" placeholder="Scrivi Il tuo articolo" cols="30" rows="15" class="form-control" required placeholder="Massimo {{$siteSettings->article_maxlength}} caratteri">{!!old('body')!!}</textarea>
               </div>
               <div class="form-group">
-                <textarea name="notes" placeholder="(non obligatorio) Riferimenti e note" maxlength="80" cols="30" rows="5" class="form-control">{{old('notes')}}</textarea>
+                <textarea name="notes" placeholder="(non obbligatorio) Riferimenti e note" maxlength="300" cols="30" rows="5" class="form-control">{{old('notes')}}</textarea>
               </div>
               <div class="form-group">
                             <div class="row">

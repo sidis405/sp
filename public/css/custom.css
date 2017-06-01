@@ -310,3 +310,9 @@ position:fixed;
 .status-in-attesa {
   color: orange;
 }
+
+
+.cke_notifications_area {
+  background: #991722 !important;
+  padding: 5px !important;
+}
