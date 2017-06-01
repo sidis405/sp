@@ -129,8 +129,8 @@
                 'overwriteInitial': true,
                 'maxFileSize': 500,
                 'allowedFileExtensions': ["jpg", "png"],
-                  'maxImageWidth': 400,
-                   'maxImageHeight': 250,
+                  'maxImageWidth': 730,
+                   'maxImageHeight': 350,
                 'minImageWidth': 400,
                 'minImageHeight': 250,
               }
