@@ -101,7 +101,7 @@
 
                 // Whether or not you want to show the Char Count
                 showCharCount: true,
-                showParagraphsCount: false,
+                showParagraphs: false,
                 
                 // Maximum allowed Word Count
                 maxWordCount: 20000,

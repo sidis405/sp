@@ -127,6 +127,7 @@
                 
                 // Maximum allowed Word Count
                 maxWordCount: 20000,
+                showParagraphs: false,
 
                 // Maximum allowed Char Count
                  // Maximum allowed Char Count
