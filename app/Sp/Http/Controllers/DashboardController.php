@@ -59,7 +59,7 @@ class DashboardController extends Controller
     {
         $data = $this->manageFields($request);
 
-        // return $data;
+        // return strlen($request->get('body'));
 
         $article = $this->dispatchFrom('Sp\Commands\Article\CreateArticleCommand', $request, $data);
         flash()->success('Articolo creato con successo.');

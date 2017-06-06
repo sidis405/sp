@@ -33,7 +33,7 @@ class SettingsController extends Controller
      */
     public function update(Request $request)
     {
-        $input = $request->only('allow_registration');
+        $input = $request->only('allow_registration', 'article_maxlength', 'article_minlength');
 
         $settings = Settings::find(1);
 

@@ -107,6 +107,7 @@
                 maxWordCount: 20000,
 
                 // Maximum allowed Char Count
+                countSpacesAsChars: true,
                 maxCharCount: {{$siteSettings->article_maxlength}},
                 minCharCount: {{$siteSettings->article_minlength}}
             }
