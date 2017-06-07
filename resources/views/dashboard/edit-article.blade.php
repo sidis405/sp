@@ -75,6 +75,7 @@
                 </div>
                 <div class="col-xs-12">
                   <div class="btn-upload-image-container">
+                    <span>**Campo obbligatorio**</span>
                     <input type="file" name="article-featured-image" class="file-loading" id="article-featured-image" required="">
                   </div>
                 </div>
