@@ -215,121 +215,14 @@
                             <tr>
                                 <td valign="top" class="preheaderContent">
                                 
-                                    <!-- // Begin Module: Standard Preheader \\ -->
-                                    <table border="0" cellpadding="10" cellspacing="0" width="100%">
-                                        <tr>
-                                            <td valign="top">
-                                                <div>
-                                                    Use one or two sentences in this area to offer a teaser of your email's content. Text here will show in a preview area in some email clients.
-                                                </div>
-                                            </td>
-                                            <td valign="top" width="180">
-                                                <div>
-                                                    <!-- *|IFNOT:ARCHIVE_PAGE|* -->Is this email not displaying correctly?<br><a href="*|ARCHIVE|*" target="_blank">View it in your browser</a>.<!-- *|END:IF|* -->
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!-- // End Module: Standard Preheader \\ -->
+                                  
+                                    <p>Il tuo articolo {{$article->title}} è stato approvato.</p>
+                                    <p><a href="{{env('APP_URL'). $article->present()->article_url}}">Vedi Articolo</a></p>
                                 
                                 </td>
                             </tr>
                         </table>
-                        <!-- // End Template Preheader \\ -->
-                        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer">
-                            <tr>
-                                <td align="center" valign="top">
-                                    <!-- // Begin Template Header \\ -->
-                                   
-                                    <!-- // End Template Header \\ -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" valign="top">
-                                    <!-- // Begin Template Body \\ -->
-                                    <table border="0" cellpadding="10" cellspacing="0" width="600" id="templateBody">
-                                        <tr>
-                                            <td valign="top" class="bodyContent">
-                                
-                                                <!-- // Begin Module: Standard Content \\ -->
-                                               
-                                                <!-- // End Module: Standard Content \\ -->
-                                                
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!-- // End Template Body \\ -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" valign="top">
-                                    <!-- // Begin Template Footer \\ -->
-                                    <table border="0" cellpadding="10" cellspacing="0" width="600" id="templateFooter">
-                                        <tr>
-                                            <td valign="top" class="footerContent">
-                                            
-                                                <!-- // Begin Module: Standard Footer \\ -->
-                                                <table border="0" cellpadding="10" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td colspan="2" valign="middle" id="social">
-                                                            <div>
-                                                                &nbsp;<a href="*|TWITTER:PROFILEURL|*">follow on Twitter</a> | <a href="*|FACEBOOK:PROFILEURL|*">friend on Facebook</a> | <a href="*|FORWARD|*">forward to a friend</a>&nbsp;
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td valign="top" width="370">
-                                                            <br>
-                                                            <div>
-                                                                *|IF:LIST|*
-                                                                <em>Copyright &copy; *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.</em>
-                                                                <br>
-                                                                <!-- *|IFNOT:ARCHIVE_PAGE|* -->
-                                                                *|LIST:DESCRIPTION|*
-                                                                <br>
-                                                                <strong>Our mailing address is:</strong>
-                                                                <br>
-                                                                *|HTML:LIST_ADDRESS_HTML|*
-                                                                <br>
-                                                                <!-- *|END:IF|* -->
-                                                                *|ELSE:|*
-                                                                <!-- *|IFNOT:ARCHIVE_PAGE|* -->
-                                                                <em>Copyright &copy; *|CURRENT_YEAR|* *|USER:COMPANY|*, All rights reserved.</em>
-                                                                <br>
-                                                                <strong>Our mailing address is:</strong>
-                                                                <br>
-                                                                *|USER:ADDRESS_HTML|*
-                                                                <!-- *|END:IF|* -->
-                                                                *|END:IF|*
-                                                            </div>
-                                                            <br>
-                                                        </td>
-                                                        <td valign="top" width="170" id="monkeyRewards">
-                                                            <br>
-                                                            <div>
-                                                                *|IF:REWARDS|* *|HTML:REWARDS|* *|END:IF|*
-                                                            </div>
-                                                            <br>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" valign="middle" id="utility">
-                                                            <div>
-                                                                &nbsp;<a href="*|UNSUB|*">unsubscribe from this list</a> | <a href="*|UPDATE_PROFILE|*">update subscription preferences</a><!-- *|IFNOT:ARCHIVE_PAGE|* --> | <a href="*|ARCHIVE|*">view email in browser</a><!-- *|END:IF|* -->&nbsp;
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <!-- // End Module: Standard Footer \\ -->
-                                            
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!-- // End Template Footer \\ -->
-                                </td>
-                            </tr>
-                        </table>
-                        <br>
+
                     </td>
                 </tr>
             </table>

@@ -22,8 +22,13 @@ class ArticleWasVisitedHandler {
         {
             $article->increment('view_counter');
             $article->increment('payoff_counter', $article->category()->get()->toArray()[0]['payoff']/1000);
+            $article->payoff_counter += $article->category()->get()->toArray()[0]['payoff']/1000;
             $this->countVisit($article);
             $this->storeArticle($article);
+            unset($article->referrer);
+            unset($article->sharecode);
+            unset($article->ip);
+            $article->save();
         }
 
     }
@@ -32,7 +37,7 @@ class ArticleWasVisitedHandler {
     {
         // return true;
         // check that the referres is neither empty or a local url
-        if($article->referrer != env('LOCAL_URL'))
+        if($article->referrer != env('APP_URL'))
         // if($article->referrer != env('LOCAL_URL') && strlen($article->referrer) > 0)
         {
             // check that the uses is either unlogged or not an admin

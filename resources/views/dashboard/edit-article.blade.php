@@ -30,10 +30,10 @@
                {{csrf_field()}}
                <input type="hidden" name="article_id" value="{{$article->id}}">
               <div class="form-group">
-                <input type="text" placeholder="Titolo: Minimo 25, massimo 75 caratteri" maxlength="75" name="title"  value="{{old('title', $article->title)}}" required="required" class="form-control">
+                <input type="text" id="count-me-title" placeholder="Titolo: Minimo 25, massimo 80 caratteri" maxlength="80" name="title"  value="{{old('title', $article->title)}}" required="required" class="form-control">
               </div>
               <div class="form-group">
-                <textarea name="description" placeholder="Breve descrizione: Minimo 80, massimo 130 caratteri" maxlength="130" cols="30" rows="5" class="form-control" required>{{old('description', $article->description)}}</textarea>
+                <textarea name="description" id="count-me-description" placeholder="Breve descrizione: Minimo 80, massimo 160 caratteri" maxlength="160" cols="30" rows="5" class="form-control" required>{{old('description', $article->description)}}</textarea>
               </div>
               <div class="form-group">
                 <textarea name="body" id="body" placeholder="Scrivi Il tuo articolo" cols="30" rows="15" class="form-control" required>{!!old('body', $article->body)!!}</textarea>
@@ -110,7 +110,24 @@
   <script src="/bower_components/bootstrap-fileinput/js/fileinput_locale_it.js"></script>
   <script src="/js/sweetalert.min.js"></script>
 
+<script src="/js/jquery-character-counter.js"></script>
+  
 
+  <script type="text/javascript">
+    $("#count-me-title").characterCounter({
+      limit: $(this).attr('maxlength')  ,
+      counterWrapper: 'span',
+      counterCssClass: 'btn',
+      counterFormat: '%1 caratteri rimasti'
+    });
+
+    $("#count-me-description").characterCounter({
+      limit: $(this).attr('maxlength')  ,
+      counterWrapper: 'span',
+      counterCssClass: 'btn',
+      counterFormat: '%1 caratteri rimasti'
+    });
+  </script>
 
       <script>
           $('textarea#body').ckeditor({

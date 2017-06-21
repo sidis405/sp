@@ -28,8 +28,8 @@ class WriteArticleRequest extends Request
         $settings = Settings::first();
 
         return [
-            'title' => 'required|min:25|max:75',
-            'description' => 'required|min:80|max:130',
+            'title' => 'required|min:25|max:80',
+            'description' => 'required|min:80|max:160',
             'body' => 'required|min:' . $settings->article_minlength . '|max:' . $settings->article_maxlength,
         ];
     }

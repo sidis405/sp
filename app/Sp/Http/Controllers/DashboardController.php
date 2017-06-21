@@ -149,7 +149,7 @@ class DashboardController extends Controller
 
 
         $article = Article::find($request->input('payload'));
-        logger($article);
+        // logger($article);
         if($article && $article->user_id == \Auth::user()->id && $request->input('payload'))
         {
             $article->delete();

@@ -1,5 +1,11 @@
 @extends('admin.layouts.master')
 
+@section('header_scripts')
+
+<link rel="stylesheet" href="https://cdn.datatables.net/u/bs-3.3.6/jqc-1.12.3,dt-1.10.12,af-2.1.2,fh-3.1.2/datatables.min.css">
+
+@stop
+
 @section('content')
 
     <!-- <div class="page-bg news-bg holderjs"></div> -->
@@ -13,7 +19,7 @@
         <div class="row">
         </div>
         <div class="post-list">
-          <div class="row">
+     {{--      <div class="row">
             <div class="col-sm-4">
               <div class="form-group">
                 <label class="label">Categorie</label>
@@ -29,15 +35,15 @@
             <div class="col-sm-4">
               <label class="label">Reset</label><a class="btn btn-default btn-md btn-block article-list-reset-filter"><i class="fa fa-close"></i> Azzera filtri</a>
             </div>
-          </div>
-          <table class="table table-bordered article-list-table">
+          </div> --}}
+          <table class="table table-bordered article-list-table" id="datatable">
             <thead>
               <tr>
-                <th>Data</th>
-                <th>Titolo</th>
-                <th>Categoria</th>
-                <th>Utente</th>
-                <th>Azioni</th>
+                <th data-search-type="text">Data</th>
+                <th data-search-type="text">Titolo</th>
+                <th data-search-type="multiple">Categoria</th>
+                <th data-search-type="multiple">Utente</th>
+                <th data-search-type="none">Azioni</th>
               </tr>
             </thead>
             <tbody>
@@ -60,4 +66,55 @@
         </div>
       </div>
     </div>
+  @stop
+
+   @section('footer_scripts')
+
+  <script src="https://cdn.datatables.net/u/bs-3.3.6/jqc-1.12.3,dt-1.10.12,af-2.1.2,fh-3.1.2/datatables.min.js"></script>
+
+  <script>
+
+        $(document).ready(function() {
+            $('#datatable').DataTable( {
+                initComplete: function () {
+                    var headers = $('#datatable thead th');
+                    this.api().columns().every( function (index) {
+
+                    if($(headers[index]).data('search-type') == 'multiple'){
+                    
+                          var column = this;
+                          var select = $('<select><option value=""></option></select>')
+                              .appendTo( $(column.header()).empty() )
+                              .on( 'change', function () {
+                                  var val = $.fn.dataTable.util.escapeRegex(
+                                      $(this).val()
+                                  );
+           
+                                  column
+                                      .search( val ? '^'+val+'$' : '', true, false )
+                                      .draw();
+                              } );
+           
+                          column.data().unique().sort().each( function ( d, j ) {
+                              select.append( '<option value="'+d+'">'+d+'</option>' )
+                          } );
+
+                        }
+
+                      } 
+
+
+                    );
+                },
+                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tutti"]],
+                        "iDisplayLength": 25,
+                        "language": {
+                                       "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Italian.json"
+                                   }
+            } );
+        } );
+
+
+  
+  </script>
   @stop

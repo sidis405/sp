@@ -24,10 +24,10 @@
           <div class="col-sm-8">
                {{csrf_field()}}
               <div class="form-group">
-                <input type="text" placeholder="Titolo: Minimo 25, massimo 150 caratteri" maxlength="150" name="title"  value="{{old('title')}}" required="required" class="form-control">
+                <input type="text" id="count-me-title" placeholder="Titolo: Minimo 25, massimo 80 caratteri" maxlength="80" name="title"  value="{{old('title')}}" required="required" class="form-control count-me">
               </div>
               <div class="form-group">
-                <textarea name="description" placeholder="Breve descrizione: Minimo 80, massimo 130 caratteri" maxlength="130" cols="30" rows="5" class="form-control" required>{{old('description')}}</textarea>
+                <textarea name="description"  id="count-me-description"  placeholder="Breve descrizione: Minimo 80, massimo 160 caratteri" maxlength="160" cols="30" rows="5" class="form-control count-me" required>{{old('description')}}</textarea>
               </div>
               <div class="form-group">
                 <textarea name="body" id="body" placeholder="Scrivi Il tuo articolo" cols="30" rows="15" class="form-control" required placeholder="Massimo {{$siteSettings->article_maxlength}} caratteri">{!!old('body')!!}</textarea>
@@ -78,8 +78,25 @@
 
   @section('footer_scripts')
   <script src="/js/bootstrap-select.min.js"></script>
-  
   <script> $('.cat-select').selectpicker();</script>
+  <script src="/js/jquery-character-counter.js"></script>
+  
+
+  <script type="text/javascript">
+    $("#count-me-title").characterCounter({
+      limit: $(this).attr('maxlength')  ,
+      counterWrapper: 'span',
+      counterCssClass: 'btn',
+      counterFormat: '%1 caratteri rimasti'
+    });
+
+    $("#count-me-description").characterCounter({
+      limit: $(this).attr('maxlength')  ,
+      counterWrapper: 'span',
+      counterCssClass: 'btn',
+      counterFormat: '%1 caratteri rimasti'
+    });
+  </script>
   
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
       <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
