@@ -72,7 +72,7 @@
         </div>
       </div>
             </form>
-      
+
     </div>
   @stop
 
@@ -80,7 +80,7 @@
   <script src="/js/bootstrap-select.min.js"></script>
   <script> $('.cat-select').selectpicker();</script>
   <script src="/js/jquery-character-counter.js"></script>
-  
+
 
   <script type="text/javascript">
     $("#count-me-title").characterCounter({
@@ -97,7 +97,7 @@
       counterFormat: '%1 caratteri rimasti'
     });
   </script>
-  
+
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
       <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 
@@ -120,7 +120,7 @@
                 // Whether or not you want to show the Char Count
                 showCharCount: true,
                 showParagraphs: false,
-                
+
                 // Maximum allowed Word Count
                 maxWordCount: 20000,
 
@@ -140,7 +140,7 @@
                 'showRemove': false,
                 'showUpload': false,
                 'previewFileType':'image',
-         
+
                 'initialPreviewAsData': true,
                 'initialPreviewConfig': [
                             {caption: "Immagine di Copertina", size: 930321, width: "120px", key: 1}
@@ -148,10 +148,10 @@
                 'overwriteInitial': true,
                 'maxFileSize': 500,
                 'allowedFileExtensions': ["jpg", "png"],
-                  'maxImageWidth': 730,
-                   'maxImageHeight': 350,
-                'minImageWidth': 400,
-                'minImageHeight': 250,
+                //   'maxImageWidth': 730,
+                //    'maxImageHeight': 350,
+                // 'minImageWidth': 400,
+                // 'minImageHeight': 250,
               }
             );
       </script>
