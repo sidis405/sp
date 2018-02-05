@@ -4,7 +4,6 @@ namespace Sp\Http\Controllers\Admin;
 
 use Event;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use Sp\Models\Article;
 use Sp\Repositories\ArticleRepo;
@@ -12,7 +11,6 @@ use Sp\Repositories\CategoryRepo;
 use Sp\Repositories\TagsRepo;
 use Sp\Repositories\UsersRepo;
 use Sp\Events\Article\ArticleWasApproved;
-
 
 class ArticlesController extends Controller
 {
@@ -28,11 +26,10 @@ class ArticlesController extends Controller
 
         // $categories = $category_repo->getAllList();
         $categories = array_values(array_unique(array_pluck($category_repo->getAllList(), 'name')));
-        
+
         $articles = $article_repo->getAll();
 
         return view('admin.articles.index', compact('users', 'categories', 'articles'));
-
     }
 
     public function index_new(ArticleRepo $article_repo)
@@ -43,16 +40,17 @@ class ArticlesController extends Controller
 
 
         return view('admin.articles.index_new', compact('new', 'categories'));
-
     }
 
-    public function edit($id, ArticleRepo $article_repo, CategoryRepo $category_repo,  TagsRepo $tags_repo)
+    public function edit($id, ArticleRepo $article_repo, CategoryRepo $category_repo, TagsRepo $tags_repo)
     {
         $article = $article_repo->getById($id);
 
         // return $article;
 
-        if(! $article ) return abort(404);
+        if (! $article) {
+            return abort(404);
+        }
 
         $categories = $category_repo->getAllList();
         $tags = $tags_repo->getAll();
@@ -63,7 +61,6 @@ class ArticlesController extends Controller
 
     public function create(CategoryRepo $category_repo)
     {
- 
         $categories = $category_repo->getAllList();
 
         return view('dashboard.create-article', compact('categories'));
@@ -83,12 +80,12 @@ class ArticlesController extends Controller
 
     public function destroy($article_id, Request $request)
     {
-
         $article = Article::whereId($article_id)->first();
 
         $article->delete();
 
-        return redirect()->to('/admin/articoli');
+        return redirect()->back();
+        // return redirect()->to('/admin/articoli');
     }
 
 
@@ -115,10 +112,11 @@ class ArticlesController extends Controller
         $article = $article_repo->getById($article_id);
 
 
-        if(! $article || ($article->user_id !== \Auth::user()->id && \Auth::user()->role !== 'admin')) return abort(404);
+        if (! $article || ($article->user_id !== \Auth::user()->id && \Auth::user()->role !== 'admin')) {
+            return abort(404);
+        }
 
         return view('admin.articles.anteprima', compact('article'));
-
     }
 
     public function show($article_id, ArticleRepo $article_repo, UsersRepo $users_repo)
@@ -129,15 +127,15 @@ class ArticlesController extends Controller
 
 
 
-        if(! $article || ($article->user_id !== \Auth::user()->id && \Auth::user()->role !== 'admin')) return abort(404);
+        if (! $article || ($article->user_id !== \Auth::user()->id && \Auth::user()->role !== 'admin')) {
+            return abort(404);
+        }
 
         return view('admin.articles.show', compact('article', 'user'));
-
     }
 
     public function rating($article_id, Request $request)
     {
-
         $article = Article::find($article_id);
 
         // return $article_id;
@@ -150,7 +148,6 @@ class ArticlesController extends Controller
 
     public function status($article_id, Request $request)
     {
-
         $article = Article::find($article_id);
 
         // return $article_id;
@@ -158,11 +155,8 @@ class ArticlesController extends Controller
         $article->status_id = $request->input('payload');
         $article->save();
 
-        if($request->input('payload') == 3)
-        {
-
+        if ($request->input('payload') == 3) {
             Event::fire(new ArticleWasApproved($article));
-            
         }
 
 
@@ -173,17 +167,12 @@ class ArticlesController extends Controller
     {
         $data = [];
 
-        if($request->hasFile('article-featured-image'))
-        {
+        if ($request->hasFile('article-featured-image')) {
             $data['file'] = $request->file('article-featured-image');
-        }else{
+        } else {
             $data['file'] = null;
         }
 
         return $data;
     }
-
-
-   
-
 }

@@ -3,7 +3,6 @@
 namespace Sp\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use Event;
 use Illuminate\Http\Request;
 use Sp\Events\Article\ArticleWasVisited;
@@ -22,7 +21,6 @@ class ArticleController extends Controller
         $article = $article_repo->getAll();
 
         return view('article.index', compact('article'));
-
     }
 
 
@@ -34,7 +32,6 @@ class ArticleController extends Controller
      */
     public function show($category_slug, $article_id, $article_slug, ArticleRepo $article_repo, Request $request, AdsRepo $ads_repo)
     {
-
         $referrer = $request->headers->get('referer');
 
 
@@ -44,7 +41,9 @@ class ArticleController extends Controller
 
         // return $article->status_id;
 
-        if((int) $article->status_id !== 3)  return abort(404);
+        if ((int) $article->status_id !== 3) {
+            return abort(404);
+        }
 
         $article_visit = $article;
         $article_visit->referrer = $referrer;
@@ -57,5 +56,4 @@ class ArticleController extends Controller
 
         return view('articles.show', compact('article', 'ads'));
     }
-
 }

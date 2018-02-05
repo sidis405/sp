@@ -42,7 +42,7 @@
               <div class="form-group">
                             <div class="row">
                               <div class="col-xs-12"><button type="submit" class="btn btn-default btn-lg btn-block"><i class="fa fa-save"></i> Salva</button></div>
-                             
+
                             </div>
                           </div>
           </div>
@@ -78,14 +78,14 @@
                 </div>
               </div>
             </div>
-         
-       
+
+
           </div>
           </form>
         </div>
       </div>
             </form>
-      
+
     </div>
   @stop
 
@@ -93,9 +93,9 @@
   <script src="/js/bootstrap-select.min.js"></script>
   <script src="/js/select2.min.js"></script>
 
-  
+
   <script> $('.cat-select').selectpicker();</script>
-  
+
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
       <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 
@@ -122,12 +122,12 @@
                             {caption: "Immagine di Copertina", size: 930321, width: "120px", key: 1}
                         ],
                 'overwriteInitial': true,
-                'maxFileSize': 500,
+                'maxFileSize': 1024,
                 'allowedFileExtensions': ["jpg", "png"],
                    // 'maxImageWidth': 250,
                    // 'maxImageHeight': 250,
-                'minImageWidth': 730,
-                'minImageHeight': 350,
+                // 'minImageWidth': 730,
+                // 'minImageHeight': 350,
               }
             );
       </script>

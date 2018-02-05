@@ -2,9 +2,7 @@
 
 namespace Sp\Http\Controllers;
 
-use Event;
-use App\Http\Requests;
-use Illuminate\Http\Request;
+use Sp\Models\Topics;
 use Sp\Repositories\TopicsRepo;
 use App\Http\Controllers\Controller;
 
@@ -20,7 +18,5 @@ class TopicsController extends Controller
         $topics = $topics_repo->getAllFrontForday();
 
         return view('topics.index', compact('topics'));
-
     }
-
 }

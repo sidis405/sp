@@ -172,7 +172,7 @@
                             {caption: "Immagine di Copertina", size: 930321, width: "120px", key: 1}
                         ],
                 'overwriteInitial': true,
-                'maxFileSize': 500,
+                'maxFileSize': 1024,
                 'allowedFileExtensions': ["jpg", "png"],
                 //    'maxImageWidth': 400,
                 //    'maxImageHeight': 250,

@@ -48,7 +48,9 @@
                 <div class="post-meta">
                   <div class="author"><img src="{{$article->user->avatar}}"><span>Articolo di <a href="{{$article->user->present()->user_url()}}">{{$article->user->present()->user_name()}}</a></span></div>
                 </div>
-                <div class="post-img"><img src="{{$article->present()->article_image_url()}}"></div>
+                <div class="post-img">
+                  <div style="background: url('{{$article->present()->article_image_url()}}'); background-size: cover; width:100%; height: 350px"></div>
+                </div>
                 <div class="post-toolbar social">
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{\Request::fullUrl()}}" class="btn btn-facebook"><i class="fa fa-facebook"></i></a>
                 <a href="https://twitter.com/share?url={{\Request::fullUrl()}}&amp;text={{$article->title}}" class="btn btn-twitter"><i class="fa fa-twitter"></i></a>
@@ -76,7 +78,7 @@
                 <!-- <a href="#" class="btn btn-default btn-right"><i class="fa fa-envelope-o"></i></a> -->
                 </div>
                 <div class="post-toolbar">
-                Tag: 
+                Tag:
                   @foreach($article->tags as $tag)
                       <a href="/tag/{{$tag->tag}}">#{{$tag->tag}}</a>
                   @endforeach

@@ -5,6 +5,10 @@
 
 <link rel="stylesheet" href="https://cdn.datatables.net/u/bs-3.3.6/jqc-1.12.3,dt-1.10.12,af-2.1.2,fh-3.1.2/datatables.min.css">
 
+<link rel="stylesheet" href="/css/bootstrap-select.min.css">
+
+    <link rel="stylesheet" href="/bower_components/bootstrap-fileinput/css/fileinput.css">
+
 @stop
 
 @section('content')
@@ -33,17 +37,17 @@
             @if(strlen($user->facebook_id) < 1)
 
             <div id="password" role="tabpanel" class="tab-pane">
-            
+
               @include('dashboard.partials.password_form')
             </div>
 
             @endif
             <div id="metodi" role="tabpanel" class="tab-pane">
-              
+
               @include('dashboard.partials.paymethod_form')
             </div>
             <div id="seguo" role="tabpanel" class="tab-pane">
-              
+
               @include('dashboard.partials.people_i_follow')
             </div>
           </div>
@@ -53,7 +57,7 @@
    @stop
 
 
-   
+
   @section('footer_scripts')
 
   <script>
@@ -61,7 +65,7 @@
     var prefix = "tab_";
     if (hash) {
         $('.nav-tabs a[href="'+hash.replace(prefix,"")+'"]').tab('show');
-    } 
+    }
 
     // Change hash for page-reload
     $('.nav-tabs a').on('shown', function (e) {
@@ -72,7 +76,7 @@
   <script>
     $('.payment_option').change(function(){
       let option = $(this).attr('id');
-      
+
       if(option == 'payment_paypal')
       {
         $('.paypal_section').show();
@@ -93,10 +97,33 @@
     });
   </script>
 
-
-  <script src="https://cdn.datatables.net/u/bs-3.3.6/jqc-1.12.3,dt-1.10.12,af-2.1.2,fh-3.1.2/datatables.min.js"></script>
+      <script src="/bower_components/bootstrap-fileinput/js/fileinput.js"></script>
+  <script src="/bower_components/bootstrap-fileinput/js/fileinput_locale_it.js"></script>
 
   <script>
+
+    $("#profile-image").fileinput(
+        {
+          'browseClass': "btn btn-primary btn-block",
+          'language': "it",
+          'showCaption': false,
+          'maxFileCount': 1,
+          'browseLabel': 'Scegli immagine',
+          'showRemove': false,
+          'showUpload': false,
+          'previewFileType':'image',
+
+          'initialPreviewAsData': true,
+          'initialPreviewConfig': [
+                {caption: "Immagine di Profilo", size: 930321, width: "50px", key: 1}
+                  ],
+          'overwriteInitial': true,
+          'maxFileSize': 500,
+          'allowedFileExtensions': ["jpg", "png"]
+        }
+      );
+    </script>
+  <script src="https://cdn.datatables.net/u/bs-3.3.6/jqc-1.12.3,dt-1.10.12,af-2.1.2,fh-3.1.2/datatables.min.js"></script>
 
         $(document).ready(function() {
             $('#datatable').DataTable( {
@@ -105,7 +132,7 @@
                     this.api().columns().every( function (index) {
 
                     if($(headers[index]).data('search-type') == 'multiple'){
-                    
+
                           var column = this;
                           var select = $('<select><option value=""></option></select>')
                               .appendTo( $(column.header()).empty() )
@@ -113,19 +140,19 @@
                                   var val = $.fn.dataTable.util.escapeRegex(
                                       $(this).val()
                                   );
-           
+
                                   column
                                       .search( val ? '^'+val+'$' : '', true, false )
                                       .draw();
                               } );
-           
+
                           column.data().unique().sort().each( function ( d, j ) {
                               select.append( '<option value="'+d+'">'+d+'</option>' )
                           } );
 
                         }
 
-                      } 
+                      }
 
 
                     );
@@ -137,7 +164,7 @@
                                    }
             } );
         } );
-      
+
 
 
 

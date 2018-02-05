@@ -1,6 +1,6 @@
 <?php
 
-\Auth::loginUsingId(36);
+// \Auth::loginUsingId(36);
 
 Route::get('/', '\Sp\Http\Controllers\HomeController@news');
 Route::get('/home', '\Sp\Http\Controllers\HomeController@home');
@@ -19,9 +19,8 @@ Route::get('utente/{id}', '\Sp\Http\Controllers\UsersController@showId');
 
 Route::get('ricerca', '\Sp\Http\Controllers\SearchController@search');
 
-Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
-
-    Route::get('/', function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/', function () {
         return redirect()->to('/admin/dashboard');
     });
 
@@ -49,13 +48,13 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
 
     Route::get('categorie/{id}/modifica', '\Sp\Http\Controllers\Admin\CategoriesController@edit');
     Route::post('categorie/{id}', '\Sp\Http\Controllers\Admin\CategoriesController@update');
-    
+
     Route::post('categorie/{id}/rimuovi', '\Sp\Http\Controllers\Admin\CategoriesController@destroy');
 
     Route::get('ads', '\Sp\Http\Controllers\Admin\AdsController@index');
     Route::get('ads/{id}/modifica', '\Sp\Http\Controllers\Admin\AdsController@edit');
     Route::post('ads/{id}', '\Sp\Http\Controllers\Admin\AdsController@update');
-    
+
 
 
 
@@ -80,13 +79,12 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth'), function () {
     Route::get('argomenti/crea', '\Sp\Http\Controllers\Admin\TopicsController@create');
     Route::post('argomenti', '\Sp\Http\Controllers\Admin\TopicsController@store');
     Route::get('argomenti/{id}/modifica', '\Sp\Http\Controllers\Admin\TopicsController@edit');
+    Route::get('argomenti/{id}/rimuovi', '\Sp\Http\Controllers\Admin\TopicsController@destroy');
     Route::post('argomenti/{id}', '\Sp\Http\Controllers\Admin\TopicsController@update');
-    Route::delete('argomenti/{id}', '\Sp\Http\Controllers\Admin\TopicsController@destroy');
-
+    // Route::delete('argomenti/{id}', '\Sp\Http\Controllers\Admin\TopicsController@destroy');
 });
 
-Route::group(array('middleware' => 'auth.sp.user'), function () {
-
+Route::group(['middleware' => 'auth.sp.user'], function () {
     Route::get('dashboard', '\Sp\Http\Controllers\DashboardController@index');
     Route::get('guadagni-pagamenti', '\Sp\Http\Controllers\EarningsController@index');
     Route::get('riepilogo-pagamenti', '\Sp\Http\Controllers\EarningsController@listingPerMonth');
@@ -101,18 +99,17 @@ Route::group(array('middleware' => 'auth.sp.user'), function () {
     Route::delete('dashboard/articoli', '\Sp\Http\Controllers\DashboardController@destroy');
 
 
-     Route::get('dashboard/argomenti-del-giorno', '\Sp\Http\Controllers\TopicsController@index');
-    
+    Route::get('dashboard/argomenti-del-giorno', '\Sp\Http\Controllers\TopicsController@index');
+
     Route::get('impostazioni', '\Sp\Http\Controllers\UsersController@settings_form');
     Route::post('profilo', '\Sp\Http\Controllers\UsersController@profile_form_save');
     Route::post('password', '\Sp\Http\Controllers\UsersController@password_form_save');
     Route::post('metodi', '\Sp\Http\Controllers\UsersController@paymethods_form_save');
-    
+
 
     Route::post('notifications/seen', '\Sp\Http\Controllers\NotificationsController@seen');
     Route::post('profilo/segui', '\Sp\Http\Controllers\FollowersController@follow');
     Route::delete('profilo/segui', '\Sp\Http\Controllers\FollowersController@unfollow');
-
 });
 
 include(__DIR__.'/../Sp/Routes/routes_auth.php');
@@ -120,5 +117,3 @@ include(__DIR__.'/../Sp/Routes/routes_auth.php');
 include(__DIR__.'/../Sp/Routes/routes_glide.php');
 
 include(__DIR__.'/../Sp/Routes/routes_static.php');
-
-

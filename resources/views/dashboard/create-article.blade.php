@@ -99,7 +99,7 @@
   </script>
 
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-      <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+  <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 
     <script src="/bower_components/bootstrap-fileinput/js/fileinput.js"></script>
   <script src="/bower_components/bootstrap-fileinput/js/fileinput_locale_it.js"></script>
@@ -146,12 +146,8 @@
                             {caption: "Immagine di Copertina", size: 930321, width: "120px", key: 1}
                         ],
                 'overwriteInitial': true,
-                'maxFileSize': 500,
-                'allowedFileExtensions': ["jpg", "png"],
-                //   'maxImageWidth': 730,
-                //    'maxImageHeight': 350,
-                // 'minImageWidth': 400,
-                // 'minImageHeight': 250,
+                'maxFileSize': 1024,
+                'allowedFileExtensions': ["jpg", "png"]
               }
             );
       </script>

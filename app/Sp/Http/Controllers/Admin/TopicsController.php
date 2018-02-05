@@ -2,8 +2,7 @@
 
 namespace Sp\Http\Controllers\Admin;
 
-use Event;
-use App\Http\Requests;
+use Sp\Models\Topics;
 use Illuminate\Http\Request;
 use Sp\Repositories\TopicsRepo;
 use App\Http\Controllers\Controller;
@@ -20,7 +19,6 @@ class TopicsController extends Controller
         $topics = $topics_repo->getAll();
 
         return view('admin.topics.index', compact('topics'));
-
     }
 
     public function create()
@@ -30,16 +28,17 @@ class TopicsController extends Controller
 
     public function edit($id, TopicsRepo $topics_repo)
     {
-
         $topic = $topics_repo->getById($id);
 
-        if(! $topic ) return abort(404);
+        if (! $topic) {
+            return abort(404);
+        }
         return view('admin.topics.edit', compact('topic'));
     }
 
     public function store(Request $request)
     {
-       $topic = $this->dispatchFrom('Sp\Commands\Topic\CreateTopicCommand', $request);
+        $topic = $this->dispatchFrom('Sp\Commands\Topic\CreateTopicCommand', $request);
 
         flash()->success('Argomento creato con successo.');
 
@@ -54,4 +53,11 @@ class TopicsController extends Controller
         return redirect()->to('/admin/argomenti/' . $topic->id .'/modifica');
     }
 
+    public function destroy($id)
+    {
+        $topic = Topics::find($id);
+        $topic->delete();
+
+        flash()->success('Argomento rimosso con successo');
+    }
 }

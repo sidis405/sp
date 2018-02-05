@@ -2,7 +2,6 @@
 
 namespace Sp\Http\Controllers;
 
-use App\Http\Requests;
 use Sp\Models\Article;
 use Illuminate\Http\Request;
 use Sp\Repositories\AdsRepo;
@@ -13,13 +12,11 @@ use Sp\Repositories\CategoryRepo;
 use App\Http\Controllers\Controller;
 use Sp\Http\Requests\WriteArticleRequest;
 
-
-
 class DashboardController extends Controller
 {
     protected $ads_repo;
 
-    function __construct(AdsRepo $ads_repo)
+    public function __construct(AdsRepo $ads_repo)
     {
         parent::__construct();
         $this->ads_repo = $ads_repo;
@@ -41,14 +38,15 @@ class DashboardController extends Controller
         $ads = $this->ads_repo->getForPage('dashboard');
 
         return view('dashboard.article-list', compact('user', 'categories', 'ads'));
-
     }
 
 
     public function create(CategoryRepo $category_repo)
     {
-        if(\Auth::user()->blocked == 1) return redirect()->to("/");
-        
+        if (\Auth::user()->blocked == 1) {
+            return redirect()->to("/");
+        }
+
         $ads = $this->ads_repo->getForPage('dashboard');
         $categories = $category_repo->getAllList();
 
@@ -58,6 +56,8 @@ class DashboardController extends Controller
     public function store(WriteArticleRequest $request)
     {
         $data = $this->manageFields($request);
+
+
 
         // return strlen($request->get('body'));
 
@@ -72,8 +72,10 @@ class DashboardController extends Controller
         $article = $article_repo->getById($id);
 
         // return $article;
-    
-        if(! $article ) return abort(404);
+
+        if (! $article) {
+            return abort(404);
+        }
 
         $categories = $category_repo->getAllList();
         $tags = $tags_repo->getAll();
@@ -94,7 +96,7 @@ class DashboardController extends Controller
     {
 
         // return $request->input();
-        
+
         $data = $this->manageFields($request);
 
         // return $request->input();
@@ -109,22 +111,22 @@ class DashboardController extends Controller
     {
         $article = $article_repo->getById($article_id);
 
-        if(! $article || $article->user_id !== \Auth::user()->id) return abort(404);
+        if (! $article || $article->user_id !== \Auth::user()->id) {
+            return abort(404);
+        }
 
         $ads = $this->ads_repo->getForPage('dashboard');
 
         return view('dashboard.anteprima', compact('article', 'ads'));
-
     }
 
     public function manageFields(Request $request)
     {
         $data = [];
 
-        if($request->hasFile('article-featured-image'))
-        {
+        if ($request->hasFile('article-featured-image')) {
             $data['file'] = $request->file('article-featured-image');
-        }else{
+        } else {
             $data['file'] = null;
         }
 
@@ -133,7 +135,6 @@ class DashboardController extends Controller
 
     public function submit($article_id, Request $request)
     {
-
         $article = Article::find($article_id);
 
         // return $article_id;
@@ -146,18 +147,12 @@ class DashboardController extends Controller
 
     public function destroy(Request $request)
     {
-
-
         $article = Article::find($request->input('payload'));
         // logger($article);
-        if($article && $article->user_id == \Auth::user()->id && $request->input('payload'))
-        {
+        if ($article && $article->user_id == \Auth::user()->id && $request->input('payload')) {
             $article->delete();
         }
 
         return 'true';
     }
-
-   
-
 }

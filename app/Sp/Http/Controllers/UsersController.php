@@ -2,7 +2,6 @@
 
 namespace Sp\Http\Controllers;
 
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use Sp\Repositories\AdsRepo;
 use Sp\Repositories\UsersRepo;
@@ -13,7 +12,7 @@ class UsersController extends Controller
 {
     protected $ads_repo;
 
-    function __construct(AdsRepo $ads_repo)
+    public function __construct(AdsRepo $ads_repo)
     {
         parent::__construct();
         $this->ads_repo = $ads_repo;
@@ -28,7 +27,9 @@ class UsersController extends Controller
     {
         $user = $users_repo->getBySlug($user_slug);
 
-        if(! $user) return abort(404);
+        if (! $user) {
+            return abort(404);
+        }
 
         $articles = $this->flattenByCategory($user->articles);
         $main = $users_repo->getFeaturedForProfile($user->id);
@@ -38,11 +39,13 @@ class UsersController extends Controller
         return view('profile.show', compact('user', 'articles', 'main', 'ads'));
     }
 
-      public function showId($user_id, UsersRepo $users_repo,AdsRepo $ads_repo)
+    public function showId($user_id, UsersRepo $users_repo, AdsRepo $ads_repo)
     {
         $user = $users_repo->getById($user_id);
 
-        if(! $user) return abort(404);
+        if (! $user) {
+            return abort(404);
+        }
 
         $articles = $this->flattenByCategory($user->articles);
         $main = $users_repo->getFeaturedForProfile($user->id);
@@ -50,7 +53,7 @@ class UsersController extends Controller
 
         // return $articles;
         $ads = $ads_repo->getForPage('profile');
-        
+
         return view('profile.show', compact('user', 'articles', 'main', 'ads'));
     }
 
@@ -58,13 +61,15 @@ class UsersController extends Controller
     {
         $user = $users_repo->getById(\Auth::user()->id);
 
-        if(! $user) return abort(404);
+        if (! $user) {
+            return abort(404);
+        }
 
         $ads = $this->ads_repo->getForPage('dashboard');
 
         return view('dashboard.settings', compact('user', 'ads'));
     }
-    
+
     public function paymethods_form_save(Request $request)
     {
         // return $request->all();
@@ -73,8 +78,7 @@ class UsersController extends Controller
 
         $input = $request->all();
 
-        if($input['pay-method'] == 'payment_iban')
-        {
+        if ($input['pay-method'] == 'payment_iban') {
             $data = [
                 'payment_iban' => 1,
                 'payment_paypal' => 0,
@@ -83,8 +87,8 @@ class UsersController extends Controller
                 'payment_detail_iban_surname'=> $input['payment_detail_iban_surname'],
                 'payment_detail_iban_number'=> $input['payment_detail_iban_number'],
             ];
-        }else{
-                $data = [
+        } else {
+            $data = [
                     'payment_paypal' => 1,
                     'payment_iban' => 0,
                     'payment_detail_paypal_email' => $input['payment_detail_paypal_email'],
@@ -108,30 +112,42 @@ class UsersController extends Controller
     {
 
         // return $request->all();
+        $data = $this->manageFields($request);
 
-        $user = $this->dispatchFrom('Sp\Commands\Users\UpdateUserProfileCommand', $request);
-        
+
+        $user = $this->dispatchFrom('Sp\Commands\Users\UpdateUserProfileCommand', $request, $data);
+
 
         flash()->success('Profilo aggiornato con successo.');
 
 
         return redirect()->to('/impostazioni');
+    }
 
+    public function manageFields(Request $request)
+    {
+        $data = [];
+
+        if ($request->hasFile('profileImage')) {
+            $data['file'] = $request->file('profileImage');
+        } else {
+            $data['file'] = null;
+        }
+
+        return $data;
     }
 
     public function flattenByCategory($articles)
     {
-
         $data = [];
 
         foreach ($articles as $article) {
-            
-            if(!isset($data[$article->category->name])) $data[$article->category->name] = [];
+            if (!isset($data[$article->category->name])) {
+                $data[$article->category->name] = [];
+            }
             $data[$article->category->name][] = $article;
-
         }
         array_multisort(array_map('count', $data), SORT_DESC, $data);
         return $data;
     }
-
 }

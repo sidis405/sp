@@ -15,14 +15,13 @@
     @include('admin.layouts.header')
     <div class="container">
       <div class="l-post-list-page">
-          
-        <h1 class="page-title">Argomenti del giorno 
+
+        <h1 class="page-title">Argomenti del giorno
         <span class="pull-right"><a href="/admin/argomenti/crea"><i class="fa fa-plus-circle fw"></i></a></span>
         </h1>
-        <div class="row">
-        </div>
+        @include('table-legend')
         <div class="post-list">
-  
+
           <table class="table table-bordered article-list-table" id="datatable">
             <thead>
               <tr>
@@ -48,7 +47,7 @@
               </tr>
               @endforeach
             </tbody>
-          
+
           </table>
         </div>
       </div>
@@ -60,30 +59,32 @@
   <script src="/js/sweetalert.min.js"></script>
 
 <script>
-  $('.category-delete-trigger').click(function(){
+  $('.topic-delete-trigger').click(function(event){
 
-    var id = $(this).data('category-id');
+    event.preventDefault();
 
-      swal({   
-        title: "Sei sicuro di voler rimuovere questa categoria?",   
-        text: "Non sarà possibili recuperare questo dato",   
-        type: "warning",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Si, rimuovi!",   
-        cancelButtonText: "No, ho cambiato idea!",   
-        closeOnConfirm: false,   
-        closeOnCancel: true 
-      }, 
-        function(isConfirm){   
-          if (isConfirm) {     
-            swal("Fatto!", "Questa categoria è stata rimossa.", "success");   
-            ajaxCall(3, 'categorie/' + id + '/rimuovi', 'POST', false, goto('/admin/categorie'));
-          } else {     
-            swal("Interroto", "La categoria non è stata cancellata", "error");   
-          } 
+    var id = $(this).data('topic-id');
+
+      swal({
+        title: "Sei sicuro di voler rimuovere questa argomento?",
+        text: "Non sarà possibili recuperare questo dato",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Si, rimuovi!",
+        cancelButtonText: "No, ho cambiato idea!",
+        closeOnConfirm: false,
+        closeOnCancel: true
+      },
+        function(isConfirm){
+          if (isConfirm) {
+            swal("Fatto!", "Questa argomento è stata rimossa.", "success");
+            ajaxCall(3, 'argomenti/' + id + '/rimuovi', 'GET', false, goto('/admin/argomenti'));
+          } else {
+            swal("Interroto", "L'argomento non è stato cancellato", "error");
+          }
         });
-        
+
         });
 </script>
 

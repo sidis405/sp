@@ -11,8 +11,8 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Laracasts\Presenter\PresentableTrait;
 
-
-class User extends Model implements AuthenticatableContract,
+class User extends Model implements
+    AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
@@ -41,6 +41,19 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function getLevel()
+    {
+        $total = $this->articles->count();
+
+        if ($total < 10) {
+            return "<img src='/images/badges/3rd.png'>";
+        } elseif ($total < 25) {
+            return "<img src='/images/badges/2nd.png'>";
+        } else {
+            return "<img src='/images/badges/1st.png'>";
+        }
+    }
 
     public function articles()
     {
@@ -72,22 +85,22 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany(\Sp\Models\UserNotifications::class, 'user_id')->orderBy('created_at', 'DESC')->take(50);
     }
 
-    public function followers(){
-
+    public function followers()
+    {
         return $this->belongsToMany('App\User', 'followers', 'user_id', 'follower_id');
     }
 
-    public function ifollow(){
-
+    public function ifollow()
+    {
         return $this->belongsToMany('App\User', 'followers', 'follower_id', 'user_id');
-
     }
 
-    public function findForPassport($email) {
-            return $this->where('email', $email)->where('active', '>=', 1)->first();
+    public function findForPassport($email)
+    {
+        return $this->where('email', $email)->where('active', '>=', 1)->first();
     }
 
-    public static function edit($user_id, $name, $surname, $username, $email, $social_facebook,$social_google,$social_twitter,$social_website,$description)
+    public static function edit($user_id, $name, $surname, $username, $email, $social_facebook, $social_google, $social_twitter, $social_website, $description)
     {
         $user = static::find($user_id);
 

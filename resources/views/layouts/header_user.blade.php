@@ -2,7 +2,7 @@
           <div class="dropdown" style="float: left;"">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
              @if(strlen($currentUser->avatar) >2)
-              <span class="profile-thumb-holder" style="background: url({{$currentUser->avatar}});"></span>@endif
+              <span class="profile-thumb-holder" style="background: url('{{$currentUser->avatar}}');"></span>@endif
               <span class="profile-label">{{$currentUser->name}}</span> &nbsp;
               <span class="caret"></span>
             </button>
@@ -62,5 +62,5 @@
 
           </div>
 
-          
-          
+
+

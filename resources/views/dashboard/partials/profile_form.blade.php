@@ -1,4 +1,4 @@
-<form action="/profilo" method="POST">
+<form action="/profilo" method="POST" enctype="multipart/form-data">
                {{csrf_field()}}
                <input type="hidden" name="user_id" value="{{$currentUser->id}}">
                 <div class="row">
@@ -56,14 +56,38 @@
                         </div>
                       </div>
                     </div>
-              
+
                     <div class="input-block">
-                     
+
                       <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-save"></i>&nbsp; Salva Profilo</button><br>
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <div class="profile-pic-settings-box" style="background-image: url('{{$user->avatar}}');"></div>
+                    <div class="row">
+                      <div class="col-md-12">
+                          <div class="profile-pic-settings-box" style="background-image: url('{{$user->avatar}}');"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-xs-12" style="display:none;">
+                              <div class="btn-upload-image-container">
+                                <a class="btn btn-default btn-lg btn-block btn-upload btn-upload-image" onClick="$('#article-featured-image').trigger('click');">
+                                  <i class="fa fa-camera"></i> Carica foto
+                                </a>
+                              </div>
+                            </div>
+                            <div class="col-xs-12">
+                              <div class="btn-upload-image-container">
+                                <input type="file" name="profileImage" class="file-loading" id="profile-image" >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 </form>

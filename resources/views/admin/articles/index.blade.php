@@ -12,14 +12,16 @@
     @include('admin.layouts.header')
     <div class="container">
       <div class="l-post-list-page">
-          
+
         <h1 class="page-title">Articoli ({{count($articles)}})
             <!-- <span class="pull-right"><a href="/dashboard/articoli/scrivi"><i class="fa fa-plus-circle fw">Scrivi nuovo</i></a></span> -->
         </h1>
-        <div class="row">
-        </div>
+          @include('table-legend')
+
+
         <div class="post-list">
-  
+
+
           <table class="table table-bordered article-list-table" id="datatable">
             <thead>
               <tr>
@@ -53,14 +55,14 @@
                 <td class="article-list-category">&euro; {{$article->payoff_counter}}</a></td>
                 <td class="article-list-category">{{ ($article->ads) ? 'si' : 'no'}}</a></td>
                 <td class="actions">
-                  <a href="/admin/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a>
-                    <a href="/admin/articoli/{{$article->id}}/anteprima" class="action"><i class="fa fa-eye fa-fw"></i></a>
-                    <a onClick="return confirm('Sei sicuro di volere cancellare PERMANENTEMENTE questo articoli? TUTTI i dati andranno PERSI.')" href="/admin/articoli/{{$article->id}}/rimuovi" class="action ban"><i class="fa fa-trash"></i></a>
+                  <a href="/admin/articoli/{{$article->id}}/modifica" class="action" title="Modifica"><i class="fa fa-edit fa-fw"></i></a>
+                    <a href="/admin/articoli/{{$article->id}}/anteprima" class="action"  title="Preview"><i class="fa fa-eye fa-fw"></i></a>
+                    <a onClick="return confirm('Sei sicuro di volere cancellare PERMANENTEMENTE questo articoli? TUTTI i dati andranno PERSI.')" href="/admin/articoli/{{$article->id}}/rimuovi" class="action ban"  title="Cancella"><i class="fa fa-trash"></i></a>
                 </td>
               </tr>
               @endforeach
             </tbody>
-          
+
           </table>
         </div>
       </div>
@@ -80,7 +82,7 @@
                     this.api().columns().every( function (index) {
 
                     if($(headers[index]).data('search-type') == 'multiple'){
-                    
+
                           var column = this;
                           var select = $('<select><option value=""></option></select>')
                               .appendTo( $(column.header()).empty() )
@@ -88,19 +90,19 @@
                                   var val = $.fn.dataTable.util.escapeRegex(
                                       $(this).val()
                                   );
-           
+
                                   column
                                       .search( val ? '^'+val+'$' : '', true, false )
                                       .draw();
                               } );
-           
+
                           column.data().unique().sort().each( function ( d, j ) {
                               select.append( '<option value="'+d+'">'+d+'</option>' )
                           } );
 
                         }
 
-                      } 
+                      }
 
 
                     );
@@ -114,6 +116,6 @@
         } );
 
 
-  
+
   </script>
   @stop

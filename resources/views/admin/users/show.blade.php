@@ -12,15 +12,17 @@
     @include('admin.layouts.header')
     <div class="container">
       <div class="l-post-list-page">
-          
+
         <h1 class="page-title">Utente: {{$user->present()->user_name()}}
             <!-- <span class="pull-right"><a href="/dashboard/articoli/scrivi"><i class="fa fa-plus-circle fw">Scrivi nuovo</i></a></span> -->
         </h1>
 
+        @include('table-legend')
+
         <div class="row">
-        
+
         <div class="post-list">
-  
+
           <table class="table table-bordered article-list-table" id="datatable">
             <thead>
               <tr>
@@ -60,7 +62,7 @@
               </tr>
               @endforeach
             </tbody>
-          
+
           </table>
         </div>
         </div>
@@ -81,7 +83,7 @@
                     this.api().columns().every( function (index) {
 
                     if($(headers[index]).data('search-type') == 'multiple'){
-                    
+
                           var column = this;
                           var select = $('<select><option value=""></option></select>')
                               .appendTo( $(column.header()).empty() )
@@ -89,19 +91,19 @@
                                   var val = $.fn.dataTable.util.escapeRegex(
                                       $(this).val()
                                   );
-           
+
                                   column
                                       .search( val ? '^'+val+'$' : '', true, false )
                                       .draw();
                               } );
-           
+
                           column.data().unique().sort().each( function ( d, j ) {
                               select.append( '<option value="'+d+'">'+d+'</option>' )
                           } );
 
                         }
 
-                      } 
+                      }
 
 
                     );
@@ -113,13 +115,13 @@
                                    }
             } );
         } );
-      
+
       // $(document).ready(function() {
       //    $('#datatable thead th').each( function () {
       //            var title = $('#datatable tfoot th').eq( $(this).index() ).text();
       //            $(this).html( '<input type="text" placeholder="Cerca '+title+'"/>' );
       //        } );
-          
+
       //        // DataTable
       //        var table = $('#datatable').DataTable({
       //         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tutti"]],
@@ -128,7 +130,7 @@
       //                        "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Italian.json"
       //                    }
       //        });
-          
+
       //        // Apply the search
       //        table.columns().eq( 0 ).each( function ( colIdx ) {
       //            $( 'input', table.column( colIdx ).header() ).on( 'keyup change', function () {

@@ -126,7 +126,7 @@ label {
   font-size: 2em;
   color: #333333;
   margin: 5px 0;
-  // min-height: 50px;
+  /*height: 41px!important;*/
 }
 
 .post-title a {
@@ -223,7 +223,7 @@ label {
 }
 
 .post-sidebar .img{
-  background-size: cover!important; 
+  background-size: cover!important;
 }
 
 .post-sidebar .post-title {
@@ -712,6 +712,11 @@ aside .module-title h3 {
   background: #991722;
 }
 
+.file-preview-image {
+  max-width: 100%;
+  height: auto!important;
+}
+
 #carousel-latest .carousel-caption .category-green {
   background: #00a651;
 }
@@ -902,6 +907,7 @@ aside .module-title h3 {
 .post-list select {
   background: #e6e6e6;
   border-color: #b3b3b3;
+  color: black;
 }
 
 .post-list .action {

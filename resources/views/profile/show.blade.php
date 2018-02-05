@@ -31,11 +31,32 @@
                           <tr>
                             <td><b>{{count($user->articles)}}</b></td>
                             <td><b>{{count($user->followers)}}</b></td>
-                            <td><img data-src="holder.js/48x48"></td>
+                            <td>{!! $user->getLevel() !!}</td>
                           </tr>
                         </tbody>
                       </table>
-                      <div class="profile-social"><a href="#" class="btn btn-primary"><i class="fa fa-facebook"></i></a><a href="#" class="btn btn-primary"><i class="fa fa-twitter"></i></a><a href="#" class="btn btn-primary"><i class="fa fa-google"></i></a><a href="#" class="btn btn-primary"><i class="fa fa-globe"></i></a></div>
+                      <div class="profile-social">
+                          @if(strlen($user->social_facebook) > 1)
+                          <a href="{{ $user->social_facebook }}" target="_blank" class="btn btn-primary">
+                            <i class="fa fa-facebook"></i>
+                          </a>
+                          @endif
+                          @if(strlen($user->social_twitter) > 1)
+                          <a href="{{ $user->social_twitter }}" target="_blank" class="btn btn-primary">
+                            <i class="fa fa-twitter"></i>
+                          </a>
+                          @endif
+                          @if(strlen($user->social_google) > 1)
+                          <a href="{{ $user->social_google }}" target="_blank" class="btn btn-primary">
+                            <i class="fa fa-google"></i>
+                          </a>
+                          @endif
+                          @if(strlen($user->social_website) > 1)
+                          <a href="{{ $user->social_website }}" target="_blank" class="btn btn-primary">
+                            <i class="fa fa-globe"></i>
+                          </a>
+                          @endif
+                        </div>
                       <div class="profile-desc">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, placeat dicta? Mollitia sint consectetur at repellendus obcaecati error unde dolores quod, inventore, deleniti rem temporibus optio nesciunt, quas eligendi tempore.</p>
                       </div>
@@ -66,7 +87,7 @@
                   <ul class="nav nav-tabs">
                   <?php $firstCat = true; ?>
                     @foreach($articles as $category=>$article)
-                      <li role="presentation" @if($firstCat) class="active" @endif><a href="#category{{str_slug($category)}}" aria-controls="category{{str_slug($category)}}" role="tab" data-toggle="tab">{{$category}}</a></li>  
+                      <li role="presentation" @if($firstCat) class="active" @endif><a href="#category{{str_slug($category)}}" aria-controls="category{{str_slug($category)}}" role="tab" data-toggle="tab">{{$category}}</a></li>
                       <?php $firstCat = false; ?>
                     @endforeach
                   </ul>
@@ -77,9 +98,9 @@
 
 
                       @foreach($article as $small_item)
-                        
+
                            {!! $small_item->present()->small_profile() !!}
-                          
+
                         @endforeach
 
                     <?php $firsttab = false; ?>
