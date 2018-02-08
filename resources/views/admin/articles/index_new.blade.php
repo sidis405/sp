@@ -16,26 +16,10 @@
         <h1 class="page-title">Articoli in coda ({{count($new)}})
             <!-- <span class="pull-right"><a href="/dashboard/articoli/scrivi"><i class="fa fa-plus-circle fw">Scrivi nuovo</i></a></span> -->
         </h1>
-        <div class="row">
-        </div>
+        @include('table-legend')
+        @include('errors.errors')
         <div class="post-list">
-     {{--      <div class="row">
-            <div class="col-sm-4">
-              <div class="form-group">
-                <label class="label">Categorie</label>
-                 <select class="form-control" id="dashboard-category-filter">
-                     <option class="dashboard-category-filter-option" value="all">Tutte</option>
-                  @foreach($categories as $category)
-                     <option class="dashboard-category-filter-option" value="{{$category}}">{{$category}}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
 
-            <div class="col-sm-4">
-              <label class="label">Reset</label><a class="btn btn-default btn-md btn-block article-list-reset-filter"><i class="fa fa-close"></i> Azzera filtri</a>
-            </div>
-          </div> --}}
           <table class="table table-bordered article-list-table" id="datatable">
             <thead>
               <tr>

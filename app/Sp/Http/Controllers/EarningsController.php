@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Sp\Repositories\AdsRepo;
 use Sp\Repositories\UsersRepo;
 use Sp\Repositories\ArticleRepo;
-use Sp\Repositories\CategoryRepo;
 use Sp\Repositories\PaymentsRepo;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +15,7 @@ class EarningsController extends Controller
 {
     protected $ads_repo;
 
-    function __construct(AdsRepo $ads_repo)
+    public function __construct(AdsRepo $ads_repo)
     {
         parent::__construct();
         $this->ads_repo = $ads_repo;
@@ -29,11 +28,9 @@ class EarningsController extends Controller
      */
     public function index(Request $request, UsersRepo $users_repo, ArticleRepo $article_repo)
     {
-
-        if(! $request->input('month'))
-        {
+        if (! $request->input('month')) {
             $start_date = Carbon::now()->format('Y-m').'-01';
-        }else{
+        } else {
             $start_date = $this->formatStartDate($request->input('month'));
         }
 
@@ -59,7 +56,6 @@ class EarningsController extends Controller
 
         $ads = $this->ads_repo->getForPage('dashboard');
         return view('dashboard.earnings-list', compact('articles', 'visits', 'start_for_picker', 'ads'));
-
     }
 
     protected function formatStartDate($input)
@@ -84,7 +80,6 @@ class EarningsController extends Controller
 
 
         return view('dashboard.earnings-request-list', compact('visits', 'requests', 'ads'));
-
     }
 
     public function normalizeListing($visits, $requests)
@@ -96,24 +91,21 @@ class EarningsController extends Controller
 
 
         foreach ($visits as $timestamp => $month) {
-           if($this->checkCurrentMonth($timestamp))
-           {
-            $current = $month;
+            if ($this->checkCurrentMonth($timestamp)) {
+                $current = $month;
 
-            if(isset($requests[$timestamp]))
-            {
-                $current['id'] = $requests[$timestamp]->id;
-                $current['status'] = $requests[$timestamp]->status->name;
-                $current['status-slug'] = $requests[$timestamp]->status->slug;
-            }else{
-                $current['id'] = null;
-                $current['status'] = null;
-                $current['status-slug'] = null;
+                if (isset($requests[$timestamp])) {
+                    $current['id'] = $requests[$timestamp]->id;
+                    $current['status'] = $requests[$timestamp]->status->name;
+                    $current['status-slug'] = $requests[$timestamp]->status->slug;
+                } else {
+                    $current['id'] = null;
+                    $current['status'] = null;
+                    $current['status-slug'] = null;
+                }
+
+                $out[$timestamp] = $current;
             }
-
-            $out[$timestamp] = $current;
-
-           }
         }
         return $out;
     }
@@ -131,20 +123,19 @@ class EarningsController extends Controller
 
     public function checkCurrentMonth($month)
     {
-        $now = new Carbon('first day of this month');
+        $now = Carbon::now();
+        // $now = new Carbon('first day of this month');
         $current = $now->format('Y-m-d');
 
 
-        if(strtotime($current) > strtotime($month))
-        {
+        if (strtotime($current) > strtotime($month)) {
             return true;
         }
 
         return false;
-
     }
 
-    public function makePaymentRequest(Request $request,PaymentsRepo $payments_repo)
+    public function makePaymentRequest(Request $request, PaymentsRepo $payments_repo)
     {
         $user_id = \Auth::user()->id;
         $timestamp = base64_decode($request->input('payload'));
@@ -153,8 +144,4 @@ class EarningsController extends Controller
 
         return 'true';
     }
-
-
-   
-
 }

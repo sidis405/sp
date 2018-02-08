@@ -41,10 +41,10 @@
 
                 <div class="row">
                   <div class="col-xs-12"><a href="/admin/articoli/{{$article->id}}/modifica" class="btn btn-default btn-lg btn-block"><i class="fa fa-edit"></i> Modifica</a></div>
-                 
+
                 </div>
 
-                
+
 
                 <br>
 
@@ -88,7 +88,7 @@
                               </tr>
                             </tbody>
                           </table>
-                        
+
                         </div>
                       </div>
                       <div>
@@ -112,8 +112,31 @@
                       </div>
                       <div>
                         <div class="row">
-                          <div class="col-xs-12"><button type="submit" class="btn btn-primary btn-lg btn-block approve-button"><i class="fa fa-edit"></i> Approva</button></div>
-                         
+                          <div class="col-xs-12"><button type="submit" class="btn btn-primary btn-lg btn-block approve-button"><i class="fa fa-thumbs-up"></i> Approva</button></div>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <form method="POST" action="/admin/articoli/{{$article->id}}/rinvia">
+                            {{ csrf_field() }}
+                          <div class="col-xs-12">
+                            <div class="form-group">
+                              <textarea class="form-control"  required="" name="admin_notes" placeholder="Scrivi un'osservazione" rows="10">{{$article->admin_notes}}</textarea>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="col-xs-12">
+                              <u>
+                                <small>L'articolo verra' rimosso dalla lista 'Articoli in coda' e inviato all'utente</small>
+                              </u>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="form-group">
+                            <div class="col-xs-12"><button type="submit" onclick="return confirm('Sei Sicuro?')" class="btn btn-primary btn-lg btn-block"><i class="fa fa-edit"></i> Rinvia all'utente</button></div>
+                          </div>
+                          </form>
+
                         </div>
                       </div>
                   </div>
@@ -150,24 +173,24 @@
       });
 
       $('.approve-button').click(function(){
-          swal({   
-            title: "Sei sicuro di voler approvare questo articolo?",   
-            text: "",   
-            type: "warning",   
-            showCancelButton: true,   
-            confirmButtonColor: "#DD6B55",   
-            confirmButtonText: "Si, approva!",   
-            cancelButtonText: "No, ho cambiato idea!",   
-            closeOnConfirm: false,   
-            closeOnCancel: true 
-          }, 
-            function(isConfirm){   
-              if (isConfirm) {     
-                swal("Approvato!", "Questo Articolo è stato pubblciato.", "success");   
+          swal({
+            title: "Sei sicuro di voler approvare questo articolo?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Si, approva!",
+            cancelButtonText: "No, ho cambiato idea!",
+            closeOnConfirm: false,
+            closeOnCancel: true
+          },
+            function(isConfirm){
+              if (isConfirm) {
+                swal("Approvato!", "Questo Articolo è stato pubblciato.", "success");
                 ajaxCall(3, 'articoli/{{$article->id}}/status', 'POST', false, goto('/admin/nuovi-articoli'));
-              } else {     
-                swal("Cancelled", "Your imaginary file is safe :)", "error");   
-              } 
+              } else {
+                swal("Cancelled", "Your imaginary file is safe :)", "error");
+              }
             });
       })
 

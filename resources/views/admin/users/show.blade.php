@@ -52,7 +52,7 @@
 
                 </td>
                 <td class="article-list-category"><i class="fa fa-user fa-fw"></i>{{$article->view_counter}}</a></td>
-                <td class="article-list-category">€{{number_format($article->payoff_counter, 2, ',', '.')}}</td>
+                <td class="article-list-category">€{{number_format($article->payoff_counter, 3, ',', '.')}}</td>
 
                 <td class="actions">
                   <a href="/admin/articoli/{{$article->id}}/modifica" class="action"><i class="fa fa-edit fa-fw"></i></a><a href="/dashboard/articoli/{{$article->id}}/rimuovi" class="action"><i class="fa fa-trash-o fa-fw"></i></a>

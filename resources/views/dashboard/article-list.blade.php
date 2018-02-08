@@ -16,8 +16,8 @@
     @include('layouts.header')
     <div class="container">
       <div class="l-post-list-page">
-          
-        <h1 class="page-title">I miei articoli 
+
+        <h1 class="page-title">I miei articoli
             <!-- <span class="pull-right"><a href="/dashboard/articoli/scrivi"><i class="fa fa-plus-circle fw">Scrivi nuovo</i></a></span> -->
         </h1>
         <div class="row">
@@ -64,7 +64,18 @@
               @foreach($user->all_articles as $article)
               <tr class="article-list-row">
                 <td>{{$article->created_at->format('d-m-Y')}}</td>
-                <td>{{$article->title}}</td>
+                <td>{{$article->title}}
+                  @if(strlen($article->admin_notes) > 3)
+                    <blockquote>
+                      <u>
+                        Osservazioni da admin:
+                      </u>
+                      <p>
+                        {!! nl2br($article->admin_notes) !!}
+                      </p>
+                    </blockquote>
+                  @endif
+                </td>
                 <td class="article-list-category">{{$article->category->name}}</td>
                 <td class="article-list-state">{{$article->status->name}}</td>
                 <td>
@@ -86,9 +97,9 @@
 
     @section('footer_scripts')
   <script src="/js/bootstrap-select.min.js"></script>
-  
+
   <script> $('.cat-select').selectpicker();</script>
-  
+
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
       <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 
@@ -99,29 +110,29 @@
 
 
       <script>
-         
+
           $('.remove-button').click(function(event){
             event.preventDefault();
             var id = $(this).data('article-id');
             console.log(id);
-              swal({   
-                title: "Sei sicuro di voler cancellare permanentemente questo articolo?",   
-                text: "Non sarà più possibile disfare quest'azione.",   
-                type: "warning",   
-                showCancelButton: true,   
-                confirmButtonColor: "#DD6B55",   
-                confirmButtonText: "Si, invia!",   
-                cancelButtonText: "No, ho cambiato idea!",   
-                closeOnConfirm: false,   
-                closeOnCancel: true 
-              }, 
-                function(isConfirm){   
-                  if (isConfirm) {     
-                    swal("Rimosso!", "Questo Articolo è stato cancellato.", "success");   
+              swal({
+                title: "Sei sicuro di voler cancellare permanentemente questo articolo?",
+                text: "Non sarà più possibile disfare quest'azione.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Si, invia!",
+                cancelButtonText: "No, ho cambiato idea!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+              },
+                function(isConfirm){
+                  if (isConfirm) {
+                    swal("Rimosso!", "Questo Articolo è stato cancellato.", "success");
                     ajaxCallFront(id, '/dashboard/articoli', 'DELETE', false, goto('/dashboard'));
-                  } else {     
-                    swal("Cancelled", "Your imaginary file is safe :)", "error");   
-                  } 
+                  } else {
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                  }
                 });
           })
       </script>

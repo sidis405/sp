@@ -39,6 +39,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('articoli/{id}/anteprima', '\Sp\Http\Controllers\Admin\ArticlesController@preview');
     Route::post('articoli/{id}/rating', '\Sp\Http\Controllers\Admin\ArticlesController@rating');
     Route::post('articoli/{id}/status', '\Sp\Http\Controllers\Admin\ArticlesController@status');
+    Route::post('articoli/{id}/rinvia', '\Sp\Http\Controllers\Admin\ArticlesController@rinvia');
 
 
     Route::get('categorie', '\Sp\Http\Controllers\Admin\CategoriesController@index');

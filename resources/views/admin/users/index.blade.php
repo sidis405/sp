@@ -47,7 +47,7 @@
                   Attivo
                   @else Non Attivo @endif</td>
                 <td class="article-list-category">{{count($user->articles)}}</td>
-                <td class="article-list-category">€{{number_format(array_sum(array_pluck($user->articles, 'payoff_counter')), 2, ',', '.')}}</td>
+                <td class="article-list-category">€{{number_format(array_sum(array_pluck($user->all_articles, 'payoff_counter')), 3, ',', '.')}}</td>
                 <td class="actions">
                   <a href="/admin/utenti/{{$user->id}}" class="action"><i class="fa fa-bar-chart fa-fw"></i></a>
                   @if($user->blocked == 0)

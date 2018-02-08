@@ -12,13 +12,13 @@
 @include('layouts.header')
 <div class="container">
   <div class="l-post-list-page">
-    
+
     <h1 class="page-title">Riepilogo / Richiedi pagamento
     <!-- <span class="pull-right"><a href="/dashboard/articoli/scrivi"><i class="fa fa-plus-circle fw">Scrivi nuovo</i></a></span> -->
     </h1>
 
     <div class="post-list">
-      
+
       <table class="table table-bordered article-list-table">
         <thead>
           <tr>
@@ -51,35 +51,35 @@
 
 
       <script>
-         
+
           $('.request-payment-button').click(function(event){
             event.preventDefault();
             var item = $(this);
             var payload = $(this).data('payload');
 
-              swal({   
-                title: "Sei sicuro di voler richiedere il pagamento per il mese selezionato?",   
-                text: "Non sarà più possibile disfare quest'azione.",   
-                type: "warning",   
-                showCancelButton: true,   
-                confirmButtonColor: "#DD6B55",   
-                confirmButtonText: "Si, invia!",   
-                cancelButtonText: "No, ho cambiato idea!",   
-                closeOnConfirm: false,   
-                closeOnCancel: true 
-              }, 
-                function(isConfirm){   
-                  if (isConfirm) {     
-                    swal("Ok!", "Richiesta inviata.", "success");   
+              swal({
+                title: "Sei sicuro di voler richiedere il pagamento per il mese selezionato?",
+                text: "Non sarà più possibile disfare quest'azione.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Si, invia!",
+                cancelButtonText: "No, ho cambiato idea!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+              },
+                function(isConfirm){
+                  if (isConfirm) {
+                    swal("Ok!", "Richiesta inviata.", "success");
                     ajaxCallFront(payload, '/riepilogo-pagamenti', 'POST', false, false);
                     item.html('<span class="status-in-attesa">In Attesa</span>');
                     item.removeClass('request-payment-button');
                     item.removeClass('btn');
                     item.removeClass('btn-primary');
                     item.css('text-transform', 'none');
-                  } else {     
-                    swal("Cancelled", "Your imaginary file is safe :)", "error");   
-                  } 
+                  } else {
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                  }
                 });
           })
       </script>

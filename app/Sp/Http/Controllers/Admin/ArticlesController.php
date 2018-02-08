@@ -150,7 +150,6 @@ class ArticlesController extends Controller
     {
         $article = Article::find($article_id);
 
-        // return $article_id;
 
         $article->status_id = $request->input('payload');
         $article->save();
@@ -161,6 +160,20 @@ class ArticlesController extends Controller
 
 
         return 'true';
+    }
+
+    public function rinvia($article_id, Request $request)
+    {
+        $article = Article::find($article_id);
+
+
+        $article->status_id = 1;
+        $article->admin_notes = $request->get('admin_notes');
+        $article->save();
+
+        flash()->success('Articolo rinviato con successo.');
+
+        return redirect('/admin/nuovi-articoli');
     }
 
     public function manageFields(Request $request)
